@@ -93,7 +93,30 @@ h3.big{margin:0 0 26px;font-size:clamp(26px,4.6vw,38px);line-height:1.2;font-wei
 footer{margin-top:56px;padding:26px 0 40px;border-top:1px solid var(--line2);color:var(--dim);font-size:13px}
 footer .fw{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
+
+.rv-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}
+.rv-list{display:flex;flex-direction:column;gap:12px}
+.rv-item{padding:18px 20px;border-radius:var(--r);background:var(--panel);border:1px solid var(--line2)}
+.rv-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.rv-name{font-weight:700}.rv-date{color:var(--dim);font-size:13px}
+.rv-stars{color:var(--gold);letter-spacing:.12em;font-size:17px}
+.rv-stars i{color:#3a3a3e;font-style:normal}
+.rv-text{margin:8px 0 0;color:#d9d3c8}
+.rv-empty{padding:26px 22px;border-radius:var(--r);border:1px dashed var(--line);color:var(--muted)}
+.rv-sum{display:flex;align-items:center;gap:12px;margin:-10px 0 18px;color:var(--muted)}
+.rv-sum b{font:600 30px/1 "Cinzel",serif;color:var(--gold)}
+.rv-form label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+.rv-form input,.rv-form textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line2);background:#0a0a0c;color:var(--text);font:16px var(--font);outline:none}
+.rv-form input:focus,.rv-form textarea:focus{border-color:rgba(227,192,127,.55)}
+.rv-form textarea{min-height:110px;resize:vertical}
+.rv-pick{display:flex;gap:6px}
+.rv-pick button{width:44px;height:44px;border-radius:12px;border:1px solid var(--line2);background:#0a0a0c;color:#4a4a50;font-size:22px;cursor:pointer;transition:color .15s,border-color .15s}
+.rv-pick button.on{color:var(--gold);border-color:rgba(227,192,127,.5)}
+.rv-send{margin-top:16px;width:100%;height:48px;border:0;border-radius:12px;background:var(--grad);color:#1a1306;font:700 13px var(--font);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.rv-note{margin-top:10px;font-size:12.5px;color:var(--dim)}
+.rv-err{margin-top:8px;font-size:13.5px;color:#ff9a8a;min-height:1.2em}
 @media (max-width:820px){
+  .rv-grid{grid-template-columns:1fr}
   .dl{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}
   .steps,.lic{grid-template-columns:1fr}
@@ -224,6 +247,29 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
     </div>
   </section>
 
+  <section id="reviews">
+    <h2>Отзывы</h2>
+    <h3 class="big">Что говорят штурманы</h3>
+    <div class="rv-sum" id="rv-sum" hidden></div>
+    <div class="rv-grid">
+      <div class="rv-list" id="rv-list"><div class="rv-empty">Отзывов пока нет — станьте первым. Расскажите, какие расчёты пригодились на вахте и чего не хватает.</div></div>
+      <form class="box rv-form" id="rv-form" novalidate>
+        <h4>Оставить отзыв</h4>
+        <label for="rv-name">Имя или ник</label>
+        <input id="rv-name" maxlength="40" placeholder="Например: Алексей, 2-й помощник" autocomplete="off">
+        <label>Оценка</label>
+        <div class="rv-pick" id="rv-pick" role="radiogroup" aria-label="Оценка от 1 до 5">
+          <button type="button" data-v="1" aria-label="1">★</button><button type="button" data-v="2" aria-label="2">★</button><button type="button" data-v="3" aria-label="3">★</button><button type="button" data-v="4" aria-label="4">★</button><button type="button" data-v="5" aria-label="5">★</button>
+        </div>
+        <label for="rv-text">Отзыв</label>
+        <textarea id="rv-text" maxlength="1200" placeholder="Что понравилось, что улучшить"></textarea>
+        <div class="rv-err" id="rv-err"></div>
+        <button class="rv-send" type="submit">Отправить отзыв</button>
+        <p class="rv-note">Откроется ваша почта с готовым письмом — останется нажать «Отправить». Отзыв появится на странице после проверки. Публикуются только имя или ник, оценка и текст; адрес почты не публикуется.</p>
+      </form>
+    </div>
+  </section>
+
   <section>
     <h2>Документы</h2>
     <div class="docs">
@@ -242,5 +288,31 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
     <span>© 2026 Полывянный Владимир Михайлович · ИНН 616117679959 · <a href="mailto:azimuthseahelp@yandex.ru">azimuthseahelp@yandex.ru</a></span>
   </div>
 </footer>
+<script>
+(function(){
+  var esc=function(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+  var stars=function(n){n=Math.max(1,Math.min(5,Math.round(n)));return "★".repeat(n)+"<i>"+"★".repeat(5-n)+"</i>"};
+  fetch("reviews.json",{cache:"no-cache"}).then(function(r){return r.ok?r.json():[]}).then(function(list){
+    if(!Array.isArray(list)||!list.length)return;
+    var avg=list.reduce(function(a,x){return a+Number(x.stars||0)},0)/list.length;
+    var sum=document.getElementById("rv-sum");sum.hidden=false;
+    sum.innerHTML="<b>"+avg.toFixed(1).replace(".",",")+"</b><span class='rv-stars'>"+stars(avg)+"</span><span>отзывов: "+list.length+"</span>";
+    document.getElementById("rv-list").innerHTML=list.map(function(x){
+      return "<div class='rv-item'><div class='rv-head'><span class='rv-name'>"+esc(x.name||"Аноним")+"</span><span class='rv-stars'>"+stars(x.stars)+"</span></div>"+
+        "<p class='rv-text'>"+esc(x.text||"")+"</p><div class='rv-date'>"+esc(x.date||"")+"</div></div>"}).join("");
+  }).catch(function(){});
+  var val=0,pick=document.getElementById("rv-pick");
+  pick.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;val=+b.dataset.v;
+    [].forEach.call(pick.children,function(c){c.classList.toggle("on",+c.dataset.v<=val)})});
+  document.getElementById("rv-form").addEventListener("submit",function(e){e.preventDefault();
+    var name=document.getElementById("rv-name").value.trim(),text=document.getElementById("rv-text").value.trim(),err=document.getElementById("rv-err");
+    if(!val){err.textContent="Поставьте оценку от 1 до 5 звёзд.";return}
+    if(text.length<5){err.textContent="Напишите пару слов о приложении.";return}
+    err.textContent="";
+    var body="Отзыв об AZIMUTH\n\nИмя или ник: "+(name||"Аноним")+"\nОценка: "+val+" из 5\n\n"+text+"\n\n— Согласен(на) на публикацию имени/ника, оценки и текста на странице AZIMUTH.";
+    location.href="mailto:azimuthseahelp@yandex.ru?subject="+encodeURIComponent("Отзыв об AZIMUTH — "+val+"★")+"&body="+encodeURIComponent(body);
+  });
+})();
+</script>
 </body>
 </html>
