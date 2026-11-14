@@ -1,0 +1,143 @@
+{
+  "meta": {},
+  "entries": [
+    {
+      "part": "Beaufort Scale",
+      "number": "1",
+      "title": "Purpose and principle of the Beaufort scale",
+      "diagram": "beaufort_scale_overview",
+      "commentary": [
+        "The Beaufort scale is a 13-point (0-12) wind force scale, originally devised for visually estimating wind strength from the state of the sea surface, without instruments — exactly what an officer of the watch needs if the anemometer has failed or is unavailable.",
+        "Each force corresponds to a range of wind speed (in knots/m/s) and a characteristic description of the sea state — from a mirror-calm surface at Calm to fully white foam and greatly reduced visibility at Hurricane force.",
+        "The official (WMO) scale gives speed ranges for the open sea at the standard height of 10 m above the surface — in enclosed waters, narrow channels and on rivers the sea state will differ from the table even at the same wind speed.",
+        "Beaufort forces are still used in ship weather observations, forecasts and warnings (STORM WARNING, etc.) alongside numerical wind speed — knowing the scale by heart saves time when interpreting a forecast.",
+        "Detailed ranges for each force are given in entries No. 2-5 of this topic; a general overview of the scale is shown in the diagram."
+      ],
+      "scene": "beaufort_sea"
+    },
+    {
+      "part": "Beaufort Scale",
+      "number": "2",
+      "title": "Forces 0-3 — Calm, Light Air, Light Breeze and Gentle Breeze",
+      "commentary": [
+        "Force 0 (Calm, 0-1 kt): sea like a mirror, smoke rises almost vertically.",
+        "Force 1 (Light Air, 1-3 kt): ripples with the appearance of scales, no foam crests; wind direction shown by smoke drift but not by wind vanes.",
+        "Force 2 (Light Breeze, 4-6 kt): small wavelets, crests of glassy appearance, not breaking; wind felt on face, leaves rustle.",
+        "Force 3 (Gentle Breeze, 7-10 kt): large wavelets, crests begin to break, scattered whitecaps here and there; leaves and small twigs in constant motion."
+      ]
+    },
+    {
+      "part": "Beaufort Scale",
+      "number": "3",
+      "title": "Forces 4-6 — Moderate Breeze, Fresh Breeze and Strong Breeze",
+      "commentary": [
+        "Force 4 (Moderate Breeze, 11-16 kt): small waves lengthen, fairly frequent whitecaps.",
+        "Force 5 (Fresh Breeze, 17-21 kt): moderate waves of more pronounced form, many whitecaps, possibly some spray.",
+        "Force 6 (Strong Breeze, 22-27 kt): large waves begin to form, white foam crests everywhere, probably some spray.",
+        "Practical reference point: from roughly force 5-6, small/pleasure craft should already consider limiting speed and preparing for heavier weather; for large ships this is still normal operational weather."
+      ]
+    },
+    {
+      "part": "Beaufort Scale",
+      "number": "4",
+      "title": "Forces 7-9 — Near Gale, Gale and Severe Gale",
+      "commentary": [
+        "Force 7 (Near Gale, 28-33 kt): sea heaps up, foam blown in streaks along the direction of the wind.",
+        "Force 8 (Gale, 34-40 kt): moderately high waves of greater length, edges of crests begin to break into spindrift, foam blown in well-marked streaks.",
+        "Force 9 (Severe Gale, 41-47 kt): high waves with dense streaks of foam, crests begin to topple, tumble and roll over, spray may reduce visibility.",
+        "At this range ships already routinely reduce speed as a matter of course, prepare for heavy weather (securing cargo/equipment, battening down) and adjust heading relative to the sea — details in the \"Stability\" topic and heavy-weather practice."
+      ]
+    },
+    {
+      "part": "Beaufort Scale",
+      "number": "5",
+      "title": "Forces 10-12 — Storm, Violent Storm and Hurricane",
+      "commentary": [
+        "Force 10 (Storm, 48-55 kt): very high waves with long overhanging crests, sea surface takes on a white appearance, visibility reduced.",
+        "Force 11 (Violent Storm, 56-63 kt): exceptionally high waves, sea completely covered with long white patches of foam, visibility severely reduced.",
+        "Force 12 (Hurricane, 64 kt and above): the air is filled with foam and spray, sea completely white with driving spray, visibility very seriously reduced.",
+        "At these forces most ships are no longer concerned with continuing normal operations but with survival: heading into or away from the sea bow-on or stern-on, reducing speed to the minimum needed for steerage, and, where possible, working clear of the storm (cyclone) centre along a route recommended by the weather service."
+      ]
+    },
+    {
+      "part": "Reading Synoptic Charts",
+      "number": "6",
+      "title": "Wind barbs",
+      "diagram": "wind_barbs",
+      "commentary": [
+        "On synoptic charts, wind speed and direction at an observation point (station) are shown by a \"wind barb\" — a shaft with short barbs and pennants.",
+        "The shaft points FROM the station toward the direction the wind is blowing FROM (i.e. it indicates the source of the wind, not where it is blowing to); a circle with no barb indicates calm.",
+        "Conventional increments: a half barb ≈ 5 knots, a full barb ≈ 10 knots, a pennant (triangular flag) ≈ 50 knots — these are combined to show any speed (for example, a pennant plus a barb = 55 knots).",
+        "Being able to quickly read a wind barb on a weather chart saves time compared with reading a text forecast for each point."
+      ]
+    },
+    {
+      "part": "Reading Synoptic Charts",
+      "number": "7",
+      "title": "Cloud cover in oktas and the station model",
+      "diagram": "cloud_cover_oktas",
+      "commentary": [
+        "Cloud cover on a synoptic chart is given in oktas (eighths of the sky covered by cloud) — from 0/8 (clear) to 8/8 (overcast).",
+        "In the station model, symbols are placed around the station circle in fixed positions: temperature (upper left), dew point (lower left), sea-level pressure (upper right, usually 3 digits with the leading \"9\"/\"10\" omitted), present and past weather (left), and the wind barb (oriented to wind direction).",
+        "The degree of shading of the station circle itself represents cloud cover in oktas — the darker/more fully shaded the circle, the greater the cloud cover.",
+        "This compact notation makes it possible to fit data from hundreds of stations onto a single synoptic chart without text labels."
+      ]
+    },
+    {
+      "part": "Reading Synoptic Charts",
+      "number": "8",
+      "title": "Weather front symbols",
+      "diagram": "weather_fronts",
+      "commentary": [
+        "Cold front — a line with blue triangles (spikes) pointing in the direction the front is moving; marks the advance of colder air, often a sharp deterioration in weather and squalls.",
+        "Warm front — a line with red semicircles pointing in the direction of movement; marks the advance of warmer air, usually a more gradual deterioration in weather spread out over a longer time ahead of the front.",
+        "Occluded front — a line with alternating triangles and semicircles (usually shown in a single, \"mixed\" colour) — the warm front has been overtaken by the cold front, and the air masses at the surface have already mixed.",
+        "Stationary front — alternating triangles and semicircles pointing in OPPOSITE directions from the front line — the front is barely moving.",
+        "Practical significance for the officer of the watch: the direction the spikes/semicircles point immediately shows where the area of deteriorating weather will move to, and from which side to expect the first signs of a change in conditions."
+      ]
+    },
+    {
+      "part": "Reading Synoptic Charts",
+      "number": "9",
+      "title": "Pressure centres (H/L) and isobars",
+      "diagram": "pressure_systems",
+      "commentary": [
+        "L (Low) — a cyclone, an area of low pressure; H (High) — an anticyclone, an area of high pressure.",
+        "Isobars are lines of equal atmospheric pressure; the more closely spaced (tighter) the isobars, the steeper the pressure gradient and, correspondingly, the stronger the wind in that area.",
+        "In the Northern Hemisphere, wind circulates COUNTERCLOCKWISE around a low (L) and inward (toward the centre), and CLOCKWISE around a high (H) and outward (away from the centre); in the Southern Hemisphere it is mirror-reversed.",
+        "This is a direct consequence of the Coriolis force and the pressure gradient — in practice it is enough to remember the ready-made rule for each hemisphere rather than deriving it each time.",
+        "Lows are generally associated with deteriorating weather (precipitation, wind, fronts), and highs with clear, settled weather, although there are exceptions to this rule (for example, weak frontal lows or blocking highs with persistent stagnant cloud)."
+      ]
+    },
+    {
+      "part": "Practical Application",
+      "number": "10",
+      "title": "Estimating wind force without instruments",
+      "commentary": [
+        "If the anemometer has failed or is not fitted on a small craft, estimating wind force from Beaufort scale indicators (sea state, whitecaps, spray, the behaviour of smoke/flags/branches ashore if visible) remains a standard method, one built into the very design of the scale.",
+        "It is important to assess OPEN water of adequate depth — in shallow water, close inshore, or in a narrow channel, the sea state may not visually correspond to the true wind strength because of the influence of depth and shoreline topography.",
+        "Regular practice (comparing your own visual estimate against a working anemometer's readings or the forecast) allows, over time, wind force to be judged \"by eye\" to within 1 Beaufort force — a useful skill in case of equipment failure."
+      ]
+    },
+    {
+      "part": "Practical Application",
+      "number": "11",
+      "title": "Recording weather in the ship's log",
+      "commentary": [
+        "Standard shipboard practice is to record in the ship's log at each observation time: wind direction and force (in Beaufort force and/or knots), sea state/swell, visibility, cloud cover, atmospheric pressure, and air and sea temperature.",
+        "Accurate, regular weather logging is important not only for navigation but also as objective evidence of conditions at the time of an incident (accident, cargo damage, delay) — the ship's log often becomes a key document when an incident is investigated.",
+        "The frequency and exact list of required parameters are governed by the ship's instructions and flag/class requirements — the specific logging format should be checked against your own ship's logbook form."
+      ]
+    },
+    {
+      "part": "Summary",
+      "number": "12",
+      "title": "Why this is worth knowing by heart",
+      "commentary": [
+        "Weather forecasts and storm warnings broadcast by radio/NAVTEX are often given with wind force stated in Beaufort force rather than knots/m/s — without fluent knowledge of the scale, time is lost converting it \"in your head\" at the moment a decision needs to be made quickly.",
+        "Visual assessment of sea state using the Beaufort scale is a backup method for instrument failure, not merely a theoretical exercise.",
+        "Synoptic chart symbols (wind barbs, fronts, isobars) make it possible to \"read\" an entire weather chart in seconds — far faster than reading a text forecast for the same area."
+      ]
+    }
+  ]
+}

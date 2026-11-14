@@ -1,0 +1,604 @@
+{
+  "meta": {
+    "official_source": "Excerpts from the official COLREGs text (International text, U.S. Coast Guard) for each type of vessel; figures — U.S. Coast Guard.",
+    "corrections": []
+  },
+  "entries": [
+    {
+      "part": "General principles",
+      "number": "1",
+      "title": "Types of lights and arcs of visibility",
+      "example": "An observer seeing only a green sidelight without a masthead light is most likely looking at a vessel crossing his course from his starboard side — the same observation as in Rule 21 (see the COLREGs topic).",
+      "diagram": "arcs_of_visibility",
+      "commentary": [
+        "Masthead light — white, on the fore-and-aft centreline, arc of 225° (from right ahead to 22.5° abaft the beam on each side).",
+        "Sidelights — green on the starboard side, red on the port side, each with an arc of 112.5° (from right ahead to 22.5° abaft the beam on its own side).",
+        "Sternlight — white, arc of 135°, placed as nearly as practicable at the stern.",
+        "Towing light — yellow, having the same characteristics as the sternlight, mounted vertically above the sternlight.",
+        "All-round light — arc of 360° (visible from every direction).",
+        "The range of visibility of lights depends on the length of the vessel (Rule 22) — larger vessels carry lights with greater visibility range."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "\"Masthead light\" means a white light placed over the fore and aft centerline of the vessel showing an unbroken light over an arc of the horizon of 225 degrees and so fixed as to show the light from right ahead to 22.5 degrees abaft the beam on either side of the vessel."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "\"Sidelights\" means a green light on the starboard side and a red light on the port side each showing an unbroken light over an arc of the horizon of 112.5 degrees and so fixed as to show the light from right ahead to 22.5 degrees abaft the beam on its respective side. In a vessel of less than 20 meters in length the sidelights may be combined in one lantern carried on the fore and aft centerline of the vessel."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "\"Sternlight\" means a white light placed as nearly as practicable at the stern showing an unbroken light over an arc of the horizon of 135 degrees and so fixed as to show the light 67.5 degrees from right aft on each side of the vessel."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "\"Towing light\" means a yellow light having the same characteristics as the \"sternlight\" defined in Rule 21(c)."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "\"All-round light\" means a light showing an unbroken light over an arc of the horizon of 360 degrees."
+        },
+        {
+          "label": "(f)",
+          "level": 0,
+          "text": "\"Flashing light\" means a light flashing at regular intervals at a frequency of 120 flashes or more per minute."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 21"
+    },
+    {
+      "part": "Power-driven vessels",
+      "number": "2",
+      "title": "Power-driven vessel underway, less than 50 m",
+      "diagram": "pd_vessel_small",
+      "commentary": [
+        "One masthead light, sidelights (red/green), sternlight.",
+        "Distinguishing feature at night: one white masthead light plus one coloured sidelight (when not observed dead ahead or dead astern) — the classic silhouette of an 'ordinary' vessel underway.",
+        "See COLREGs Rule 23."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_23_aii.webp",
+          "caption": "Power-driven vessel underway, less than 50 metres in length"
+        }
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A power-driven vessel underway shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "a masthead light forward;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "a second masthead light abaft of and higher than the forward one; except that a vessel of less than 50 meters in length shall not be obliged to exhibit such a light but may do so;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "sidelights; and,"
+        },
+        {
+          "label": "(iv)",
+          "level": 1,
+          "text": "a sternlight."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 23(a)"
+    },
+    {
+      "part": "Power-driven vessels",
+      "number": "3",
+      "title": "Power-driven vessel underway, 50 m or more",
+      "diagram": "pd_vessel_large",
+      "commentary": [
+        "Two masthead lights on the same fore-and-aft line: the after (rear) one higher and abaft the forward one.",
+        "Plus sidelights and a sternlight — as for the smaller vessel.",
+        "Two masthead lights at different heights in range — a characteristic sign of a large vessel: the apparent separation between the two lights gives an approximate indication of her relative bearing to the observer.",
+        "See COLREGs Rule 23."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_23_a.webp",
+          "caption": "Power-driven vessel underway, 50 metres or more in length"
+        }
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A power-driven vessel underway shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "a masthead light forward;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "a second masthead light abaft of and higher than the forward one; except that a vessel of less than 50 meters in length shall not be obliged to exhibit such a light but may do so;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "sidelights; and,"
+        },
+        {
+          "label": "(iv)",
+          "level": 1,
+          "text": "a sternlight."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 23(a)"
+    },
+    {
+      "part": "Power-driven vessels",
+      "number": "4",
+      "title": "Small power-driven vessel (less than 12 m / less than 7 m)",
+      "diagram": "pd_vessel_tiny",
+      "commentary": [
+        "A vessel of less than 12 m may carry an all-round white light INSTEAD OF the masthead light and sternlight, while still carrying sidelights.",
+        "A vessel of less than 7 m (with a maximum speed not exceeding 7 knots) may carry only an all-round white light, and shall, if practicable, also carry sidelights.",
+        "In practice this is the most common source of confusion for beginners: a single all-round white light without sidelights can easily be mistaken for a vessel at anchor — but a vessel underway must show at least her sidelights, if fitted.",
+        "See COLREGs Rule 23."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_23_di.webp",
+          "caption": "Power-driven vessel of less than 12 metres in length"
+        },
+        {
+          "src": "img/colregs/NRHB_23_Intl_dii.webp",
+          "caption": "Power-driven vessel of less than 7 metres whose maximum speed does not exceed 7 knots"
+        }
+      ],
+      "official": [],
+      "official_ref": "COLREGs, Rule 23(d)"
+    },
+    {
+      "part": "Towing",
+      "number": "5",
+      "title": "Vessel engaged in towing",
+      "diagram": "towing_vessel",
+      "commentary": [
+        "Towing vessel: two masthead lights in a vertical line (three if the length of the tow exceeds 200 m), sidelights, a sternlight, and a yellow towing light in a vertical line above the sternlight.",
+        "When the length of the tow exceeds 200 m, both vessels (towing and towed) shall carry a diamond shape, in the most conspicuous place.",
+        "Three masthead lights in a vertical line (instead of the usual one or two) — a characteristic indication specifically of a long tow, not to be confused with a vessel restricted in her ability to manoeuvre (which shows a different combination of colours).",
+        "See COLREGs Rule 24."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_24_a.webp",
+          "caption": "Towing astern: tow 200 metres or less, towing vessel less than 50 metres"
+        },
+        {
+          "src": "img/colregs/NRHB_24_av.webp",
+          "caption": "Towing astern: tow exceeds 200 metres — three masthead lights and a diamond"
+        }
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A power-driven vessel when towing astern shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "Instead of the light prescribed in Rule 23(a)(i) or Rule 23(a)(ii), two masthead lights in a vertical line. When the length of the tow, measuring from the stern of the towing vessel to the after end of the tow, exceeds 200 meters, three such lights in a vertical line;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "sidelights;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "a sternlight;"
+        },
+        {
+          "label": "(iv)",
+          "level": 1,
+          "text": "a towing light in a vertical line above the sternlight; and"
+        },
+        {
+          "label": "(v)",
+          "level": 1,
+          "text": "when the length of the tow exceeds 200 meters, a diamond shape where it can best be seen."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "A vessel or object being towed, other than those mentioned in Rule 24(g), shall exhibit:\n(i) sidelights;\n(ii) a sternlight;\n(iii) when the length of the tow exceeds 200 meters, a diamond shape where it can best be seen."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 24(a)(e)"
+    },
+    {
+      "part": "Sailing vessels",
+      "number": "6",
+      "title": "Sailing vessel underway",
+      "diagram": "sailing_vessel",
+      "commentary": [
+        "Sidelights and a sternlight — WITHOUT a masthead light (the main distinction from a power-driven vessel at night).",
+        "A sailing vessel of less than 20 m may combine the sidelights and sternlight in one lantern carried at or near the masthead.",
+        "In addition (though not compulsory), she may carry two all-round lights at or near the top of the mast — red above green (but never together with the combined lantern).",
+        "A sailing vessel proceeding under sail and being propelled by machinery (motor-sailing) shall carry a black conical shape, point downward, in the fore part, by day — by night she is already considered a power-driven vessel for the purpose of the lights she shows.",
+        "See COLREGs Rule 25."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_25_a.webp",
+          "caption": "Sailing vessel underway"
+        },
+        {
+          "src": "img/colregs/NRHB_25_c.webp",
+          "caption": "Sailing vessel underway with the optional red-over-green lights"
+        },
+        {
+          "src": "img/colregs/NRHB_25_e.webp",
+          "caption": "Vessel under sail and machinery — cone apex downwards"
+        }
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A sailing vessel underway shall exhibit:\n(i) sidelights;\n(ii) a sternlight."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "In a sailing vessel of less than 20 meters in length the lights prescribed in Rule 25(a) may be combined in one lantern carried at or near the top of the mast where it can best be seen."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A sailing vessel underway may, in addition to the lights prescribed in Rule 25(a), exhibit at or near the top of the mast, where they can best be seen, two all-round lights in a vertical line, the upper being red and the lower green, but these lights shall not be exhibited in conjunction with the combined lantern permitted by Rule 25(b)."
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "A sailing vessel of less than 7 meters in length shall, if practicable, exhibit the lights prescribed in Rule 25(a) or (b), but if she does not, she shall have ready at hand an electric torch or lighted lantern showing a white light which shall be exhibited in sufficient time to prevent collision."
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "A vessel under oars may exhibit the lights prescribed in this rule for sailing vessels, but if she does not, she shall have ready at hand an electric torch or lighted lantern showing a white light which shall be exhibited in sufficient time to prevent collision."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "A vessel proceeding under sail when also being propelled by machinery shall exhibit forward where it can best be seen a conical shape, apex downwards."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 25(a)(b)(c)(e)"
+    },
+    {
+      "part": "Fishing",
+      "number": "7",
+      "title": "Vessel engaged in fishing",
+      "diagram": "fishing_vessel",
+      "commentary": [
+        "Trawling: two all-round lights in a vertical line — green over white; by day, two cones with their apexes together (the silhouette resembles a butterfly/hourglass — like an IALA West mark, but this is not a buoy).",
+        "Fishing other than trawling (gear extending horizontally): two all-round lights — red over white; the same day shape of two cones apex to apex.",
+        "When the outlying gear extends more than 150 m, an additional white all-round light (or a cone, point upward, by day) is shown in the direction of the gear.",
+        "If the vessel is making way through the water, sidelights and a sternlight are shown in addition.",
+        "The colour of the upper all-round light is the key identifying feature: green over white = trawling, red over white = fishing other than trawling.",
+        "See COLREGs Rule 26."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_26_biii.webp",
+          "caption": "Vessel engaged in trawling, making way, less than 50 metres"
+        },
+        {
+          "src": "img/colregs/NRHB_26_ciii.webp",
+          "caption": "Vessel engaged in fishing other than trawling, making way"
+        }
+      ],
+      "official": [
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A vessel when engaged in trawling, by which is meant the dragging through the water of a dredge net or other apparatus used as a fishing appliance, shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "two all-round lights in a vertical line, the upper being green and the lower white, or a shape consisting of two cones with their apexes together in a vertical line one above the other;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "a masthead light abaft of and higher than the all-round green light; a vessel of less than 50 meters in length shall not be obliged to exhibit such a light but may do so;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "when making way through the water, in addition to the lights prescribed in this paragraph, sidelights and a sternlight."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A vessel engaged in fishing, other than trawling, shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "two all-round lights in a vertical line, the upper being red and the lower white, or a shape consisting of two cones with their apexes together in a vertical line one above the other;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "when there is outlying gear extending more than 150 meters horizontally from the vessel, an all-round white light or a cone apex upwards in the direction of the gear."
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "when making way through the water, in addition to the lights prescribed in this paragraph, sidelights and a sternlight."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 26(b)(c)"
+    },
+    {
+      "part": "Vessels with restricted manoeuvrability",
+      "number": "8",
+      "title": "Vessel not under command (NUC)",
+      "diagram": "not_under_command",
+      "commentary": [
+        "Two all-round red lights in a vertical line, in the most conspicuous place.",
+        "When making way through the water, sidelights and a sternlight are also shown.",
+        "By day — two black balls in a vertical line.",
+        "'Two reds' — the vessel is entirely unable to keep out of the way and cannot manoeuvre (breakdown, casualty) — keep well clear of her.",
+        "See COLREGs Rule 27."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_27_a.webp",
+          "caption": "Vessel not under command, not making way"
+        },
+        {
+          "src": "img/colregs/NRHB_27_aiii.webp",
+          "caption": "Vessel not under command, making way"
+        }
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A vessel not under command shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "two all-round red lights in a vertical line where they can best be seen;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "two balls or similar shapes in a vertical line where they can best be seen;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "when making way through the water, in addition to the lights prescribed in this paragraph, sidelights and a sternlight."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 27(a)"
+    },
+    {
+      "part": "Vessels with restricted manoeuvrability",
+      "number": "9",
+      "title": "Vessel restricted in her ability to manoeuvre (RAM)",
+      "diagram": "restricted_maneuverability",
+      "commentary": [
+        "Three all-round lights in a vertical line: red-white-red (from top to bottom).",
+        "When underway, masthead lights, sidelights and a sternlight are also carried.",
+        "By day — three shapes in a vertical line: ball-diamond-ball (from top to bottom).",
+        "When engaged in dredging or underwater operations and an obstruction exists, additionally two red lights/balls (on the side where the obstruction lies) and two green lights/diamonds (on the side on which another vessel may pass).",
+        "'Red-white-red' — the vessel is engaged in an operation (towing at the limit of manoeuvrability, dredging, diving operations, mine-clearance, etc.) and requires extra caution when passing, unlike NUC (which shows only red-red, with no white).",
+        "See COLREGs Rule 27."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_27_biii.webp",
+          "caption": "Vessel restricted in her ability to manoeuvre, making way"
+        },
+        {
+          "src": "img/colregs/NRHB_27_d.webp",
+          "caption": "Dredging, not making way; obstruction on the starboard side"
+        }
+      ],
+      "official": [
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A vessel restricted in her ability to maneuver, except a vessel engaged in mine clearance operations, shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "three all-round lights in a vertical line where they can best be seen. The highest and lowest of these lights shall be red and the middle light shall be white;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "three shapes in a vertical line where they can best be seen. The highest and lowest of these shapes shall be balls and the middle one a diamond."
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "when making way through the water, a masthead light(s), sidelights and a sternlight in addition to the lights prescribed in Rule 27(b)(i);"
+        },
+        {
+          "label": "(iv)",
+          "level": 1,
+          "text": "when at anchor, in addition to the lights or shapes prescribed in Rule 27(b)(i) and (ii), the light, lights, or shapes prescribed in Rule 30."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 27(b)"
+    },
+    {
+      "part": "Vessels with restricted manoeuvrability",
+      "number": "10",
+      "title": "Vessel constrained by her draught",
+      "diagram": "constrained_by_draft",
+      "commentary": [
+        "In addition to the lights required for a power-driven vessel, may exhibit three all-round red lights in a vertical line, or a cylinder shape, in the most conspicuous place.",
+        "A formally optional signal ('may exhibit' in the original text) — not always seen in practice, but on sighting such a vessel one should expect that her ability to manoeuvre is limited by the depth of water beneath her keel.",
+        "See COLREGs Rule 28."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_28.webp",
+          "caption": "Vessel constrained by her draught, underway"
+        }
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "A vessel constrained by her draft may, in addition to the lights prescribed for power-driven vessels in Rule 23(a), exhibit where they can best be seen three all-round red lights in a vertical line, or a cylinder."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 28"
+    },
+    {
+      "part": "Special vessels",
+      "number": "11",
+      "title": "Pilot vessel",
+      "diagram": "pilot_vessel",
+      "commentary": [
+        "When engaged on pilotage duty: two all-round lights at or near the masthead — white over red.",
+        "When underway, sidelights and a sternlight are also shown; at anchor, anchor lights are also shown.",
+        "A pilot vessel not engaged on pilotage duty carries the ordinary lights/shapes of a vessel of her type and size (the pilot lights are not shown in that case).",
+        "See COLREGs Rule 29."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_29_a.webp",
+          "caption": "Vessel engaged on pilotage duty, underway"
+        },
+        {
+          "src": "img/colregs/NRHB_29_aiii.webp",
+          "caption": "Vessel engaged on pilotage duty, at anchor"
+        }
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A vessel engaged on pilotage duty shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "at or near the masthead, two all-round lights in a vertical line, the upper being white and the lower red;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "when underway, in addition, sidelights and a sternlight;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "when at anchor, in addition to the lights prescribed in Rule 29(a)(i), the light, lights, or shape prescribed in Rule 30 for vessels at anchor."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 29(a)"
+    },
+    {
+      "part": "Vessels at anchor or aground",
+      "number": "12",
+      "title": "Vessel at anchor",
+      "diagram": "at_anchor",
+      "commentary": [
+        "All-round white light in the fore part; a vessel of 50 m or more also shows an after all-round white light, lower than the forward light.",
+        "By day — a black ball in the fore part.",
+        "Vessels of 100 m or more may additionally use deck illumination.",
+        "Vessels of less than 7 m at anchor, when not in or near a narrow channel, fairway or anchorage, or where other vessels normally navigate, need not exhibit anchor lights or shapes.",
+        "See COLREGs Rule 30."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_30_d.webp",
+          "caption": "Vessel at anchor with deck illumination"
+        },
+        {
+          "src": "img/colregs/NRHB_30_a.webp",
+          "caption": "Vessel at anchor, less than 50 metres"
+        }
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A vessel at anchor shall exhibit where it can best be seen:\n(i) in the fore part, an all-round white light or one ball;\n(ii) at or near the stern and at a lower level than the light prescribed in Rule 30(a)(i), an all-round white light."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A vessel of less than 50 meters in length may exhibit an all-round white light where it can best be seen instead of the lights prescribed in Rule 30(a)."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A vessel at anchor may, and a vessel of 100 meters and more in length shall, also use the available working or equivalent lights to illuminate her decks."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "A vessel of less than 7 meters in length, when at anchor not in or near a narrow channel, fairway or where other vessels normally navigate, shall not be required to exhibit the lights or shape prescribed in Rule 30(a) and (b)."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 30(a)(b)(c)(e)"
+    },
+    {
+      "part": "Vessels at anchor or aground",
+      "number": "13",
+      "title": "Vessel aground",
+      "diagram": "aground",
+      "commentary": [
+        "Anchor lights/shapes (as at anchor) PLUS two all-round red lights in a vertical line.",
+        "By day — three black balls in a vertical line.",
+        "A vessel less than 12 m in length, when aground, is not required to exhibit any additional lights/shapes for the aground condition at all (COLREGs Rule 30(f)) — unlike a vessel at anchor, where the exemption for vessels under 7 m only applies outside a narrow channel, fairway, anchorage, or area of congested navigation (Rule 30(e)); these are two separate rules for two different situations, not the same exemption.",
+        "'Three balls' in addition to the anchor lights is a clear sign that the vessel is not merely at anchor but actually aground.",
+        "See COLREGs Rule 30."
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_30_dii.webp",
+          "caption": "Vessel aground"
+        }
+      ],
+      "official": [
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "A vessel aground shall exhibit the lights prescribed in Rule 30(a) or (b) and in addition, if practicable, where they can best be seen:\n(i) two all-round red lights in a vertical line;\n(ii) three balls in a vertical line."
+        },
+        {
+          "label": "(f)",
+          "level": 0,
+          "text": "A vessel of less than 12 meters in length, when aground, shall not be required to exhibit the lights or shapes prescribed in Rule 30(d)(i) and (ii)."
+        }
+      ],
+      "official_ref": "COLREGs, Rule 30(d)(f)"
+    }
+  ]
+}

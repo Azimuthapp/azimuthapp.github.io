@@ -1,0 +1,15 @@
+{
+  "_comment": "Реквизиты продавца для документов и окна активации. Пустое поле показывается как [не указано]. После изменения: python3 tools/legal/make_legal.py (PDF) и пересборка установщиков.",
+  "seller_name": "Полывянный Владимир Михайлович",
+  "inn": "616117679959",
+  "tax_status": "физическое лицо",
+  "email": "azimuthseahelp@yandex.ru",
+  "telegram": "",
+  "telegram_channel": "",
+  "site": "https://azimuthapp.github.io",
+  "city": "",
+  "edition_date": "14.11.2026",
+  "price_1m": "",
+  "price_6m": "",
+  "price_12m": ""
+}

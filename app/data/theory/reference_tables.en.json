@@ -1,0 +1,599 @@
+{
+  "meta": {},
+  "entries": [
+    {
+      "part": "Beaufort Scale",
+      "number": "1",
+      "title": "Beaufort scale — condensed table (Force 0-12)",
+      "diagram": "beaufort_scale_overview",
+      "commentary": [
+        "The same table with sea-state descriptions for each force is in the \"Meteorology\" topic; this is a quick lookup version with numbers only."
+      ],
+      "tables": [
+        {
+          "head": [
+            "Force",
+            "Description",
+            "Wind speed"
+          ],
+          "rows": [
+            [
+              "0",
+              "Calm",
+              "0-1 kn"
+            ],
+            [
+              "1",
+              "Light air",
+              "1-3 kn"
+            ],
+            [
+              "2",
+              "Light breeze",
+              "4-6 kn"
+            ],
+            [
+              "3",
+              "Gentle breeze",
+              "7-10 kn"
+            ],
+            [
+              "4",
+              "Moderate breeze",
+              "11-16 kn"
+            ],
+            [
+              "5",
+              "Fresh breeze",
+              "17-21 kn"
+            ],
+            [
+              "6",
+              "Strong breeze",
+              "22-27 kn"
+            ],
+            [
+              "7",
+              "Near gale",
+              "28-33 kn"
+            ],
+            [
+              "8",
+              "Gale",
+              "34-40 kn"
+            ],
+            [
+              "9",
+              "Strong gale",
+              "41-47 kn"
+            ],
+            [
+              "10",
+              "Storm",
+              "48-55 kn"
+            ],
+            [
+              "11",
+              "Violent storm",
+              "56-63 kn"
+            ],
+            [
+              "12",
+              "Hurricane force",
+              "64 kn and above"
+            ]
+          ]
+        }
+      ],
+      "scene": "beaufort_sea"
+    },
+    {
+      "part": "Unit Conversion",
+      "number": "2",
+      "title": "Unit conversion table",
+      "commentary": [],
+      "tables": [
+        {
+          "head": [
+            "Quantity",
+            "Conversion"
+          ],
+          "rows": [
+            [
+              "Distance",
+              "1 nautical mile (nm) = 1852 m = 1.852 km (international definition, fixed in 1929)"
+            ],
+            [
+              "Speed",
+              "1 knot (kn) = 1 nm/h = 1.852 km/h = 0.5144 m/s"
+            ],
+            [
+              "Distance (short)",
+              "1 cable = 0.1 nautical mile = 185.2 m"
+            ],
+            [
+              "Length",
+              "1 foot (ft) = 0.3048 m;  1 inch (in) = 2.54 cm;  1 yard (yd) = 0.9144 m"
+            ],
+            [
+              "Depth (English charts)",
+              "1 fathom (fm) = 6 feet = 1.8288 m"
+            ],
+            [
+              "Temperature",
+              "°C = (°F − 32) × 5/9;  °F = °C × 9/5 + 32"
+            ],
+            [
+              "Pressure",
+              "1 hPa = 1 mbar;  1 mmHg ≈ 1.333 hPa;  1 inHg ≈ 33.86 hPa"
+            ],
+            [
+              "Mass (older ship documents)",
+              "1 long ton (LT) = 1016 kg;  1 metric tonne = 1000 kg"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "part": "Visibility Range",
+      "number": "3",
+      "title": "Distance to the horizon by height of eye",
+      "commentary": [
+        "Simplified formula (including standard terrestrial refraction): d (nm) ≈ 2.08 × √h (m), where h is the observer's height of eye above sea level.",
+        "For the range at which a light or object becomes visible (not just the horizon), the observer's and the object's ranges add together: d = d(h_observer) + d(h_object) — the \"geographical range\"; the actual detection range is also limited by the light's intensity and atmospheric clarity (luminous-range diagram/table)."
+      ],
+      "tables": [
+        {
+          "head": [
+            "Height of eye h, m",
+            "Distance to horizon d, nm"
+          ],
+          "rows": [
+            [
+              "5",
+              "4.7"
+            ],
+            [
+              "10",
+              "6.6"
+            ],
+            [
+              "15",
+              "8.1"
+            ],
+            [
+              "20",
+              "9.3"
+            ],
+            [
+              "25",
+              "10.4"
+            ],
+            [
+              "30",
+              "11.4"
+            ],
+            [
+              "40",
+              "13.2"
+            ],
+            [
+              "50",
+              "14.7"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "part": "Points and Degrees",
+      "number": "4",
+      "title": "Cardinal and intercardinal points in degrees",
+      "commentary": [
+        "A full compass card is divided into 32 points; one point = 360°/32 = 11.25°.",
+        "The 8 cardinal points are each bisected by an intercardinal point (NNE, ENE, ESE, SSE, SSW, WSW, WNW, NNW, every 22.5°); a further 16 three-letter points complete the full 32-point compass card."
+      ],
+      "tables": [
+        {
+          "head": [
+            "Point",
+            "Name",
+            "Degrees"
+          ],
+          "rows": [
+            [
+              "N",
+              "North",
+              "0° / 360°"
+            ],
+            [
+              "NE",
+              "Northeast",
+              "45°"
+            ],
+            [
+              "E",
+              "East",
+              "90°"
+            ],
+            [
+              "SE",
+              "Southeast",
+              "135°"
+            ],
+            [
+              "S",
+              "South",
+              "180°"
+            ],
+            [
+              "SW",
+              "Southwest",
+              "225°"
+            ],
+            [
+              "W",
+              "West",
+              "270°"
+            ],
+            [
+              "NW",
+              "Northwest",
+              "315°"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "part": "Sea State",
+      "number": "5",
+      "title": "Sea state scale (state of the sea surface, 0-9)",
+      "commentary": [
+        "A separate scale from Beaufort: Beaufort describes WIND force, while this scale (WMO/Douglas) describes the actual wave height, which depends not only on the current wind but also on fetch and swell — so the two scales' numbers don't always match.",
+        "Height is the significant wave height (average of the highest 1/3 of waves), not the maximum single wave, which can be noticeably higher."
+      ],
+      "tables": [
+        {
+          "head": [
+            "Code",
+            "Sea state",
+            "Wave height"
+          ],
+          "rows": [
+            [
+              "0",
+              "Calm (glassy)",
+              "0 m"
+            ],
+            [
+              "1",
+              "Calm (rippled)",
+              "0-0.1 m"
+            ],
+            [
+              "2",
+              "Smooth",
+              "0.1-0.5 m"
+            ],
+            [
+              "3",
+              "Slight",
+              "0.5-1.25 m"
+            ],
+            [
+              "4",
+              "Moderate",
+              "1.25-2.5 m"
+            ],
+            [
+              "5",
+              "Rough",
+              "2.5-4 m"
+            ],
+            [
+              "6",
+              "Very rough",
+              "4-6 m"
+            ],
+            [
+              "7",
+              "High",
+              "6-9 m"
+            ],
+            [
+              "8",
+              "Very high",
+              "9-14 m"
+            ],
+            [
+              "9",
+              "Phenomenal",
+              "over 14 m"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "part": "International Code of Signals",
+      "number": "6",
+      "title": "Single-letter flag signals (most commonly used)",
+      "commentary": [
+        "This list covers the most frequently used and memorized single-letter signals; it is NOT the complete ICS alphabet (some less common letters are omitted) — the full table is in the International Code of Signals book / bridge flag chart."
+      ],
+      "tables": [
+        {
+          "head": [
+            "Flag",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "A",
+              "I have a diver down; keep well clear at slow speed"
+            ],
+            [
+              "B",
+              "I am taking in, discharging, or carrying dangerous goods"
+            ],
+            [
+              "C",
+              "Yes (affirmative)"
+            ],
+            [
+              "D",
+              "Keep clear of me; I am manoeuvring with difficulty"
+            ],
+            [
+              "E",
+              "I am altering my course to starboard"
+            ],
+            [
+              "F",
+              "I am disabled; communicate with me"
+            ],
+            [
+              "G",
+              "I require a pilot (for fishing vessels in some areas: \"I am hauling nets\")"
+            ],
+            [
+              "H",
+              "I have a pilot on board"
+            ],
+            [
+              "I",
+              "I am altering my course to port"
+            ],
+            [
+              "J",
+              "I am on fire and carrying dangerous cargo; keep clear"
+            ],
+            [
+              "K",
+              "I wish to communicate with you"
+            ],
+            [
+              "L",
+              "You should stop your vessel instantly"
+            ],
+            [
+              "M",
+              "My vessel is stopped and making no way through the water"
+            ],
+            [
+              "N",
+              "No (negative)"
+            ],
+            [
+              "O",
+              "Man overboard"
+            ],
+            [
+              "P",
+              "Blue Peter: in harbour, about to proceed to sea; at sea, for fishing vessels, my nets have come fast on an obstruction"
+            ],
+            [
+              "Q",
+              "My vessel is healthy and I request free pratique"
+            ],
+            [
+              "S",
+              "I am operating astern propulsion"
+            ],
+            [
+              "U",
+              "You are running into danger"
+            ],
+            [
+              "V",
+              "I require assistance"
+            ],
+            [
+              "W",
+              "I require medical assistance"
+            ],
+            [
+              "X",
+              "Stop carrying out your intentions and watch for my signals"
+            ],
+            [
+              "Y",
+              "I am dragging my anchor"
+            ],
+            [
+              "Z",
+              "I require a tug"
+            ]
+          ],
+          "flags": true
+        }
+      ]
+    },
+    {
+      "part": "VHF Radio",
+      "number": "7",
+      "title": "Purpose of the main VHF channels",
+      "commentary": [
+        "Exact regional channel assignments (especially 9/12/14/67/72/73/77) must be checked against the current Regional VHF Channel Plan/sailing directions for the area — only the internationally standard core (16/70/13/6) is given here."
+      ],
+      "tables": [
+        {
+          "head": [
+            "Channel",
+            "Frequency, MHz",
+            "Purpose"
+          ],
+          "rows": [
+            [
+              "16",
+              "156.800",
+              "international distress, safety and calling channel; monitored continuously; not for routine traffic."
+            ],
+            [
+              "70",
+              "156.525",
+              "Digital Selective Calling (DSC) only, not for voice."
+            ],
+            [
+              "13",
+              "156.650",
+              "bridge-to-bridge navigational safety communications (mandatory monitoring in many straits/approaches)."
+            ],
+            [
+              "6",
+              "156.300",
+              "intership safety communications, search and rescue coordination."
+            ],
+            [
+              "12/14",
+              "—",
+              "typically port operations/VTS (exact assignment varies by port — check local regulations/sailing directions)."
+            ],
+            [
+              "67/72/73/77",
+              "—",
+              "typically intership working/non-commercial channels (also vary by region)."
+            ],
+            [
+              "9",
+              "—",
+              "in many countries a secondary calling channel/small craft (strongly country-dependent)."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "part": "Chart Symbols",
+      "number": "8",
+      "title": "Light characteristics and seabed symbols on charts",
+      "commentary": [
+        "The complete official symbol table is in publication INT 1 (Symbols and Abbreviations used on Admiralty Charts) or its national equivalent; only the most common symbols are given here."
+      ],
+      "tables": [
+        {
+          "head": [
+            "Abbreviation",
+            "Name",
+            "What it looks like"
+          ],
+          "rows": [
+            [
+              "Fl",
+              "Flashing",
+              "light shorter than darkness"
+            ],
+            [
+              "F",
+              "Fixed",
+              "continuous light"
+            ],
+            [
+              "Oc",
+              "Occulting",
+              "light longer than darkness"
+            ],
+            [
+              "Iso",
+              "Isophase",
+              "light and darkness equal"
+            ],
+            [
+              "Q",
+              "Quick flashing (~50-79 flashes/min)",
+              "—"
+            ],
+            [
+              "VQ",
+              "Very quick flashing (~80-159/min)",
+              "—"
+            ],
+            [
+              "LFl",
+              "Long flashing",
+              "flash of 2 seconds or more"
+            ],
+            [
+              "Mo(K)",
+              "Morse code light (letter/group in brackets)",
+              "—"
+            ],
+            [
+              "Al",
+              "Alternating (colour)",
+              "—"
+            ],
+            [
+              "Fl(2), Fl(3), etc.",
+              "a group of N flashes, repeated with a period",
+              "—"
+            ]
+          ]
+        },
+        {
+          "head": [
+            "Abbreviation",
+            "Seabed"
+          ],
+          "rows": [
+            [
+              "S",
+              "Sand"
+            ],
+            [
+              "M",
+              "Mud"
+            ],
+            [
+              "Cl",
+              "Clay"
+            ],
+            [
+              "Co",
+              "Coral"
+            ],
+            [
+              "Rk",
+              "Rock"
+            ],
+            [
+              "Sh",
+              "Shells"
+            ],
+            [
+              "Wd",
+              "Weed"
+            ],
+            [
+              "Wk",
+              "Wreck"
+            ]
+          ]
+        }
+      ],
+      "scene": "light_characters"
+    }
+  ]
+}

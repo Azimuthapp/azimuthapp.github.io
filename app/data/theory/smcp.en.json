@@ -1,0 +1,143 @@
+{
+  "meta": {},
+  "entries": [
+    {
+      "part": "General Principles",
+      "number": "1",
+      "title": "Message Markers",
+      "diagram": "message_markers",
+      "commentary": [
+        "SMCP (IMO Standard Marine Communication Phrases, IMO Resolution A.918(22)) is a standardized set of phrases in simplified English for radio communication and on-board communication, developed specifically for crews whose native languages differ.",
+        "Many standard phrases are preceded by one of 8 markers, so that the listener immediately understands how to react without waiting for the phrase to finish.",
+        "INSTRUCTION — a mandatory order to be carried out; ADVICE — a recommendation, the decision remains with the addressee; WARNING — a warning of danger.",
+        "INFORMATION — a statement of fact without a direct requirement for action; QUESTION / ANSWER — a question and the answer to it.",
+        "REQUEST — a request for an action/arrangement (except for a change to one's own manoeuvre — a separate marker exists for that); INTENTION — a statement of which manoeuvre the vessel itself intends to carry out.",
+        "Example from the VTS phrases: «WARNING. Your target on my radar shows a very small distance to buoy» — the marker immediately tells the listener that a warning of danger follows, not just information."
+      ]
+    },
+    {
+      "part": "General Principles",
+      "number": "2",
+      "title": "Structure of SMCP and the Radiotelephone Alphabet",
+      "diagram": "phonetic_alphabet",
+      "commentary": [
+        "The document is divided into Part A (external communications: ship-to-ship, ship-to-shore/VTS, pilotage) and Part B (on-board communications: bridge-engine room, emergency announcements, cargo and passenger handling).",
+        "A General section precedes both parts and sets out the basics: how to pronounce numbers and coordinates, standard response words (Yes/No instead of colloquial variants), the procedure for requesting repetition (Say again), and the message markers.",
+        "The ICAO/IMO radiotelephone (phonetic) alphabet is used to spell out call signs, ship names, MMSI numbers and other data letter by letter, where an error in a single letter is critical.",
+        "Numbers are transmitted digit by digit («one-five» instead of «fifteen») wherever a mixed-up digit could distort a course, coordinates or a frequency — a general rule of radio communication that also applies in SMCP.",
+        "SMCP is not a replacement for the English language as a whole, but a mandatory minimum vocabulary for typical, safety-critical situations; all other communication is conducted in ordinary maritime English."
+      ]
+    },
+    {
+      "part": "Wheel and Engine Orders",
+      "number": "3",
+      "title": "Standard Wheel Orders",
+      "example": "«Starboard ten» → the helmsman repeats «Starboard ten» → puts the rudder over → reports «Ten of starboard wheel on».",
+      "diagram": "wheel_order_flow",
+      "commentary": [
+        "Midships — return the rudder to the fore-and-aft position (0°); Port/Starboard + a number («Port ten», «Starboard twenty») — put the rudder over the stated number of degrees to that side.",
+        "Hard-a-port / Hard-a-starboard — put the rudder over to the maximum angle on the named side.",
+        "Nothing to port / Nothing to starboard — do not allow the vessel's head to swing to the named side (small corrective helm).",
+        "Midships and steady / Steady — stop swinging, hold the present course; Steady as she goes — steady on the course the vessel is heading at the moment the order is given.",
+        "Steer [course] — bring the vessel onto the stated compass course; Report if she does not answer the wheel / Report if no steering — report if the vessel does not respond to the helm.",
+        "The key SMCP rule for wheel orders: the helmsman MUST repeat the order aloud, word for word, before carrying it out, and then report when it has been carried out — this is a safeguard against mishearing at a critical moment."
+      ]
+    },
+    {
+      "part": "Wheel and Engine Orders",
+      "number": "4",
+      "title": "Standard Engine Orders",
+      "diagram": "engine_order_scale",
+      "commentary": [
+        "The engine telegraph order scale is symmetrical about STOP: Full/Half/Slow/Dead Slow Ahead — in increasing order of headway, mirrored by Astern (sternway).",
+        "Dead Slow Ahead/Astern — minimum way on, used at low speeds (manoeuvring in port, alongside the berth); Full Ahead/Astern — full speed.",
+        "Stop engine(s) — stop the main engine(s); Finished with engine(s) — the order given at the end of a manoeuvre/passage: the engine room no longer needs to stand by for immediate orders from the bridge.",
+        "On vessels with separate engines (twin screw), the order is qualified by side: «Port engine dead slow ahead», «Starboard engine stop», etc.",
+        "As with wheel orders, an engine order is repeated aloud by the person carrying it out (the officer of the watch in the engine room/telegraph operator) before it is executed — the same safeguard against mishearing."
+      ]
+    },
+    {
+      "part": "External Communications (Part A1)",
+      "number": "5",
+      "title": "Communication with VTS",
+      "diagram": "vts_communication",
+      "commentary": [
+        "A Vessel Traffic Service (VTS) is a shore-based service that monitors vessel traffic in a port, strait or approach area and coordinates several vessels at the same time (unlike direct ship-to-ship communication).",
+        "SMCP sets out separate categories of phrases for VTS: Traffic Organisation (organizing movement — sequencing, permission to proceed), Traffic Information (information on other vessels, weather, depths), Traffic Advice/Instruction (a recommendation or a mandatory order — the ADVICE or INSTRUCTION marker clarifies which).",
+        "The standard call to VTS and initial report by a vessel include: vessel name and call sign, position, course, speed, port of destination and cargo (this partly coincides with the mandatory ship's report on entering a VTS area).",
+        "As with other external communications, exchanges with VTS are conducted on VHF on the working channel designated for that area — the specific channel is given in the sailing directions/notices to mariners for the area."
+      ]
+    },
+    {
+      "part": "External Communications (Part A1)",
+      "number": "6",
+      "title": "Requesting a Pilot and a Tug",
+      "commentary": [
+        "The standard phrase for requesting a pilot: «I require a pilot» — stating the ETA (estimated time of arrival at the pilot boarding point) and the point/area.",
+        "The standard phrase for requesting a tug: «I require a/... tug(s)» stating the number and type required (aft/forward, pushing, etc. — depending on the port situation).",
+        "After confirmation, clarifying phrases are exchanged: the place and time of the rendezvous, the side for rigging the pilot ladder/heaving the tow line, and the vessel's draught.",
+        "The same marker principle applies to part of this exchange: a request for a tug or pilot is a REQUEST, not an INSTRUCTION — the final decision on allocating the resource remains with the port/pilotage authority."
+      ]
+    },
+    {
+      "part": "External Communications (Part A1)",
+      "number": "7",
+      "title": "Relationship to Distress/Urgency/Safety Signals",
+      "commentary": [
+        "Part A1 of SMCP also standardizes the phraseology for transmitting distress (Distress — «MAYDAY»), urgency (Urgency — «PAN PAN») and safety (Safety — «SÉCURITÉ») signals by radio, but the structure and procedure for sending these signals themselves (the DSC button, switching to a voice channel, etc.) belongs to the «GMDSS»/«Distress Signals» topics of this handbook — see the corresponding topics.",
+        "Here SMCP sets out the wording formula for reporting the nature of the distress/urgency (fire, flooding, man overboard, propeller damage, etc.) — a standard order of message items so that the receiving party does not miss key details.",
+        "The standard order for transmitting a distress signal by voice under SMCP: the distress signal word (MAYDAY ×3) → vessel name/call sign/MMSI ×3 → nature of distress → assistance required → further information (position, number of persons on board, course/speed, if applicable)."
+      ]
+    },
+    {
+      "part": "On-Board Communications (Part B)",
+      "number": "8",
+      "title": "Handing Over the Watch",
+      "commentary": [
+        "SMCP sets out a standard list of items to be reported when handing over the navigational watch on the bridge: course and speed, position and how it was confirmed, the navigational situation (other vessels, hazards), the state of equipment (radar, GPS, AIS), the weather situation, and any special orders from the master.",
+        "A similar standard structure is set out for handing over the engine room watch: the operating mode of the main engine, the condition of auxiliary machinery, and any faults or restrictions.",
+        "The purpose of standardization is to minimize the risk of losing important information at the watch handover, regardless of the language in which the officer handing over and the officer taking over the watch are thinking."
+      ]
+    },
+    {
+      "part": "On-Board Communications (Part B)",
+      "number": "9",
+      "title": "Emergency Announcements over the Public Address System",
+      "commentary": [
+        "Part B sets out standard phrases for announcements over the ship's public address system for various types of alarm: general emergency alarm, fire alarm, man overboard alarm, and abandon ship.",
+        "The standard structure of an announcement: the signal/type of alarm → the location of the incident (if known) → the actions required of crew/passengers → the assembly point (muster station/boat station).",
+        "Phrases for drills («This is a drill») are separately standardized — to clearly distinguish a drill from a real alarm and avoid causing panic if the announcement is made in a language that is not the listener's native tongue."
+      ]
+    },
+    {
+      "part": "On-Board Communications (Part B)",
+      "number": "10",
+      "title": "Cargo Operations and Dangerous Goods",
+      "commentary": [
+        "Standard phrases for coordinating loading/discharging between the bridge, the deck crew and shore personnel/the terminal: start/stop/resume the operation, change the order of cargo tanks/holds, report completion.",
+        "A separate block of phrases covers dangerous goods (by IMDG Code class): reporting a leak/damaged package, requesting cargo data (MSDS/emergency schedule), and coordinating action in the event of a dangerous goods incident.",
+        "As everywhere else in SMCP, markers are used in these situations too — an order to stop an operation because of a safety threat is given with the marker WARNING or INSTRUCTION, not as neutral INFORMATION."
+      ]
+    },
+    {
+      "part": "On-Board Communications (Part B)",
+      "number": "11",
+      "title": "Caring for Passengers in an Emergency",
+      "commentary": [
+        "On passenger vessels, Part B separately sets out phrases for instructing and reassuring passengers in an emergency: short, unambiguous commands without complex constructions («Please put on your lifejacket», «Go to your muster station»).",
+        "Standardization is especially important here: passengers almost never have a professional command of maritime English, so the phrases are deliberately kept as simple as possible and avoid idioms/jargon.",
+        "The safety briefing given before departure also has a standard set of items under SMCP: lifejackets, muster stations, the procedure for boarding survival craft, smoking, and actions to take when an alarm is announced."
+      ]
+    },
+    {
+      "part": "Summary",
+      "number": "12",
+      "title": "Why SMCP Is Needed",
+      "commentary": [
+        "The main purpose is to reduce the risk of misunderstanding among multilingual crews and in ship-to-shore communication, where neither party may be a native speaker of English.",
+        "SMCP does not replace full command of the English language (required by STCW for officers of the watch), but provides a mandatory minimum of standard wording specifically for situations where ambiguity is especially dangerous: manoeuvring, emergencies, watch handover, and communication with VTS.",
+        "Using SMCP does not mean abandoning ordinary conversational speech in other situations — the standard phrases are applied where explicitly provided for (manoeuvring orders, emergency messages, standard reports), not as a replacement for all communication on board."
+      ]
+    }
+  ]
+}

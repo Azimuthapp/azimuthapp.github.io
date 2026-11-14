@@ -1,0 +1,177 @@
+{
+  "meta": {},
+  "entries": [
+    {
+      "part": "General Provisions",
+      "number": "1",
+      "title": "Two Regions — A and B",
+      "example": "The same mark position (for example, marking the port edge of a channel when approaching from seaward) will be a RED can in Europe, but a GREEN can in the USA: it is the same type of mark (port-hand lateral mark), but the colouring depends on the region.",
+      "commentary": [
+        "The IALA Maritime Buoyage System operates in two regions, which differ ONLY in the colour and shape of LATERAL marks (all other mark types — cardinal marks, isolated danger marks, safe water marks, special marks — are the same in both regions).",
+        "Region A: Europe, Africa, most of Asia, Australia, New Zealand.",
+        "Region B: North and South America, Japan, Republic of Korea, the Philippines.",
+        "The direction of buoyage is established by the authority responsible for the waters concerned — generally from seaward towards the harbour/river/estuary, or clockwise around a continent (where there is no obvious port approach)."
+      ],
+      "scene": "iala_lateral"
+    },
+    {
+      "part": "Lateral Marks — Region A",
+      "number": "2",
+      "title": "Port Hand Mark (Region A)",
+      "example": "Entering harbour from seaward in the Baltic Sea (Region A), the navigator leaves red can-shaped marks to port.",
+      "diagram": "lateral_port_a",
+      "commentary": [
+        "Colour: RED.",
+        "Shape: cylindrical (can).",
+        "Topmark (if fitted): single red can.",
+        "Light (if fitted): red, any rhythm.",
+        "When proceeding in the direction of buoyage, this mark is left to PORT."
+      ]
+    },
+    {
+      "part": "Lateral Marks — Region A",
+      "number": "3",
+      "title": "Starboard Hand Mark (Region A)",
+      "example": "Entering harbour from seaward in the Baltic Sea (Region A), the navigator leaves green conical marks to starboard.",
+      "diagram": "lateral_starboard_a",
+      "commentary": [
+        "Colour: GREEN.",
+        "Shape: conical (nun).",
+        "Topmark (if fitted): single green cone.",
+        "Light (if fitted): green, any rhythm.",
+        "When proceeding in the direction of buoyage, this mark is left to STARBOARD."
+      ]
+    },
+    {
+      "part": "Lateral Marks — Region B",
+      "number": "4",
+      "title": "Port Hand Mark (Region B)",
+      "example": "Entering harbour on the US East Coast (Region B), the navigator leaves green can-shaped marks to port — the colour being the opposite of Europe.",
+      "diagram": "lateral_port_b",
+      "commentary": [
+        "Colour: GREEN (opposite of Region A).",
+        "Shape: cylindrical (can) — the shape for the same side is retained, only the colour changes.",
+        "Light (if fitted): green.",
+        "When proceeding in the direction of buoyage, this mark is left to PORT."
+      ]
+    },
+    {
+      "part": "Lateral Marks — Region B",
+      "number": "5",
+      "title": "Starboard Hand Mark (Region B)",
+      "example": "Entering harbour on the US East Coast (Region B), the navigator leaves red conical marks to starboard.",
+      "diagram": "lateral_starboard_b",
+      "commentary": [
+        "Colour: RED (opposite of Region A).",
+        "Shape: conical (nun).",
+        "Light (if fitted): red.",
+        "When proceeding in the direction of buoyage, this mark is left to STARBOARD."
+      ]
+    },
+    {
+      "part": "Cardinal Marks",
+      "number": "6",
+      "title": "Purpose and General Colouring",
+      "example": "If a cardinal mark stands beside an isolated shoal and is marked as a north cardinal mark, the safe passage for a vessel lies to the north of the mark, while the shoal/danger itself lies to the south of it.",
+      "commentary": [
+        "A cardinal mark indicates on which side of it safe water lies: the name of the mark corresponds to the compass quadrant in which it is safe to pass. A north mark is passed to the north of it, a south mark to the south of it, and so on.",
+        "Shape: pillar or spar, fitted with a topmark of TWO BLACK CONES (the arrangement of the cones is the primary means of identification — see the following entries).",
+        "Lights (if fitted) are ALWAYS white, quick or very quick flashing, and are distinguished from one another by the number of flashes in each group (mnemonic — like the hands of a clock: east≈3 o'clock, south≈6 o'clock, west≈9 o'clock)."
+      ],
+      "scene": "iala_cardinal"
+    },
+    {
+      "part": "Cardinal Marks",
+      "number": "7",
+      "title": "North (N) Cardinal Mark",
+      "diagram": "cardinal_north",
+      "commentary": [
+        "Topmark: two black cones, BOTH points upward (one above the other).",
+        "Colouring: black above yellow.",
+        "Light: white, continuous quick flashing or very quick flashing (Q or VQ, uninterrupted within the group)."
+      ]
+    },
+    {
+      "part": "Cardinal Marks",
+      "number": "8",
+      "title": "South (S) Cardinal Mark",
+      "diagram": "cardinal_south",
+      "commentary": [
+        "Topmark: two black cones, BOTH points downward (one below the other).",
+        "Colouring: yellow above black (opposite of the North mark).",
+        "Light: white, group of 6 quick flashes plus one LONG flash (the long flash is the distinguishing feature of the South mark, to prevent confusion with the continuous flashing of the North mark)."
+      ]
+    },
+    {
+      "part": "Cardinal Marks",
+      "number": "9",
+      "title": "East (E) Cardinal Mark",
+      "diagram": "cardinal_east",
+      "commentary": [
+        "Topmark: two black cones base to base (the widest part in the middle — the silhouette resembles a diamond).",
+        "Colouring: black-yellow-black (three horizontal bands, with a narrow yellow band in the middle).",
+        "Light: white, group of 3 quick flashes (mnemonic — \"3 o'clock\" on a clock face)."
+      ]
+    },
+    {
+      "part": "Cardinal Marks",
+      "number": "10",
+      "title": "West (W) Cardinal Mark",
+      "diagram": "cardinal_west",
+      "commentary": [
+        "Topmark: two black cones point to point (the narrowest part in the middle — the silhouette resembles a wine glass, mnemonic \"W = Wine glass\").",
+        "Colouring: yellow-black-yellow (three horizontal bands, with a narrow black band in the middle).",
+        "Light: white, group of 9 quick flashes (mnemonic — \"9 o'clock\" on a clock face)."
+      ]
+    },
+    {
+      "part": "Other Mark Types",
+      "number": "11",
+      "title": "Isolated Danger Mark",
+      "diagram": "isolated_danger",
+      "commentary": [
+        "Erected directly over an isolated danger of limited extent, with navigable water all around it.",
+        "Colouring: black with one or more broad red horizontal bands.",
+        "Topmark: two black spheres, one above the other.",
+        "Light (if fitted): white, group flashing (2) — Fl(2)."
+      ]
+    },
+    {
+      "part": "Other Mark Types",
+      "number": "12",
+      "title": "Safe Water Mark",
+      "diagram": "safe_water",
+      "commentary": [
+        "Indicates that there is navigable water all around the mark (for example, on the centreline of a fairway, or as a landfall buoy marking the start of a fairway).",
+        "Colouring: red and white vertical stripes.",
+        "Shape: spherical, or a pillar/spar fitted with a single red spherical topmark.",
+        "Light (if fitted): white, isophase, occulting, one long flash every 10 seconds, or Morse \"A\" (short-long)."
+      ]
+    },
+    {
+      "part": "Other Mark Types",
+      "number": "13",
+      "title": "Special Mark",
+      "diagram": "special",
+      "commentary": [
+        "Does not indicate a navigational danger, but marks a special area or feature: a spoil ground, a submarine cable or pipeline, a military exercise zone, a recreational zone, an ODAS buoy, etc. — the exact purpose should be checked against the chart or Notices to Mariners.",
+        "Colouring: yellow.",
+        "Topmark (if fitted): a single yellow X-shape (a saltire).",
+        "Light (if fitted): yellow, any rhythm not reserved for the white lights of cardinal, isolated danger, or safe water marks (Fl.Y is commonly used)."
+      ]
+    },
+    {
+      "part": "Other Mark Types",
+      "number": "14",
+      "title": "Emergency Wreck Marking Buoy",
+      "diagram": "emergency_wreck",
+      "commentary": [
+        "A relatively new type of mark (introduced by IALA in the 2000s) — laid temporarily over a new wreck or obstruction not yet shown on the chart, until a survey or clearance has been carried out.",
+        "Colouring: alternating blue and yellow vertical stripes in equal numbers (4 to 8 stripes).",
+        "Topmark: yellow upright cross (St George's cross, NOT a diagonal St Andrew's cross) — the only topmark authorised for this mark.",
+        "Light: rhythm Oc(2)Al.BY — blue 1s, dark 0.5s, yellow 1s, dark 0.5s, the cycle repeating every 3s. No other mark uses blue colouring or a blue light — the combination is unambiguously identifiable.",
+        "In practice encountered less often than the classic marks — not to be confused with the (yellow) special mark."
+      ]
+    }
+  ]
+}

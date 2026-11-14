@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AZIMUTH (Азимут) — штурманский помощник</title>
-<meta name="description" content="Судовые расчёты с пошаговым решением, морская теория и тренажёр МППСС. Работает без интернета. Android и Windows.">
+<meta name="description" content="Судовые расчёты с пошаговым решением, морская теория и тренажёр МППСС. Работает без интернета. Android, iPhone и Windows.">
 <meta name="theme-color" content="#050505">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AZIMUTH — штурманский помощник">
-<meta property="og:description" content="Судовые расчёты с пошаговым решением, морская теория и тренажёр МППСС. Android и Windows, без интернета.">
+<meta property="og:description" content="Судовые расчёты с пошаговым решением, морская теория и тренажёр МППСС. Android, iPhone и Windows, без интернета.">
 <meta property="og:image" content="https://azimuthapp.github.io/img/og.jpg">
 <meta property="og:url" content="https://azimuthapp.github.io/">
 <link rel="icon" href="img/icon.svg" type="image/svg+xml">
@@ -48,7 +48,7 @@ h1.word{margin:14px 0 6px;font:600 clamp(46px,11vw,92px)/1 "Cinzel",serif;letter
 .badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px}
 .badge{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--muted)}
 /* ---------- загрузки ---------- */
-.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:38px 0 14px}
+.dl{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:38px 0 14px}
 .card{position:relative;display:flex;flex-direction:column;gap:6px;padding:22px 20px 20px;border-radius:var(--r);background:linear-gradient(180deg,var(--panel2),var(--panel));
   border:1px solid var(--line);text-decoration:none!important;color:var(--text);transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .25s,box-shadow .25s}
 .card:hover{transform:translateY(-3px);border-color:rgba(227,192,127,.5);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(227,192,127,.15)}
@@ -78,7 +78,7 @@ h3.big{margin:0 0 26px;font-size:clamp(26px,4.6vw,38px);line-height:1.2;font-wei
 .feat{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 28px;margin-top:26px;padding:0;list-style:none}
 .feat li{position:relative;padding-left:22px;color:#d9d3c8}
 .feat li:before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border:1px solid var(--gold);transform:rotate(45deg)}
-.steps{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .box{padding:24px 22px;border-radius:var(--r);background:var(--panel);border:1px solid var(--line2)}
 .box h4{margin:0 0 12px;font-size:18px;display:flex;align-items:center;gap:10px}
 .box ol{margin:0;padding-left:20px;color:#d9d3c8}
@@ -115,6 +115,7 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
 .rv-send{margin-top:16px;width:100%;height:48px;border:0;border-radius:12px;background:var(--grad);color:#1a1306;font:700 13px var(--font);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .rv-note{margin-top:10px;font-size:12.5px;color:var(--dim)}
 .rv-err{margin-top:8px;font-size:13.5px;color:#ff9a8a;min-height:1.2em}
+@media (max-width:1040px){.dl{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}}
 @media (max-width:820px){
   .rv-grid{grid-template-columns:1fr}
   .dl{grid-template-columns:1fr}
@@ -149,19 +150,25 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
     <h1 class="word">AZIMUTH</h1>
     <div class="ru-name">Азимут</div>
     <p class="lead">Судовые расчёты с пошаговым решением, морская теория «как в учебнике» и тренажёр МППСС. Работает без интернета — на мостике, в рейсе, в море.</p>
-    <div class="badges"><span class="badge">Android 7+</span><span class="badge">Windows 10 / 11</span><span class="badge">Без интернета</span><span class="badge">Версия 1.6.0</span></div>
+    <div class="badges"><span class="badge">Android 7+</span><span class="badge">iPhone и iPad</span><span class="badge">Windows 10 / 11</span><span class="badge">Без интернета</span><span class="badge">Версия 1.6.1</span></div>
 
     <div class="dl">
-      <a class="card primary" href="files/AZIMUTH-1.6.0.apk" download>
+      <a class="card primary" href="files/AZIMUTH-1.6.1.apk" download>
         <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span>
         <span class="t">Android</span>
         <span class="s">Файл APK · 15 МБ</span>
         <span class="btn">Скачать</span>
       </a>
-      <a class="card primary" href="files/AZIMUTH-1.6.0-Windows.zip" download>
+      <a class="card primary" href="app/">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6.5" y="2.5" width="11" height="19" rx="3"/><path d="M10.5 5h3"/></svg></span>
+        <span class="t">iPhone и iPad</span>
+        <span class="s">Через Safari · без App Store</span>
+        <span class="btn">Открыть на iPhone</span>
+      </a>
+      <a class="card primary" href="files/AZIMUTH-1.6.1-Windows.zip" download>
         <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="4" width="19" height="12.5" rx="1.8"/><path d="M8.5 20h7M12 16.5V20"/></svg></span>
         <span class="t">Windows</span>
-        <span class="s">Установщик + документы · 11 МБ</span>
+        <span class="s">Установщик · 11 МБ</span>
         <span class="btn">Скачать</span>
       </a>
       <a class="card" href="files/AZIMUTH-instrukciya.pdf" target="_blank" rel="noopener">
@@ -171,7 +178,7 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
         <span class="btn">Открыть</span>
       </a>
     </div>
-    <div class="tip"><span style="color:var(--gold);font-weight:700">i</span><span>Если открыли ссылку из приложения соцсети и файл не скачивается — нажмите <b>⋯</b> в правом верхнем углу → <b>«Открыть в браузере»</b> и скачайте ещё раз.</span></div>
+    <div class="tip"><span style="color:var(--gold);font-weight:700">i</span><span>Если открыли ссылку из приложения соцсети и файл не скачивается — нажмите <b>⋯</b> в правом верхнем углу → <b>«Открыть в браузере»</b> и скачайте ещё раз. На iPhone страница должна быть открыта именно в <b>Safari</b>.</span></div>
   </header>
 
   <section>
@@ -214,15 +221,24 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
       <div class="box">
         <h4>Android</h4>
         <ol>
-          <li>Скачайте <b>AZIMUTH-1.6.0.apk</b> и откройте файл.</li>
+          <li>Скачайте <b>AZIMUTH-1.6.1.apk</b> и откройте файл.</li>
           <li>Телефон попросит разрешить установку из этого источника — включите «Разрешить» и вернитесь назад.</li>
           <li>Нажмите «Установить». Если Google Play Защита предупредит — «Подробнее» → «Всё равно установить».</li>
         </ol>
       </div>
       <div class="box">
+        <h4>iPhone и iPad</h4>
+        <ol>
+          <li>Откройте эту страницу в <b>Safari</b> и нажмите <b>«Открыть на iPhone»</b>.</li>
+          <li>Нажмите <b>«Поделиться»</b> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;color:var(--gold)"><path d="M12 3v12M8 7l4-4 4 4M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg> → <b>«На экран „Домой“»</b> → «Добавить». В новых версиях iOS кнопка спрятана под «•••».</li>
+          <li>Откройте AZIMUTH <b>с новой иконки</b> и дождитесь загрузки. Интернет нужен только в этот первый раз.</li>
+        </ol>
+        <div class="note">App Store не нужен. Ключ вводится в приложении с иконки. Не удаляйте иконку — вместе с ней удалятся активация и журналы.</div>
+      </div>
+      <div class="box">
         <h4>Windows</h4>
         <ol>
-          <li>Скачайте архив, распакуйте и запустите <b>AZIMUTH-Setup-1.6.0.exe</b>.</li>
+          <li>Скачайте архив, распакуйте и запустите <b>AZIMUTH-Setup-1.6.1.exe</b>.</li>
           <li>Если Windows покажет «Система Windows защитила ваш компьютер» — «Подробнее» → «Выполнить в любом случае».</li>
           <li>Примите договор, нажмите «Установить». Ярлык появится на рабочем столе.</li>
         </ol>
@@ -241,7 +257,7 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
       </div>
       <div class="box">
         <h4>С ключом — полная версия</h4>
-        <p style="margin:0;color:#d9d3c8">Все расчёты, теория и тренажёр. Ключ на 1, 6 или 12 месяцев, один ключ — один компьютер и один телефон Android. Условия — в договоре-оферте.</p>
+        <p style="margin:0;color:#d9d3c8">Все расчёты, теория и тренажёр. Ключ на 1, 6 или 12 месяцев, один ключ — один компьютер и один телефон: Android или iPhone. Условия — в договоре-оферте.</p>
         <a class="mail" href="mailto:azimuthseahelp@yandex.ru">✉ azimuthseahelp@yandex.ru</a>
       </div>
     </div>
@@ -265,7 +281,7 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
         <textarea id="rv-text" maxlength="1200" placeholder="Что понравилось, что улучшить"></textarea>
         <div class="rv-err" id="rv-err"></div>
         <button class="rv-send" type="submit">Отправить отзыв</button>
-        <p class="rv-note">Откроется ваша почта с готовым письмом — останется нажать «Отправить». Отзыв появится на странице после проверки. Публикуются только имя или ник, оценка и текст; адрес почты не публикуется.</p>
+        <p class="rv-note">Откроется ваша почта с готовым письмом — останется нажать «Отправить». Отзыв появится на странице после проверки — обычно в течение суток. Публикуются только имя или ник, оценка и текст; адрес почты не публикуется.</p>
       </form>
     </div>
   </section>

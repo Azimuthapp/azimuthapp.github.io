@@ -1,0 +1,159 @@
+{
+  "meta": {},
+  "entries": [
+    {
+      "part": "Visual and Sound Distress Signals",
+      "number": "1",
+      "title": "Distress Signals under COLREGs Annex IV",
+      "example": "Flags N and C hoisted together on a vessel is a classic visual distress signal dating from before the war, still retained in the current edition of the COLREGs.",
+      "commentary": [
+        "A rocket or shell throwing red stars fired one at a time at short intervals; a continuous sounding with any fog-signalling apparatus; gun or other explosive signals fired at intervals of about a minute.",
+        "A signal made by radiotelephony consisting of the spoken word «MAYDAY»; a distress signal by radiotelegraphy or other signalling method consisting of the group «···———···» (SOS in Morse code).",
+        "The flag signal NC (per the International Code of Signals); a square flag having above or below it a ball or anything resembling a ball.",
+        "Flames on the vessel (as from a burning tar barrel, oil barrel, etc.); a red parachute flare or a red hand flare; an orange-coloured smoke signal.",
+        "A signal made by slowly and repeatedly raising and lowering arms outstretched to each side.",
+        "A distress alert transmitted by radiotelegraphy, or another alarm signal, including signals transmitted by radar transponders.",
+        "Signals transmitted by emergency position-indicating radio beacons (EPIRBs) and DSC distress alerts, described later in this topic — formally also included among the recognised distress signals.",
+        "Approved signals transmitted by radiocommunication systems, including survival craft radar transponders.",
+        "The complete list and further detail (for example, the exact appearance of the orange smoke signal and the permitted lights) can be found in COLREGs Annex IV itself."
+      ]
+    },
+    {
+      "part": "VHF DSC",
+      "number": "2",
+      "title": "VHF DSC — Sending a Distress Alert",
+      "diagram": "distress_alert_flow",
+      "commentary": [
+        "The «Distress» button under its protective cover on the DSC set — holding it down for several seconds initiates automatic transmission on channel 70 (156.525 MHz).",
+        "The alert includes the vessel's MMSI, position and time (from GPS), and, if selected, the nature of distress.",
+        "After sending it — a mandatory switch to voice channel 16 and transmission of MAYDAY.",
+        "A detailed step-by-step description is given in the «GMDSS» topic (see also the diagram for this entry)."
+      ],
+      "scene": "dsc_distress"
+    },
+    {
+      "part": "VHF DSC",
+      "number": "3",
+      "title": "VHF DSC — Cancelling a False Alert",
+      "diagram": "false_alert_cancel_flow",
+      "commentary": [
+        "Step 1 — stop the transmission immediately: switch off the DSC set (or press RESET/CANCEL, if the equipment supports it) to interrupt the automatic repetition of the alert.",
+        "Step 2 — switch the set back on and select channel 16 (156.8 MHz) for voice communication.",
+        "Step 3 — transmit by voice using the strict formula: «ALL STATIONS, ALL STATIONS, ALL STATIONS — THIS IS [vessel name, call sign, MMSI, position] — CANCEL MY DISTRESS ALERT OF [date/time] UTC».",
+        "Because a VHF DSC alert is broadcast in nature (heard by every ship and coast station within range of the channel), the cancellation must likewise be broadcast to all stations over the air, not sent to a single addressee.",
+        "Source for the exact wording and sequence of steps: ITU Radio Regulations, Article 32 (§§ 32.53A–32.53E) and 47 CFR §80.335 (the rule codifying the same IMO/ITU procedure for practical application)."
+      ]
+    },
+    {
+      "part": "MF/HF",
+      "number": "4",
+      "title": "MF — Voice and Digital Distress Alerting",
+      "diagram": "mf_hf_voice_distress_flow",
+      "commentary": [
+        "2182 kHz — the traditional medium-wave voice distress and calling channel; MAYDAY is transmitted by voice in the same way as on VHF channel 16.",
+        "2187.5 kHz — the MF DSC frequency: the procedure is the same as on VHF (hold the Distress button → automatic packet with MMSI/position/time → switch to voice communication on 2182 kHz).",
+        "MF range exceeds VHF range (roughly up to about 150–250 nautical miles depending on power and propagation conditions), which is why MF serves as the next line of communication beyond reliable VHF coverage."
+      ]
+    },
+    {
+      "part": "MF/HF",
+      "number": "5",
+      "title": "HF — Long-Range Distress Alerting",
+      "commentary": [
+        "HF DSC operates on several designated frequencies across different bands (specific frequencies are given in the «GMDSS» topic, marked as requiring verification).",
+        "The choice of working frequency (band) on HF depends on the time of day, the distance to the nearest coast station/correspondent, and propagation conditions — lower frequencies generally propagate better at night over shorter distances, while higher frequencies work better by day over longer distances.",
+        "After sending the DSC alert on HF — switch to the paired voice frequency of the same band to transmit MAYDAY.",
+        "HF is the only long-range radio channel available in Sea Area A4 (high latitudes, beyond the coverage of Inmarsat geostationary satellites)."
+      ]
+    },
+    {
+      "part": "MF/HF",
+      "number": "6",
+      "title": "MF/HF — Cancelling a False Alert",
+      "diagram": "false_alert_cancel_flow",
+      "commentary": [
+        "The same sequence of steps as on VHF: switch off/reset the equipment → switch back on and tune to the voice distress frequency (2182 kHz on MF; on HF, the paired voice frequency of the same band) → transmit the cancellation.",
+        "The message formula is identical to VHF: «ALL STATIONS × 3 — THIS IS [name, call sign, MMSI, position] — CANCEL MY DISTRESS ALERT OF [date/time] UTC».",
+        "On HF, if the DSC alert went out simultaneously on several frequencies/bands (4/6/8/12/16 MHz) — the cancellation must be transmitted on EACH of them, not just one.",
+        "If the set supports a DSC cancellation — send it in addition to the voice message, but it does not replace the voice cancellation.",
+        "Where possible — additionally contact the nearest coast station/MRCC directly and report the error in a separate message.",
+        "Source: ITU Radio Regulations, Article 32 (§§ 32.53A–32.53E); 47 CFR §80.335."
+      ]
+    },
+    {
+      "part": "Inmarsat-C",
+      "number": "7",
+      "title": "Inmarsat-C — Sending a Distress Alert",
+      "diagram": "inmarsat_c_distress_flow",
+      "commentary": [
+        "A dedicated, guarded red «Distress» button on the terminal (under a cover) — holding it down initiates transmission of the distress alert via satellite.",
+        "The terminal usually offers a short menu to select the nature of distress (fire/explosion, flooding, collision, grounding, listing/capsizing, sinking, disabled and adrift, piracy/armed attack, man overboard, undesignated); if no selection is made — the alert is sent as «undesignated».",
+        "KEY DIFFERENCE from VHF/MF/HF DSC: the Inmarsat-C alert is NOT broadcast — it is routed point-to-point via satellite to a coast earth station (LES/CES), and from there to the appropriate maritime rescue coordination centre (MRCC/RCC). Nearby ships will NOT automatically hear it.",
+        "The alert is assigned the highest priority when transmitted via satellite.",
+        "The exact sequence of actions on a specific terminal (how many seconds to hold the button, what happens with different menu choices) varies slightly between manufacturers — check your own terminal's manual."
+      ]
+    },
+    {
+      "part": "Inmarsat-C",
+      "number": "8",
+      "title": "Inmarsat-C — Cancelling a False Alert",
+      "diagram": "inmarsat_c_cancel_flow",
+      "commentary": [
+        "There is no broadcast cancellation here (as with DSC) — the alert was addressed to a single RCC, so cancelling it also requires direct contact with that same RCC/LES.",
+        "Procedure: contact the coordinating RCC (or via the LES) as quickly as possible by any available means — by voice over a satellite phone, by telex/message through the same terminal, or via a coast radio station — and clearly state that the alert is false, giving the MMSI/terminal number, time, and position.",
+        "If the terminal supports sending a follow-up clarifying message over the distress channel — send that too, but it does not replace direct contact with the RCC.",
+        "A delay in cancelling is especially costly here: the RCC may already have begun its notification/search-preparation procedure based on a single point-to-point message, with no way to «ask the airwaves» whether anyone else has confirmed the alert.",
+        "Source: USCG NAVCEN, «Instructions for Cancelling a False Distress Alert» — the official wording for Inmarsat-C: «notify the appropriate RCC of the alert cancellation by sending a message with Distress priority through the same coast earth station (CES/LES) through which the false alert was transmitted»."
+      ]
+    },
+    {
+      "part": "EPIRB",
+      "number": "9",
+      "title": "EPIRB — Activation",
+      "diagram": "epirb",
+      "commentary": [
+        "Automatic activation: a hydrostatic release releases the beacon from its bracket at a certain depth of submersion (typically a few metres — the exact value is given in the model's specifications); the beacon floats free and switches on by itself.",
+        "Manual activation: remove the beacon from its bracket and set the switch to ON (or, per the specific model's instructions, hold down the activation button) — the beacon must be in open water or with a clear view of the sky above the antenna, held upright, to ensure reliable satellite reception.",
+        "Self-test: most beacons have a separate, brief test mode which does NOT transmit to the COSPAS-SARSAT satellites — only this mode should be used for routine checks, never an actual activation.",
+        "Never test a beacon by an actual activation «just in case» — any real activation is treated by the COSPAS-SARSAT system as a genuine distress alert."
+      ]
+    },
+    {
+      "part": "EPIRB",
+      "number": "10",
+      "title": "EPIRB — Cancelling an Accidental Activation",
+      "diagram": "epirb_deactivate_flow",
+      "commentary": [
+        "Official guidance from shore-based rescue authorities (for example, the US Coast Guard NAVCEN instruction «False Alerts or Accidental Activations»): first CONTACT the nearest MRCC/coast guard — by VHF, telephone, or any available channel — rather than simply switching off the beacon and considering the incident closed.",
+        "The MRCC must obtain the details directly from the watchkeeper in order to «close» the alert in its own system — switching off the beacon alone does not cancel the alert within the COSPAS-SARSAT system.",
+        "In parallel (or immediately after the call) — switch off the beacon using the OFF switch as specified for the particular model (sometimes requiring the switch to be held for several seconds, or removal of the battery pack).",
+        "Report to the MRCC: the beacon identifier (HEX ID / 15-digit code), MMSI, the exact time of activation and expected deactivation, position, and confirmation that the activation was accidental.",
+        "This is a mandatory step, not a formality: the COSPAS-SARSAT satellites and the MRCC may already have begun mounting a search-and-rescue operation on the strength of a single received alert — an uncancelled false alert consumes real rescue-service resources and, in a number of countries, exposes the shipowner to administrative liability.",
+        "The beacon is registered to a specific vessel in the national register — keep the registered contact details up to date in advance, so the MRCC can quickly verify the alert without immediately mounting a search.",
+        "Source: USCG Navigation Center, «False Alerts or Accidental Activations» (guidance for EPIRB owners)."
+      ]
+    },
+    {
+      "part": "Summary",
+      "number": "11",
+      "title": "Broadcast vs. Point-to-Point Systems — Why Cancellation Differs",
+      "diagram": "broadcast_vs_point_to_point",
+      "commentary": [
+        "VHF/MF/HF DSC — broadcast: the alert is heard at once by every ship and coast station within range, so the cancellation is likewise sent by the same broadcast means (by voice, to all stations).",
+        "Inmarsat-C and EPIRB — point-to-point: the alert travels by one specific route (via an LES to a single RCC, or via the COSPAS-SARSAT satellites to a national coordination centre), so cancelling it requires direct contact with that specific recipient rather than an over-the-air announcement.",
+        "Practical takeaway for the watchkeeper: on any accidental activation — first determine which type of system it is (broadcast or point-to-point) and act accordingly; when in doubt, use both routes simultaneously (an over-the-air announcement and direct contact with the shore authority)."
+      ]
+    },
+    {
+      "part": "Summary",
+      "number": "12",
+      "title": "The General Rule for All Systems",
+      "commentary": [
+        "Speed of response matters more than the formal correctness of the wording — the sooner a false alert is cancelled, the fewer rescue-service resources are wasted and the lower the risk that a genuine distress alert goes unnoticed among false ones.",
+        "Never ignore it or «wait for it to sort itself out» — silence after an accidental activation is always worse than a hastily worded but prompt cancellation.",
+        "The duty to cancel a false alert is itself established in the ITU Radio Regulations (Article 32, § 32.53B: a station that has transmitted an unintentional alert «shall cancel the transmission»); the specific wording of the DSC steps is given in §§ 32.53C–32.53E.",
+        "Every instance of sending and cancelling a distress alert must be logged in the ship's log and radio log — time, circumstances, and actions taken."
+      ]
+    }
+  ]
+}

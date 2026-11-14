@@ -1,0 +1,157 @@
+{
+  "meta": {},
+  "entries": [
+    {
+      "part": "General Provisions",
+      "number": "1",
+      "title": "What GMDSS Is and Why It Is Needed",
+      "diagram": "gmdss_overview",
+      "commentary": [
+        "GMDSS (Global Maritime Distress and Safety System) is a global communication system, mandatory under SOLAS (Chapter IV) for all passenger ships and cargo ships of 300 gross tonnage and above engaged on international voyages.",
+        "Its purpose is to guarantee that a distress signal reaches shore and nearby ships from virtually any point of the world's oceans, rather than relying solely on voice radio communication and a watchkeeper's hearing.",
+        "The key idea of the system: instead of a person listening to the airwaves 24 hours a day, equipment (DSC, satellite) automatically receives and relays the alert signal, and automatic determination of the ship's position (via GPS) is included in the distress alert straight away.",
+        "GMDSS composition: shipborne and shore-based DSC equipment (VHF/MF/HF), satellite communication (Inmarsat, COSPAS-SARSAT), NAVTEX, EPIRBs, radar transponders (SART/AIS-SART), and VHF radiotelephones for on-scene communication at the distress location."
+      ]
+    },
+    {
+      "part": "General Provisions",
+      "number": "2",
+      "title": "Sea Areas A1–A4",
+      "example": "A ship in the Baltic Sea is normally within A1/A2 for the whole voyage. A ship crossing the Atlantic spends most of the passage in A3. A ship in the high latitudes of the Arctic may find itself in A4, where there is no geostationary satellite coverage.",
+      "diagram": "sea_areas",
+      "commentary": [
+        "For GMDSS purposes, the world is divided into 4 sea areas, which determine what equipment must be carried on board a ship.",
+        "A1 — within the coverage of at least one shore-based VHF station providing continuous DSC coverage (typically 20–30 miles from shore, depending on the administration of the area).",
+        "A2 — outside A1, but within the coverage of at least one shore-based MF station providing continuous DSC coverage (typically up to about 100 miles from shore).",
+        "A3 — outside A1 and A2, but within the coverage of a recognized mobile satellite service supported by the ship earth station carried on board (SOLAS chapter IV as amended, in force from 1 January 2024). For Inmarsat this is roughly 70°N — 70°S; Iridium coverage is global.",
+        "A4 — everything outside A1, A2 and A3. For a ship with an Inmarsat station these are the polar waters beyond geostationary coverage, where long-range communication is HF DSC. Narrow-band direct printing (radiotelex, NBDP) is no longer mandatory since 2024."
+      ],
+      "scene": "gmdss_sea_areas"
+    },
+    {
+      "part": "General Provisions",
+      "number": "3",
+      "title": "Mandatory Equipment by Sea Area (General Principle)",
+      "commentary": [
+        "The exact mandatory equipment fit for a particular ship is determined by the classification society/register based on its intended area of operation — this is only the general principle, not a ready-made checklist.",
+        "The further the area of operation is from shore, the more communication means are required in a redundant manner (VHF DSC for A1, MF DSC is added for A2, a recognized mobile satellite service station (Inmarsat or Iridium) or MF/HF for A3, MF/HF DSC for A4).",
+        "Regardless of the area, a GMDSS ship must carry: a VHF DSC station, a NAVTEX receiver (within the coverage of NAVTEX transmitters), a 406 MHz EPIRB, a radar transponder (SART or AIS-SART, at least 1–2 units depending on gross tonnage), and portable VHF radios for survival craft."
+      ]
+    },
+    {
+      "part": "MMSI",
+      "number": "4",
+      "title": "What MMSI Is and Its Structure",
+      "example": "MMSI of the form 273123456: 273 is Russia's MID, 123456 is the ship's sequential number.",
+      "diagram": "mmsi_structure",
+      "commentary": [
+        "MMSI (Maritime Mobile Service Identity) — a unique 9-digit numerical identifier of a ship (or shore) radio station, used in DSC, AIS and the digital part of satellite communication.",
+        "The first 3 digits of a ship station's MMSI are the flag/registry country code, the MID (Maritime Identification Digits) — for example, 273 is Russia; the specific set of MIDs is periodically expanded by IMO/ITU.",
+        "The remaining 6 digits are a sequential number assigned by the country's communications administration to a specific ship.",
+        "A ship's MMSI is physically programmed into the memory of the DSC radio station and the AIS transponder — an officer of the watch normally cannot change it in ordinary operating mode (special service access is required, to prevent accidental corruption of the number)."
+      ]
+    },
+    {
+      "part": "MMSI",
+      "number": "5",
+      "title": "MMSI Formats for Different Station Types",
+      "diagram": "mmsi_formats",
+      "commentary": [
+        "Ship station: 9 digits, beginning with the MID (e.g. 273XXXXXX).",
+        "Coast station: begins with 00, followed by the MID, followed by 4 digits (00 + MID + XXXX).",
+        "Group call (for a fleet belonging to one company/group of ships): begins with 0 (not 00), followed by the MID, followed by 5 digits (0 + MID + XXXXX).",
+        "Search and rescue aircraft (SAR aircraft): begins with 111, followed by the MID, followed by 3 digits (111 + MID + XXX).",
+        "Aid to navigation fitted with AIS (AIS AtoN — e.g. a buoy with an AIS beacon): begins with 99, followed by the MID, followed by 4 digits (99 + MID + XXXX)."
+      ]
+    },
+    {
+      "part": "DSC",
+      "number": "6",
+      "title": "What DSC Is and What Frequencies It Uses",
+      "diagram": "dsc_channels",
+      "commentary": [
+        "DSC (Digital Selective Calling) — a method of automatically transmitting a short digital packet (a call/alert with MMSI, coordinates, and nature of distress), rather than voice.",
+        "VHF DSC — working channel 70 (156.525 MHz), reserved ONLY for DSC (not for voice) — after contact is established via DSC, communication switches to a voice channel (usually channel 16).",
+        "MF DSC — frequency 2187.5 kHz.",
+        "HF DSC — several designated frequencies across different bands (used depending on propagation conditions and time of day).",
+        "A ship's DSC receiver continuously \"listens\" on the calling channel in the background, even while the watchkeeper is engaged in voice communication on another channel — this is what ensures round-the-clock readiness to receive an alert."
+      ]
+    },
+    {
+      "part": "DSC",
+      "number": "7",
+      "title": "Procedure for Sending a Distress Alert via DSC",
+      "diagram": "distress_alert_flow",
+      "commentary": [
+        "A DSC station has a separate protected \"Distress\" button (usually under a hinged cover, to prevent accidental activation).",
+        "Holding the button (typically for a few seconds — the exact time is set by the instructions for the specific station model) initiates transmission of the DSC distress alert to all ships/shore within range.",
+        "The alert automatically includes: the ship's MMSI, position and time (taken from a connected GPS receiver, if one is fitted and connected), and, optionally, the nature of distress (selected in advance from a list) and the last known course/speed.",
+        "After sending the DSC distress alert, the ship must switch to voice communication (VHF channel 16 or 2182 kHz MF) and transmit a voice MAYDAY message with the ship's name, call sign, position and nature of distress, and must also switch on the receiver to listen for an acknowledgement.",
+        "The DSC distress alert is automatically repeated by the station at set intervals until an acknowledgement is received (or it is manually stopped by the watchkeeper)."
+      ],
+      "scene": "dsc_distress"
+    },
+    {
+      "part": "DSC",
+      "number": "8",
+      "title": "False Distress Alert — Cancellation Procedure",
+      "diagram": "false_alert_cancel_flow",
+      "commentary": [
+        "Accidental activation of the Distress button (a common practical occurrence, especially among cadets/new crew members) requires IMMEDIATE cancellation — it must not simply be ignored in the hope that it will \"go away by itself\", as it puts all nearby ships and shore services on alert.",
+        "Procedure: (1) as quickly as possible, transmit a voice cancellation in plain language on VHF channel 16 (or 2182 kHz MF): \"All stations, all stations, all stations, this is [ship's name/call sign], cancel my distress alert of [time] [date], position [...], nature of distress — false activation\".",
+        "(2) If the station supports a DSC distress cancellation/all ships routine call function with an explanation, send it in addition to the voice message.",
+        "(3) Where possible, contact the nearest coast station/MRCC directly and report the error separately.",
+        "False alerts are a well-known, practically frequent GMDSS problem (accidental button presses, programming errors during commissioning) — what matters is not that it happened, but how quickly and correctly it is cancelled."
+      ]
+    },
+    {
+      "part": "Terminal Equipment",
+      "number": "9",
+      "title": "EPIRB (Emergency Position-Indicating Radio Beacon)",
+      "diagram": "epirb",
+      "commentary": [
+        "EPIRB (Emergency Position-Indicating Radio Beacon) — an autonomous distress beacon that transmits a distress signal via the COSPAS-SARSAT satellite system on 406 MHz.",
+        "It activates automatically on release from its hydrostatic release unit if the ship sinks (mounted on a special bracket, released hydrostatically at a depth of a few metres), or it can be activated manually/remotely.",
+        "It also has a low-power homing beacon on 121.5 MHz for precise direction-finding by survival craft during the final stage of a search.",
+        "The 406 MHz signal encoding contains an identifier (usually the MMSI or a separate beacon registration number) — when the beacon is registered in a national register, the ship's details and verification contacts are linked to that number, which greatly speeds up the response of the search and rescue services.",
+        "Requires periodic testing (the battery and hydrostatic release unit have a limited service life — typically several years, the exact interval is stated in the beacon's manual) — check against your ship's maintenance schedule."
+      ]
+    },
+    {
+      "part": "Terminal Equipment",
+      "number": "10",
+      "title": "SART and AIS-SART (Radar Transponders)",
+      "diagram": "sart_radar",
+      "commentary": [
+        "SART (Search and Rescue Transponder) — a classic X-band (9 GHz) radar transponder: when illuminated by a searching ship's radar, it responds with a series of 12 characteristic dots along the bearing on the searching ship's radar display — this is how a search vessel locates those in distress even without visual contact.",
+        "AIS-SART — a newer type that, instead of responding to radar, transmits its own AIS messages, which appear as a distinct mark on the AIS/ECDIS display of searching ships — it does not require the search to be conducted specifically by radar.",
+        "Both types are part of the survival craft equipment (usually fitted to liferafts/lifeboats) and are switched on manually when the survival craft is used.",
+        "Range is limited primarily by the height of the searching ship's antenna above the water (radio horizon) — in practice, a few miles."
+      ]
+    },
+    {
+      "part": "Terminal Equipment",
+      "number": "11",
+      "title": "NAVTEX",
+      "diagram": "navtex",
+      "commentary": [
+        "NAVTEX — a system for automatic reception of navigational warnings and other navigationally significant information (MSI — Maritime Safety Information: storm warnings, ice conditions, notices to mariners, etc.) via narrow-band teleprinter.",
+        "The international frequency 518 kHz — broadcasts in English; the frequency 490 kHz — in the coastal state's national language (where provided).",
+        "Reception range from a single shore station is roughly 200–400 miles (the exact figure depends on transmitter power and propagation conditions).",
+        "A NAVTEX receiver can be set to accept messages only from the desired stations and message categories (letter codes for message type — for example, A for navigational warnings, B for meteorological warnings, etc.), so as not to overload the watch with irrelevant information."
+      ]
+    },
+    {
+      "part": "Terminal Equipment",
+      "number": "12",
+      "title": "Satellite Communication (Inmarsat and Others)",
+      "diagram": "inmarsat",
+      "commentary": [
+        "Inmarsat — a system of geostationary communication satellites, providing voice communication, telex/data, and a dedicated distress button on terminals aboard ships within sea area A3 (approximately 70°N – 70°S).",
+        "Different Inmarsat terminals (e.g. Fleet, FleetBroadband, and others) differ in data transmission speed and operating cost — the specific type of station carried on a ship is determined by the requirements of its area of operation and the shipowner's fit-out.",
+        "In high latitudes, where Inmarsat geostationary satellites are below the horizon, the primary long-range channel for an Inmarsat-equipped ship is HF DSC.",
+        "Since 2020 IMO has recognized Iridium (a low-earth-orbit constellation with global coverage, including the polar regions) as a GMDSS service provider alongside Inmarsat. From 1 January 2024 SOLAS chapter IV refers to a “recognized mobile satellite service” instead of Inmarsat — check the ship's Record of Equipment for the station actually fitted."
+      ]
+    }
+  ]
+}

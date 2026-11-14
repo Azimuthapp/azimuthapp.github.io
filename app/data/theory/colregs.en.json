@@ -1,0 +1,1987 @@
+{
+  "meta": {
+    "official_source": "Official text: International Regulations for Preventing Collisions at Sea, 1972 — International text as published by the U.S. Coast Guard Navigation Center (Rules 1–37).",
+    "corrections": [
+      "Rule 1(c): duplicated words in the USCG web text removed.",
+      "Rule 10(c): comma placement as in the official text.",
+      "Rule 13(b): \"a another\" typo in the USCG web text.",
+      "Rule 22: US domestic references (Subpart C, 33 CFR part 84) replaced with the International wording.",
+      "Rule 32(b): apostrophe restored.",
+      "Rule 34(a): \"of one another\" as in the official text.",
+      "Rule 34(a): \"one short blast\" — the signal is a single blast."
+    ]
+  },
+  "entries": [
+    {
+      "part": "Part A — General (Rules 1-3)",
+      "number": "Rule 1",
+      "title": "Application",
+      "example": "On approach to a port operating local traffic rules (compulsory pilotage, an agreed passing scheme in the roadstead), those rules apply alongside the COLREGs, not in place of them.",
+      "commentary": [
+        "(a) These Rules apply to all vessels upon the high seas and in all waters connected therewith and navigable by seagoing vessels.",
+        "(b) Nothing in these Rules interferes with the operation of special rules made by an appropriate authority for roadsteads, harbours, rivers, lakes or inland waterways connected with the high seas, provided such special rules conform as closely as possible to these Rules.",
+        "(c) Nothing in these Rules interferes with the operation of any special rules made by a government for additional station or signal lights, shapes or whistle signals for ships of war and vessels proceeding under convoy, or for fishing vessels of a fleet, provided such rules conform as closely as possible to those already prescribed.",
+        "(d) Traffic separation schemes may be adopted by the Organization (IMO).",
+        "(e) A vessel of special construction or purpose which cannot fully comply with the light, shape or sound-signal requirements shall instead comply with alternative arrangements that are as close as possible to the requirements of the Rules."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "These Rules shall apply to all vessels upon the high seas and in all waters connected therewith navigable by seagoing vessels."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "Nothing in these Rules shall interfere with the operation of special rules made by an appropriate authority for roadsteads, harbors, rivers, lakes, or inland waterways connected with the high seas and navigable by seagoing vessels. Such special rules shall conform as closely as possible to these Rules."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "Nothing in these Rules shall interfere with the operation of any special rules made by the Government of any State with respect to additional station and signal lights and shapes or whistle signals for ships of war and vessels proceeding under convoy, or with respect to additional station or signal lights or shapes for fishing vessels engaged in fishing as a fleet. These additional stations or signal lights, shapes or whistle signals shall, so far as possible, be such that they cannot be mistaken for any light, shape, or signal authorized elsewhere under these Rules."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "Traffic separation schemes may be adopted by the Organization for the purposes of these Rules."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "Whenever the Government concerned shall have determined that a vessel of special construction or purpose cannot comply fully with the provisions of any of these Rules with respect to number, position, range or arc of visibility of lights or shapes, as well as to the disposition and characteristics of sound-signaling appliances, such vessel shall comply with such other provisions in regard to number, position, range or arc of visibility of lights or shapes, as well as to the disposition and characteristics of sound-signaling appliances, as the Government shall have determined to be the closest possible compliance with these Rules in respect to that vessel."
+        }
+      ]
+    },
+    {
+      "part": "Part A — General (Rules 1-3)",
+      "number": "Rule 2",
+      "title": "Responsibility",
+      "example": "If strict adherence to a Rule would lead to collision because of another vessel's unforeseen action (for example, a steering-gear failure), departing from the letter of the Rule is permitted, and indeed necessary, to avoid the danger.",
+      "commentary": [
+        "(a) Nothing in these Rules exonerates any vessel, owner, master or crew from the consequences of any neglect to comply with these Rules or of the neglect of any precaution required by the ordinary practice of seamen or by the special circumstances of the case.",
+        "(b) In construing and complying with these Rules, due regard shall be had to all dangers of navigation and collision and to any special circumstances (including the limitations of the vessels involved) which may make a departure from these Rules necessary to avoid immediate danger."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "Nothing in these Rules shall exonerate any vessel, or the owner, master, or crew thereof, from the consequences of any neglect to comply with these Rules or of the neglect of any precaution which may be required by the ordinary practice of seamen, or by the special circumstances of the case."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "In construing and complying with these Rules due regard shall be had to all dangers of navigation and collision and to any special circumstances, including the limitations of the vessels involved, which may make a departure from these Rules necessary to avoid immediate danger."
+        }
+      ]
+    },
+    {
+      "part": "Part A — General (Rules 1-3)",
+      "number": "Rule 3",
+      "title": "General definitions",
+      "example": "\"Underway\" means the vessel is not at anchor, not made fast to the shore and not aground — that is, she is free to move, even if she is temporarily lying stopped with no way through the water.",
+      "commentary": [
+        "(a) \"Vessel\" includes every description of watercraft, including non-displacement craft and seaplanes.",
+        "(b) \"Power-driven vessel\" means any vessel propelled by machinery.",
+        "(c) \"Sailing vessel\" means any vessel under sail, provided that propelling machinery, if fitted, is not being used.",
+        "(d) \"Vessel engaged in fishing\" means any vessel fishing with nets, lines, trawls or other fishing apparatus which restricts manoeuvrability, but does not include a vessel fishing with trolling lines or other fishing apparatus which does not restrict manoeuvrability.",
+        "(e) \"Seaplane\" includes any aircraft designed to manoeuvre on the water.",
+        "(f) \"Vessel not under command\" means a vessel which through some exceptional circumstance is unable to manoeuvre as required by these Rules and is therefore unable to keep out of the way of another vessel.",
+        "(g) \"Vessel restricted in her ability to manoeuvre\" means a vessel restricted by the nature of her work from manoeuvring as required by these Rules and is therefore unable to keep out of the way of another vessel. The term includes vessels engaged in: laying, servicing, or picking up a navigational mark, submarine cable, or pipeline; dredging, surveying, or underwater operations; replenishment or transferring persons, provisions, or cargo while underway; the launching or recovery of aircraft; mine clearance operations; and a towing operation such as severely restricts the towing vessel and her tow in their ability to deviate from their course.",
+        "(h) \"Vessel constrained by her draught\" means a power-driven vessel which, because of her draught in relation to the available depth and width of navigable water, is severely restricted in her ability to deviate from the course she is following.",
+        "(i) \"Underway\" means that a vessel is not at anchor, made fast to the shore, or aground.",
+        "(j) The words \"length\" and \"breadth\" of a vessel mean her length overall and greatest breadth.",
+        "(k) Vessels are \"in sight of one another\" only when one can be observed visually from the other.",
+        "(l) \"Restricted visibility\" means any condition in which visibility is restricted by fog, mist, falling snow, heavy rainstorms, sandstorms or any other similar causes."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "The word \"vessel\" includes every description of watercraft, including non-displacement craft, WIG craft, and seaplanes, used or capable of being used as a means of transportation on water."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "The term \"power-driven vessel\" means any vessel propelled by machinery."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "The term \"sailing vessel\" means any vessel under sail provided that propelling machinery, if fitted, is not being used."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "The term \"vessel engaged in fishing\" means any vessel fishing with nets, lines, trawls, or other fishing apparatus which restrict maneuverability, but does not include a vessel fishing with trolling lines or other fishing apparatus which do not restrict maneuverability."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "The term \"seaplane\" includes any aircraft designed to maneuver on the water."
+        },
+        {
+          "label": "(f)",
+          "level": 0,
+          "text": "The term \"vessel not under command\" means a vessel which through some exceptional circumstance is unable to maneuver as required by these Rules and is therefore unable to keep out of the way of another vessel."
+        },
+        {
+          "label": "(g)",
+          "level": 0,
+          "text": "The term \"vessel restricted in her ability to maneuver\" means a vessel which from the nature of her work is restricted in her ability to maneuver as required by these Rules and is, therefore, unable to keep out of the way of another vessel. The term \"vessels restricted in their ability to maneuver\" shall include but not be limited to:\n(i) A vessel engaged in laying, servicing, or picking up a navigational mark, submarine cable or pipeline;\n(ii) A vessel engaged in dredging, surveying or underwater operations;\n(iii) A vessel engaged in replenishment or transferring persons, provisions or cargo while underway;\n(iv) A vessel engaged in the launching or recovery of aircraft;\n(v) A vessel engaged in mine clearance operations; (vi) A vessel engaged in a towing operation such as severely restricts the towing vessel and her tow in their ability to deviate from their course."
+        },
+        {
+          "label": "(h)",
+          "level": 0,
+          "text": "The term \"vessel constrained by her draft\" means a power-driven vessel which because of her draft in relation to the available depth and width of navigable water is severely restricted in her ability to deviate from the course she is following."
+        },
+        {
+          "label": "(i)",
+          "level": 0,
+          "text": "The word \"underway\" means that a vessel is not at anchor, or made fast to the shore, or aground."
+        },
+        {
+          "label": "(j)",
+          "level": 0,
+          "text": "The words \"length\" and \"breadth\" of a vessel mean her length overall and greatest breadth."
+        },
+        {
+          "label": "(k)",
+          "level": 0,
+          "text": "Vessels shall be deemed to be in sight of one another only when one can be observed visually from the other."
+        },
+        {
+          "label": "(l)",
+          "level": 0,
+          "text": "The term “restricted visibility” means any condition in which visibility is restricted by fog, mist, falling snow, heavy rainstorms, sandstorms, or any other similar causes."
+        },
+        {
+          "label": "(m)",
+          "level": 0,
+          "text": "The term “Wing-In-Ground (WIG)” craft means a multimodal craft which, in its main operational mode, flies in close proximity to the surface by utilizing surface-effect action."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section I — Conduct of vessels in any condition of visibility (Rules 4-10)",
+      "number": "Rule 4",
+      "title": "Application",
+      "example": "—",
+      "commentary": [
+        "The Rules in this Section apply in any condition of visibility."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "Rules 4-10 apply in any condition of visibility."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section I — Conduct of vessels in any condition of visibility (Rules 4-10)",
+      "number": "Rule 5",
+      "title": "Look-out",
+      "example": "At night in fog, visual look-out alone is not enough — radar must be used and sound signals listened for, even if the radar screen currently shows no other traffic.",
+      "commentary": [
+        "Every vessel shall at all times maintain a proper look-out by sight and hearing as well as by all available means appropriate to the prevailing circumstances and conditions (including radar) so as to make a full appraisal of the situation and of the risk of collision."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "Every vessel shall at all times maintain a proper look-out by sight and hearing as well as by all available means appropriate in the prevailing circumstances and conditions so as to make a full appraisal of the situation and of the risk of collision."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section I — Conduct of vessels in any condition of visibility (Rules 4-10)",
+      "number": "Rule 6",
+      "title": "Safe speed",
+      "example": "On approach to a port with dense traffic and restricted visibility, safe speed may be considerably below the vessel's maximum speed even though no formal speed limit is in force.",
+      "commentary": [
+        "(a) Factors for all vessels: the state of visibility; traffic density, including concentrations of fishing vessels; manoeuvring characteristics, in particular stopping distance and turning ability; at night, the presence of background light; the state of wind, sea and current, and the proximity of navigational hazards; draught in relation to the available depth of water.",
+        "(b) Additional factors for vessels with operational radar: the characteristics, efficiency and limitations of the radar equipment; any constraints imposed by the range scale in use; the effect on radar detection of sea state, weather and other sources of interference; the possibility that small vessels, ice and other floating objects may not be detected by radar at an adequate range; the number, location and movement of vessels detected by radar; the more exact assessment of visibility that may be possible when radar is used to determine the range of vessels or objects in the vicinity."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "Every vessel shall at all times proceed at a safe speed so that she can take proper and effective action to avoid collision and be stopped within a distance appropriate to the prevailing circumstances and conditions. In determining a safe speed the following factors shall be among those taken into account:"
+        },
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "By all vessels:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "The state of visibility;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "The traffic density including concentrations of fishing vessels or any other vessels;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "The maneuverability of the vessel with special reference to stopping distance and turning ability in the prevailing conditions;"
+        },
+        {
+          "label": "(iv)",
+          "level": 1,
+          "text": "At night, the presence of background light such as from shore lights or from back scatter from her own lights;"
+        },
+        {
+          "label": "(v)",
+          "level": 1,
+          "text": "The state of wind, sea and current, and the proximity of navigational hazards;"
+        },
+        {
+          "label": "(vi)",
+          "level": 1,
+          "text": "The draft in relation to the available depth of water."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "Additionally, by vessels with operational radar:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "The characteristics, efficiency and limitations of the radar equipment;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "Any constraints imposed by the radar range scale in use;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "The effect on radar detection of the sea state, weather and other sources of interference;"
+        },
+        {
+          "label": "(iv)",
+          "level": 1,
+          "text": "The possibility that small vessels, ice and other floating objects may not be detected by radar at an adequate range;"
+        },
+        {
+          "label": "(v)",
+          "level": 1,
+          "text": "The number, location and movement of vessels detected by radar;"
+        },
+        {
+          "label": "(vi)",
+          "level": 1,
+          "text": "The more exact assessment of the visibility that may be possible when radar is used to determine the range of vessels or other objects in the vicinity."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section I — Conduct of vessels in any condition of visibility (Rules 4-10)",
+      "number": "Rule 7",
+      "title": "Risk of collision",
+      "example": "The bearing to another vessel barely changes while the range decreases — a clear sign of risk of collision, even if the courses appear, visually, to be diverging.",
+      "commentary": [
+        "(a) Every vessel shall use all available means appropriate to the prevailing circumstances and conditions to determine if risk of collision exists; if there is any doubt, such risk shall be deemed to exist.",
+        "(b) Proper use shall be made of radar equipment, if fitted and operational, including long-range scanning to obtain early warning of risk of collision and radar plotting or equivalent systematic observation of detected objects.",
+        "(c) Assumptions shall not be made on the basis of scanty information, especially scanty radar information.",
+        "(d) Risk of collision shall be deemed to exist if the compass bearing of an approaching vessel does not appreciably change, and shall sometimes be deemed to exist even when an appreciable bearing change is evident, particularly when approaching a very large vessel, a tow, or when approaching a vessel at close range."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "Every vessel shall use all available means appropriate to the prevailing circumstances and conditions to determine if risk of collision exists. If there is any doubt such risk shall be deemed to exist."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "Proper use shall be made of radar equipment if fitted and operational, including long-range scanning to obtain early warning of risk of collision and radar plotting or equivalent systematic observation of detected objects."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "Assumptions shall not be made on the basis of scanty information, especially scanty radar information."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "In determining if risk of collision exists the following considerations shall be among those taken into account:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "Such risk shall be deemed to exist if the compass bearing of an approaching vessel does not appreciably change."
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "Such risk may sometimes exist even when an appreciable bearing change is evident, particularly when approaching a very large vessel or a tow or when approaching a vessel at close range."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section I — Conduct of vessels in any condition of visibility (Rules 4-10)",
+      "number": "Rule 8",
+      "title": "Action to avoid collision",
+      "example": "Rather than several small five-degree course changes, a single clearly noticeable alteration of 20-30° should be made, one that the other vessel will unambiguously recognize as a collision-avoidance manoeuvre.",
+      "commentary": [
+        "(a) Any action taken to avoid collision shall be positive, made in ample time and with due regard to the observance of good seamanship.",
+        "(b) Any alteration of course and/or speed shall, if the circumstances allow, be large enough to be readily apparent to another vessel observing visually or by radar; a succession of small alterations should be avoided.",
+        "(c) If there is sufficient sea room, alteration of course alone may be the most effective action to avoid a close-quarters situation, provided it is made in good time, is substantial, and does not result in another close-quarters situation.",
+        "(d) Action taken to avoid collision shall result in passing at a safe distance, and its effectiveness shall be carefully checked until the other vessel is finally past and clear.",
+        "(e) If necessary to avoid collision or to allow more time to assess the situation, a vessel shall slacken her speed or take all way off by stopping or reversing her means of propulsion.",
+        "(f) A vessel which, by any of these Rules, is required not to impede the passage or safe passage of another vessel shall, when required by the circumstances, take early action to allow sufficient sea room for the safe passage of the other vessel, and shall fully discharge this obligation."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "Any action taken to avoid collision shall be taken in accordance with Rules 4-19, and shall if the circumstances of the case admit, be positive, made in ample time and with due regard to the observance of good seamanship."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "Any alteration of course and/or speed to avoid collision shall, if the circumstances of the case admit, be large enough to be readily apparent to another vessel observing visually or by radar; a succession of small alterations of course and/or speed should be avoided."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "If there is sufficient sea room, alteration of course alone may be the most effective action to avoid a close-quarters situation provided that it is made in good time, is substantial and does not result in another close-quarters situation."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "Action taken to avoid collision with another vessel shall be such as to result in passing at a safe distance. The effectiveness of the action shall be carefully checked until the other vessel is finally past and clear."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "If necessary to avoid collision or allow more time to assess the situation, a vessel shall slacken her speed or take all way off by stopping or reversing her means of propulsion."
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "A vessel which, by any of these Rules, is required not to impede the passage or safe passage of another vessel shall, when required by the circumstances of the case, take early action to allow sufficient sea room for the safe passage of the other vessel."
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "A vessel required not to impede the passage or safe passage of another vessel is not relieved of this obligation if approaching the other vessel so as to involve risk of collision and shall, when taking action, have full regard to the action which may be required by Rules 4-19."
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "A vessel, the passage of which is not to be impeded remains fully obliged to comply with Rules 4-19 when the two vessels are approaching one another so as to involve risk of collision."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section I — Conduct of vessels in any condition of visibility (Rules 4-10)",
+      "number": "Rule 9",
+      "title": "Narrow channels",
+      "example": "In a narrow fairway a large vessel constrained by her draught effectively has priority of passage — it is important not to impede her manoeuvring.",
+      "diagram": "narrow_channel",
+      "commentary": [
+        "(a) A vessel proceeding along the course of a narrow channel or fairway shall keep as near to the outer limit of the channel or fairway which lies on her starboard side as is safe and practicable.",
+        "(b) A vessel of less than 20 metres in length or a sailing vessel shall not impede the passage of a vessel which can safely navigate only within a narrow channel or fairway.",
+        "(c) A vessel engaged in fishing shall not impede the passage of any other vessel navigating within a narrow channel or fairway.",
+        "(d) A vessel shall not cross a narrow channel or fairway if such crossing impedes the passage of a vessel which can safely navigate only within such channel or fairway.",
+        "(e) In a narrow channel, where overtaking can be effected only with the agreement of the vessel being overtaken, the overtaking vessel shall indicate her intention by sounding the appropriate signal, and the vessel to be overtaken shall sound the signal of agreement (Rule 34); if in doubt, she shall sound the doubt signal.",
+        "(f) A vessel nearing a bend or an area of a narrow channel or fairway where other vessels may be obscured by an intervening obstruction shall navigate with particular alertness and caution and shall sound the appropriate signal.",
+        "(g) Every vessel shall, if the circumstances of the case admit, avoid anchoring in a narrow channel."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A vessel proceeding along the course of a narrow channel or fairway shall keep as near to the outer limit of the channel or fairway which lies on her starboard side as is safe and practicable."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A vessel of less than 20 meters in length or a sailing vessel shall not impede the passage of a vessel which can safely navigate only within a narrow channel or fairway."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A vessel engaged in fishing shall not impede the passage of any other vessel navigating within a narrow channel or fairway."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "A vessel shall not cross a narrow channel or fairway if such crossing impedes the passage of a vessel which can safely navigate only within that channel or fairway. The latter vessel may use the signal prescribed in Rule 34(d) if in doubt as to the intention of the crossing vessel."
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "In a narrow channel or fairway when overtaking can take place only if the vessel to be overtaken has to take action to permit safe passing, the vessel intending to overtake shall indicate her intention by sounding the appropriate signal prescribed in Rule 34(c)(i). The vessel to be overtaken shall, if in agreement, sound the appropriate signal prescribed in Rule 34(c)(ii) and take steps to permit safe passing. If in doubt she may sound the signals prescribed in Rule 34(d)."
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "This rule does not relieve the overtaking vessel of her obligation under Rule 13."
+        },
+        {
+          "label": "(f)",
+          "level": 0,
+          "text": "A vessel nearing a bend or an area of a narrow channel or fairway where other vessels may be obscured by an intervening obstruction shall navigate with particular alertness and caution and shall sound the appropriate signal prescribed in Rule 34(e)."
+        },
+        {
+          "label": "(g)",
+          "level": 0,
+          "text": "Any vessel shall, if the circumstances of the case admit, avoid anchoring in a narrow channel."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section I — Conduct of vessels in any condition of visibility (Rules 4-10)",
+      "number": "Rule 10",
+      "title": "Traffic separation schemes",
+      "example": "A vessel crossing a traffic separation scheme should cross on a heading as close as possible to a right angle to the traffic flow, not obliquely.",
+      "commentary": [
+        "(a) This Rule applies to traffic separation schemes adopted by the Organization (IMO) and does not relieve any vessel of her obligation under any other Rule.",
+        "(b) A vessel using a traffic separation scheme shall proceed in the appropriate traffic lane in the general direction of traffic flow, keep clear of the traffic separation line or zone, and normally join or leave a lane at its terminus, or enter/leave from the side at as small an angle to the general direction of traffic flow as practicable.",
+        "(c) A vessel shall, as far as practicable, avoid crossing traffic lanes; if obliged to do so, she shall cross on a heading as nearly as practicable at right angles to the general direction of traffic flow.",
+        "(d) The inshore traffic zone shall not normally be used by vessels which can safely use the appropriate traffic lane within the adjacent traffic separation scheme, subject to exceptions for vessels less than 20 metres in length, sailing vessels, vessels engaged in fishing, and vessels in a case of emergency.",
+        "(e) A vessel shall not enter a separation zone or cross a separation line except in a case of emergency or to engage in fishing within a separation zone.",
+        "(f) A vessel shall exercise particular caution when navigating near the terminations of traffic separation schemes.",
+        "(g) A vessel shall, so far as practicable, avoid anchoring in a traffic separation scheme or in areas near its terminations.",
+        "(h) A vessel not using a traffic separation scheme shall avoid it by as wide a margin as is practicable.",
+        "(i)-(j) Vessels engaged in fishing, vessels of less than 20 metres in length, and sailing vessels shall not impede the safe passage of a power-driven vessel following a traffic lane.",
+        "(k)-(l) A vessel restricted in her ability to manoeuvre when engaged in an operation for the maintenance of safety of navigation, or in laying, servicing or picking up a submarine cable, within a traffic separation scheme is exempted from complying with this Rule to the extent necessary to carry out the operation."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "This Rule applies to traffic separation schemes adopted by the Organization and does not relieve any vessel of her obligation under any other rule."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A vessel using a traffic separation scheme shall:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "Proceed in the appropriate traffic lane in the general direction of traffic flow for that lane."
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "So far as is practicable keep clear of a traffic separation line or separation zone."
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "Normally join or leave a traffic lane at the termination of the lane, but when joining or leaving from either side shall do so at as small an angle to the general direction of traffic flow as practicable."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A vessel shall, so far as practicable, avoid crossing traffic lanes but if obliged to do so shall cross on a heading as nearly as practicable at right angles to the general direction of traffic flow."
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "A vessel shall not use an inshore traffic zone when she can safely use the appropriate traffic lane within the adjacent traffic separation scheme. However, vessels of less than 20 meters in length, sailing vessels and vessels engaged in fishing may use the inshore traffic zone."
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "Notwithstanding Rule 10(d)(i), a vessel may use an inshore traffic zone when en route to or from a port, offshore installation or structure, pilot station or any other place situated within the inshore traffic zone, or to avoid immediate danger."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "A vessel, other than a crossing vessel or a vessel joining or leaving a lane shall not normally enter a separation zone or cross a separation line except:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "In cases of emergency to avoid immediate danger;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "To engage in fishing within a separation zone."
+        },
+        {
+          "label": "(f)",
+          "level": 0,
+          "text": "A vessel navigating in areas near the terminations of traffic separation schemes shall do so with particular caution."
+        },
+        {
+          "label": "(g)",
+          "level": 0,
+          "text": "A vessel shall so far as practicable avoid anchoring in a traffic separation scheme or in areas near its terminations."
+        },
+        {
+          "label": "(h)",
+          "level": 0,
+          "text": "A vessel not using a traffic separating scheme shall avoid it by as wide a margin as is practicable."
+        },
+        {
+          "label": "(i)",
+          "level": 0,
+          "text": "A vessel engaged in fishing shall not impede the passage of any vessel following a traffic lane."
+        },
+        {
+          "label": "(j)",
+          "level": 0,
+          "text": "A vessel of less than 20 meters in length or a sailing vessel shall not impede the safe passage of a power-driven vessel following a traffic lane."
+        },
+        {
+          "label": "(k)",
+          "level": 0,
+          "text": "A vessel restricted in her ability to maneuver when engaged in an operation for the maintenance of safety of navigation in a traffic separation scheme is exempted from complying with this Rule to the extent necessary to carry out the operation."
+        },
+        {
+          "label": "(l)",
+          "level": 0,
+          "text": "A vessel restricted in her ability to maneuver when engaged in an operation for the laying, servicing or picking up of a submarine cable, within a traffic separation scheme, is exempted from complying with this Rule to the extent necessary to carry out the operation."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section II — Conduct of vessels in sight of one another (Rules 11-18)",
+      "number": "Rule 11",
+      "title": "Application",
+      "example": "—",
+      "commentary": [
+        "The Rules in this Section apply to vessels in sight of one another."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "Rules 11-18 apply to vessels in sight of one another."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section II — Conduct of vessels in sight of one another (Rules 11-18)",
+      "number": "Rule 12",
+      "title": "Sailing vessels",
+      "example": "Two sailing yachts are converging with the wind on different sides — the yacht with the wind on her port side must keep out of the way.",
+      "commentary": [
+        "(a) When two sailing vessels are approaching one another so as to involve risk of collision: if each has the wind on a different side, the vessel which has the wind on the port side shall keep out of the way of the other; if both have the wind on the same side, the vessel which is to windward shall keep out of the way of the vessel which is to leeward; if a vessel with the wind on the port side sees a vessel to windward and cannot determine with certainty whether the other vessel has the wind on the port or on the starboard side, she shall keep out of the way of the other.",
+        "(b) For the purposes of this Rule the windward side shall be deemed to be the side opposite to that on which the mainsail is carried, or, in the case of a square-rigged vessel, the side opposite to that on which the largest fore-and-aft sail is carried."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "When two sailing vessels are approaching one another, so as to involve risk of collision, one of them shall keep out of the way of the other as follows:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "when each has the wind on a different side, the vessel which has the wind on the port side shall keep out of the way of the other;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "when both have the wind on the same side, the vessel which is to windward shall keep out of the way of the vessel which is to leeward;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "if a vessel with the wind on the port side sees a vessel to windward and cannot determine with certainty whether the other vessel has the wind on the port or on the starboard side, she shall keep out of the way of the other."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "For the purposes of this Rule, the windward side shall be deemed to be the side opposite that on which the mainsail is carried or, in the case of a square-rigged vessel, the side opposite to that on which the largest fore-and-aft sail is carried."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section II — Conduct of vessels in sight of one another (Rules 11-18)",
+      "number": "Rule 13",
+      "title": "Overtaking",
+      "example": "A vessel is catching up with another vessel ahead on nearly the same course — the duty to keep clear rests with the overtaking vessel, whichever side she passes on.",
+      "diagram": "overtaking",
+      "commentary": [
+        "(a) Notwithstanding anything contained in the other Rules of Part B, any vessel overtaking any other shall keep out of the way of the vessel being overtaken.",
+        "(b) A vessel shall be deemed to be overtaking when coming up with another vessel from a direction more than 22.5° abaft her beam, that is, in such a position that at night she would be able to see only the sternlight of that vessel and neither of her sidelights.",
+        "(c) When a vessel is in doubt as to whether she is overtaking another, she shall assume that this is the case.",
+        "(d) Any subsequent change in the bearing between the two vessels does not relieve the overtaking vessel of her duty to keep clear of the overtaken vessel until she is finally past and clear."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "Notwithstanding anything contained in the Rules 4-18, any vessel overtaking any other shall keep out of the way of the vessel being overtaken."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A vessel shall be deemed to be overtaking when coming up with another vessel from a direction more than 22.5 degrees abaft her beam, that is, in such a position with reference to the vessel she is overtaking, that at night she would be able to see only the sternlight of that vessel but neither of her sidelights."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "When a vessel is in any doubt as to whether she is overtaking another, she shall assume that this is the case and act accordingly."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "Any subsequent alteration of the bearing between the two vessels shall not make the overtaking vessel a crossing vessel within the meaning of these Rules or relieve her of the duty of keeping clear of the overtaken vessel until she is finally past and clear."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section II — Conduct of vessels in sight of one another (Rules 11-18)",
+      "number": "Rule 14",
+      "title": "Head-on situation",
+      "example": "An approaching vessel is seen dead ahead or nearly ahead and both her sidelights are visible at once — both vessels must alter course to starboard, not to port.",
+      "diagram": "head_on",
+      "commentary": [
+        "(a) When two power-driven vessels are meeting on reciprocal or nearly reciprocal courses so as to involve risk of collision, each shall alter her course to starboard so that each shall pass on the port side of the other.",
+        "(b) Such a situation shall be deemed to exist when a vessel sees the other ahead or nearly ahead and by night she could see the masthead lights of the other in a line or nearly in a line and/or both sidelights, and by day she observes the corresponding aspect of the other vessel.",
+        "(c) Where a vessel is in any doubt as to whether such a situation exists, she shall assume that it does exist and act accordingly."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "When two power-driven vessels are meeting on reciprocal or nearly reciprocal courses so as to involve risk of collision each shall alter her course to starboard so that each shall pass on the port side of the other."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "Such a situation shall be deemed to exist when a vessel sees the other ahead or nearly ahead and by night she could see the masthead lights of the other in a line or nearly in a line and/or both sidelights and by day she observes the corresponding aspect of the other vessel."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "When a vessel is in any doubt as to whether such a situation exists she shall assume that it does exist and act accordingly."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section II — Conduct of vessels in sight of one another (Rules 11-18)",
+      "number": "Rule 15",
+      "title": "Crossing situation",
+      "example": "Another vessel approaches from the starboard side at an angle — the give-way vessel normally turns to starboard and/or reduces speed, passing astern rather than crossing ahead.",
+      "diagram": "crossing",
+      "commentary": [
+        "When two power-driven vessels are crossing so as to involve risk of collision, the vessel which has the other on her own starboard side shall keep out of the way and shall, if the circumstances of the case admit, avoid crossing ahead of the other vessel."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "When two power-driven vessels are crossing so as to involve risk of collision, the vessel which has the other on her own starboard side shall keep out of the way and shall, if the circumstances of the case admit, avoid crossing ahead of the other vessel."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section II — Conduct of vessels in sight of one another (Rules 11-18)",
+      "number": "Rule 16",
+      "title": "Action by the give-way vessel",
+      "example": "The give-way vessel does not wait until the minimum safe distance is reached, but alters course early, while the manoeuvre is still clearly apparent to the other vessel.",
+      "commentary": [
+        "Every vessel which is directed to keep out of the way of another vessel shall, so far as possible, take early and substantial action to keep well clear."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "Every vessel which is directed to keep out of the way of another vessel shall, so far as possible, take early and substantial action to keep well clear."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section II — Conduct of vessels in sight of one another (Rules 11-18)",
+      "number": "Rule 17",
+      "title": "Action by the stand-on vessel",
+      "example": "A vessel sees that the vessel required to give way is not altering course although the situation is already dangerously close — this is the moment to act independently rather than continuing to hold course and speed out of inertia.",
+      "commentary": [
+        "(a)(i) Where one of two vessels is to keep out of the way, the other shall keep her course and speed.",
+        "(a)(ii) The stand-on vessel may take action to avoid collision by her manoeuvre alone as soon as it becomes apparent to her that the vessel required to keep out of the way is not taking appropriate action.",
+        "(b) When, for whatever reason, the vessel required to keep her course and speed finds herself so close that collision cannot be avoided by the action of the give-way vessel alone, she shall take such action as will best aid to avoid collision.",
+        "(c) A power-driven vessel which takes action in a crossing situation under (a)(ii) to avoid collision with another power-driven vessel shall, if the circumstances of the case admit, not alter course to port for a vessel on her own port side.",
+        "(d) This Rule does not relieve the give-way vessel of her obligation to keep out of the way."
+      ],
+      "official": [
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "Where one of two vessels is to keep out of the way, the other shall keep her course and speed."
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "The latter vessel may, however, take action to avoid collision by her maneuver alone, as soon as it becomes apparent to her that the vessel required to keep out of the way is not taking appropriate action in compliance with these Rules."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "When, from any cause, the vessel required to keep her course and speed finds herself so close that collision cannot be avoided by the action of the give-way vessel alone, she shall take such action as will best aid to avoid collision."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A power-driven vessel which takes action in a crossing situation in accordance with Rule 17(a)(ii) to avoid collision with another power-driven vessel shall, if the circumstances of the case admit, not alter course to port for a vessel on her own port side."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "This Rule does not relieve the give-way vessel of her obligation to keep out of the way."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section II — Conduct of vessels in sight of one another (Rules 11-18)",
+      "number": "Rule 18",
+      "title": "Responsibilities between vessels",
+      "example": "A large power-driven bulk carrier must keep out of the way of a small sailing yacht, even though the yacht is technically the slower vessel — the hierarchy is set by vessel type and restrictions, not by size.",
+      "commentary": [
+        "(a) A power-driven vessel underway shall keep out of the way of: (i) a vessel not under command; (ii) a vessel restricted in her ability to manoeuvre; (iii) a vessel engaged in fishing; (iv) a sailing vessel.",
+        "(b) A sailing vessel underway shall keep out of the way of: (i) a vessel not under command; (ii) a vessel restricted in her ability to manoeuvre; (iii) a vessel engaged in fishing.",
+        "(c) A vessel engaged in fishing, when underway, shall, so far as possible, keep out of the way of: (i) a vessel not under command; (ii) a vessel restricted in her ability to manoeuvre.",
+        "(d) Any vessel other than a vessel not under command or a vessel restricted in her ability to manoeuvre shall, if the circumstances of the case admit, avoid impeding the safe passage of a vessel constrained by her draught, and shall have regard for her special condition; a vessel constrained by her draught shall navigate with particular caution having full regard to her special condition.",
+        "(e) A seaplane on the water shall, in general, keep well clear of all vessels and avoid impeding their navigation; in circumstances, however, where risk of collision exists, she shall comply with the Rules of this Part."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "Except where Rules 9, 10, and 13 otherwise require:"
+        },
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A power-driven vessel underway shall keep out of the way of:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "a vessel not under command;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "a vessel restricted in her ability to maneuver;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "a vessel engaged in fishing;"
+        },
+        {
+          "label": "(iv)",
+          "level": 1,
+          "text": "a sailing vessel."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A sailing vessel underway shall keep out of the way of:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "a vessel not under command;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "a vessel restricted in her ability to maneuver;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "a vessel engaged in fishing."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A vessel engaged in fishing when underway shall, so far as possible, keep out of the way of:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "a vessel not under command;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "a vessel restricted in her ability to maneuver."
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "Any vessel other than a vessel not under command or a vessel restricted in her ability to maneuver shall, if the circumstances of the case admit, avoid impeding the safe passage of a vessel constrained by her draft, exhibiting the signals in Rule 28."
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "A vessel constrained by her draft shall navigate with particular caution having full regard to her special condition."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "A seaplane on the water shall, in general, keep well clear of all vessels and avoid impeding their navigation. In circumstances, however, where risk of collision exists, she shall comply with Rules 4-19."
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "A WIG craft shall, when taking off, landing and in flight near the surface, keep well clear of all other vessels and avoid impeding their navigation;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "a WIG craft operating on the water surface shall comply with Rules 4-19 as a power-driven vessel."
+        }
+      ]
+    },
+    {
+      "part": "Part B, Section III — Conduct of vessels in restricted visibility (Rule 19)",
+      "number": "Rule 19",
+      "title": "Conduct of vessels in restricted visibility",
+      "example": "The radar screen shows a vessel ahead with no visual contact due to fog — course must not be altered to port towards her; it is safer to turn to starboard or reduce speed.",
+      "commentary": [
+        "(a) This Rule applies to vessels not in sight of one another when navigating in or near an area of restricted visibility.",
+        "(b) Every vessel shall proceed at a safe speed adapted to the prevailing circumstances and conditions of restricted visibility; a power-driven vessel shall have her engines ready for immediate manoeuvre.",
+        "(c) Every vessel shall have due regard to the prevailing circumstances and conditions of restricted visibility when complying with the Rules of Section I.",
+        "(d) A vessel which detects by radar alone the presence of another vessel shall determine if a close-quarters situation is developing and/or risk of collision exists; if so, she shall take avoiding action in ample time, provided that when such action consists of an alteration of course, so far as possible the following shall be avoided: (i) an alteration of course to port for a vessel forward of the beam, other than for a vessel being overtaken; (ii) an alteration of course towards a vessel abeam or abaft the beam.",
+        "(e) Except where it has been determined that a risk of collision does not exist, every vessel which hears apparently forward of her beam the fog signal of another vessel, or which cannot avoid a close-quarters situation with another vessel forward of her beam, shall reduce her speed to the minimum at which she can be kept on her course; she shall, if necessary, take all her way off and in any event navigate with extreme caution until danger of collision is over."
+      ],
+      "diagram": "restricted_visibility",
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "This Rule applies to vessels not in sight of one another when navigating in or near an area of restricted visibility."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "Every vessel shall proceed at a safe speed adapted to the prevailing circumstances and conditions of restricted visibility. A power-driven vessel shall have her engines ready for immediate maneuver."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "Every vessel shall have due regard to the prevailing circumstances and conditions of restricted visibility when complying with Rules 4-10."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "A vessel which detects by radar alone the presence of another vessel shall determine if a close-quarters situation is developing and/or risk of collision exists. If so, she shall take avoiding action in ample time, provided that when such action consists of an alteration in course, so far as possible the following shall be avoided:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "An alteration of course to port for a vessel forward of the beam, other than for a vessel being overtaken;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "An alteration of course toward a vessel abeam or abaft the beam."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "Except where it has been determined that a risk of collision does not exist, every vessel which hears apparently forward of her beam the fog signal of another vessel, or which cannot avoid a close-quarters situation with another vessel forward of her beam, shall reduce her speed to be the minimum at which she can be kept on her course. She shall if necessary take all her way off and in any event navigate with extreme caution until danger of collision is over."
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 20",
+      "title": "Application",
+      "example": "—",
+      "commentary": [
+        "(a) The Rules in this Part shall be complied with in all weathers.",
+        "(b) Lights shall be exhibited from sunset to sunrise, and during such time no other lights shall be exhibited except such lights as cannot be mistaken for the lights specified in these Rules, or do not impair their visibility or distinctive character, or interfere with the keeping of a proper look-out.",
+        "(c) The lights prescribed shall, if fitted, also be exhibited from sunrise to sunset in restricted visibility, and may be exhibited in all other circumstances when it is deemed necessary.",
+        "(d) The shapes prescribed shall be exhibited by day.",
+        "(e) The lights and shapes prescribed shall comply with the provisions of Annex I to these Regulations."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "Rules 20-31 shall be complied with in all weathers."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "The Rules concerning lights shall be complied with from sunset to sunrise, and during such times no other lights shall be exhibited, except such lights which cannot be mistaken for the lights specified in these Rules or do not impair their visibility or distinctive character, or interfere with the keeping of a proper look-out."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "The lights prescribed by these Rules shall, if carried, also be exhibited from sunrise to sunset in restricted visibility and may be exhibited in all other circumstances when it is deemed necessary."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "The Rules concerning shapes shall be complied with by day."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "The lights and shapes specified in these Rules shall comply with the provisions of Annex I of these Rules."
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 21",
+      "title": "Definitions",
+      "example": "An observer seeing only a green sidelight, with no white masthead lights visible, is most likely looking at a vessel crossing ahead from his own starboard side.",
+      "commentary": [
+        "Masthead light — a white light with an arc of visibility of 225°, from right ahead to 22.5° abaft the beam on either side.",
+        "Sidelights — a green light on the starboard side and a red light on the port side, each with an arc of visibility of 112.5°.",
+        "Sternlight — a white light with an arc of visibility of 135°, placed as nearly as practicable at the stern.",
+        "Towing light — a yellow light with the same characteristics as the sternlight.",
+        "All-round light — a light showing an unbroken arc of 360°.",
+        "Flashing light — a light flashing at regular intervals at a frequency of not less than 120 flashes per minute."
+      ],
+      "diagram": "light_sectors",
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "\"Masthead light\" means a white light placed over the fore and aft centerline of the vessel showing an unbroken light over an arc of the horizon of 225 degrees and so fixed as to show the light from right ahead to 22.5 degrees abaft the beam on either side of the vessel."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "\"Sidelights\" means a green light on the starboard side and a red light on the port side each showing an unbroken light over an arc of the horizon of 112.5 degrees and so fixed as to show the light from right ahead to 22.5 degrees abaft the beam on its respective side. In a vessel of less than 20 meters in length the sidelights may be combined in one lantern carried on the fore and aft centerline of the vessel."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "\"Sternlight\" means a white light placed as nearly as practicable at the stern showing an unbroken light over an arc of the horizon of 135 degrees and so fixed as to show the light 67.5 degrees from right aft on each side of the vessel."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "\"Towing light\" means a yellow light having the same characteristics as the \"sternlight\" defined in Rule 21(c)."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "\"All-round light\" means a light showing an unbroken light over an arc of the horizon of 360 degrees."
+        },
+        {
+          "label": "(f)",
+          "level": 0,
+          "text": "\"Flashing light\" means a light flashing at regular intervals at a frequency of 120 flashes or more per minute."
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 22",
+      "title": "Visibility of lights",
+      "example": "—",
+      "commentary": [
+        "Vessels of 50 metres or more in length: masthead light 6 miles; sidelights, sternlight, towing light and all-round light 3 miles.",
+        "Vessels of 12 to 50 metres: masthead light 5 miles (3 miles if less than 20 metres); sidelights, sternlight, towing light and all-round light 2 miles.",
+        "Vessels of less than 12 metres: masthead light 2 miles; sidelights 1 mile; sternlight, towing light and all-round light 2 miles."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "The lights prescribed in these Rules shall have an intensity as specified in Section 8 of Annex I to these Regulations so as to be visible at the following minimum ranges:"
+        },
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "In vessels of 50 meters or more in length:\n(i) a masthead light, 6 miles;\n(ii) a sidelight, 3 miles;\n(iii) a sternlight, 3 miles;\n(iv) a towing light, 3 miles; and\n(v) a white, red, green or yellow all-round light, 3 miles."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "In vessels of 12 meters or more in length but less than 50 meters in length:\n(i) a masthead light, 5 miles; except that where the length of the vessel is less than 20 meters, 3 miles;\n(ii) a sidelight, 2 miles;\n(iii) a sternlight, 2 miles;\n(iv) a towing light, 2 miles; and\n(v) a white, red, green or yellow all-round light, 2 miles."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "In vessels of less than 12 meters in length:\n(i) a masthead light, 2 miles;\n(ii) a sidelight, 1 mile;\n(iii) a sternlight, 2 miles;\n(iv) a towing light, 2 miles; and\n(v) a white, red, green or yellow all-round light, 2 miles."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "In inconspicuous, partly submerged vessels or objects being towed:\n(i) a white all-round light, 3 miles."
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 23",
+      "title": "Power-driven vessels underway",
+      "example": "—",
+      "commentary": [
+        "Shall exhibit a masthead light (a second masthead light abaft of and higher than the forward one, for vessels of 50 metres or more in length), sidelights, and a sternlight.",
+        "Air-cushion vessels operating in the non-displacement mode shall, in addition, exhibit an all-round flashing yellow light.",
+        "A power-driven vessel of less than 12 metres in length may, in lieu of the masthead light and sternlight, exhibit an all-round white light, while continuing to exhibit sidelights.",
+        "A power-driven vessel of less than 7 metres, whose maximum speed does not exceed 7 knots, may in lieu of the above exhibit an all-round white light and shall, if practicable, also exhibit sidelights."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A power-driven vessel underway shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "a masthead light forward;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "a second masthead light abaft of and higher than the forward one; except that a vessel of less than 50 meters in length shall not be obliged to exhibit such a light but may do so;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "sidelights; and,"
+        },
+        {
+          "label": "(iv)",
+          "level": 1,
+          "text": "a sternlight."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "An air-cushion vessel when operating in non-displacement mode shall, in addition to the lights prescribed in Rule 23(a), exhibit an all-round flashing yellow light."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A WIG craft only when taking off, landing and in flight near the surface shall, in addition to the lights prescribed in Rule 23(a), exhibit a high intensity all-round flashing red light."
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "A power-driven vessel of less than 12 meters in length may in lieu of the lights prescribed in Rule 23(a) exhibit an all-round white light and sidelights."
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "a power-driven vessel of less than 7 meters in length whose maximum speed does not exceed 7 knots may in lieu of the lights prescribed in Rule 23(a) exhibit an all-round white light and shall, if practicable, also exhibit sidelights."
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "the masthead light or all-round white light on a power-driven vessel of less than 12 meters in length may be displaced from the fore and aft center line of the vessel if center line fitting is not practicable, provided that the sidelights are combined in one lantern which shall be carried on the fore and aft center line of the vessel or located as nearly as practicable in the same fore and aft line as the masthead light or the all-round white light."
+        }
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_23_a.webp",
+          "caption": "Power-driven vessel underway, 50 metres or more in length"
+        },
+        {
+          "src": "img/colregs/NRHB_23_aii.webp",
+          "caption": "Power-driven vessel underway, less than 50 metres in length"
+        },
+        {
+          "src": "img/colregs/NRHB_23_b.webp",
+          "caption": "Air-cushion vessel operating in the non-displacement mode"
+        },
+        {
+          "src": "img/colregs/NRHB_23_di.webp",
+          "caption": "Power-driven vessel of less than 12 metres in length"
+        },
+        {
+          "src": "img/colregs/NRHB_23_Intl_dii.webp",
+          "caption": "Power-driven vessel of less than 7 metres whose maximum speed does not exceed 7 knots"
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 24",
+      "title": "Towing and pushing",
+      "example": "—",
+      "commentary": [
+        "A power-driven vessel towing shall exhibit, instead of the light prescribed for a single vessel: three masthead lights in a vertical line when the length of the tow exceeds 200 metres (otherwise two), plus sidelights, a sternlight, and a yellow towing light in a vertical line above the sternlight.",
+        "When the length of the tow exceeds 200 metres, both the towing vessel and the tow shall exhibit a diamond shape.",
+        "A vessel being pushed ahead (not part of a composite unit) shall exhibit masthead/sidelights as a towing vessel; a vessel being towed shall exhibit sidelights and a sternlight, and a diamond shape when the tow exceeds 200 metres.",
+        "A group of vessels being pushed or towed alongside (other than forming a composite unit) shall be lighted as a single vessel.",
+        "An inconspicuous, partly submerged vessel or object being towed shall exhibit all-round white lights at or near each end, sidelights if the breadth is 25 metres or more, and an additional all-round white light if the length exceeds 100 metres."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A power-driven vessel when towing astern shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "Instead of the light prescribed in Rule 23(a)(i) or Rule 23(a)(ii), two masthead lights in a vertical line. When the length of the tow, measuring from the stern of the towing vessel to the after end of the tow, exceeds 200 meters, three such lights in a vertical line;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "sidelights;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "a sternlight;"
+        },
+        {
+          "label": "(iv)",
+          "level": 1,
+          "text": "a towing light in a vertical line above the sternlight; and"
+        },
+        {
+          "label": "(v)",
+          "level": 1,
+          "text": "when the length of the tow exceeds 200 meters, a diamond shape where it can best be seen."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "When a pushing vessel and a vessel being pushed ahead are rigidly connected in a composite unit they shall be regarded as a power-driven vessel and exhibit the lights prescribed in Rule 23(a)."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A power-driven vessel when pushing ahead or towing alongside, except in the case of a composite unit, shall exhibit:\n(i) instead of the light prescribed in Rule 23(a)(i) or Rule 23(a)(ii), two masthead lights in a vertical line;\n(ii) sidelights;\n(iii) a sternlight."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "A power-driven vessel to which Rule 24(a) or (c) applies shall also comply with Rule 23(a)(ii)."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "A vessel or object being towed, other than those mentioned in Rule 24(g), shall exhibit:\n(i) sidelights;\n(ii) a sternlight;\n(iii) when the length of the tow exceeds 200 meters, a diamond shape where it can best be seen."
+        },
+        {
+          "label": "(f)",
+          "level": 0,
+          "text": "Provided that any number of vessels being towed alongside or pushed in a group shall be lighted as one vessel. (i) a vessel being pushed ahead, not being part of a composite unit, shall exhibit at the forward end, sidelights;\n(ii) a vessel being towed alongside shall exhibit a sternlight and at the forward end, sidelights."
+        },
+        {
+          "label": "(g)",
+          "level": 0,
+          "text": "An inconspicuous, partly submerged vessel or object, or combination of such vessels or objects being towed, shall exhibit:\n(ii) if it is 25 meters or more in breadth, two additional all-round white lights at or near the extremities of its breadth;\n(iii) if it exceeds 100 meters in length, additional all-round white lights between the lights prescribed in Rule 24(g)(i) and so that the distance between the lights shall not exceed 100 meters;\n(iv) a diamond shape at or near the aftermost extremity of the last vessel or object being towed; and if the length of the tow exceeds 200 meters an additional diamond shape where it can best be seen and located as far forward as is practicable."
+        },
+        {
+          "label": "(h)",
+          "level": 0,
+          "text": "Where from any sufficient cause it is impracticable for a vessel or object being towed to exhibit the lights or shapes prescribed in Rule 24(e) or (g), all possible measures shall be taken to light the vessel or object towed or at least to indicate the presence of such vessel or object."
+        },
+        {
+          "label": "(i)",
+          "level": 0,
+          "text": "Where from any sufficient cause it is impracticable for a vessel not normally engaged in towing operations to display the lights prescribed in Rule 24(a), Rule 24(c), such vessel shall not be required to exhibit those lights when engaged in towing another vessel in distress or otherwise in need of assistance. All possible measures shall be taken to indicate the nature of the relationship between the towing vessel and the vessel being towed as authorized by Rule 36, in particular by illuminating the towline."
+        }
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_24_a.webp",
+          "caption": "Towing astern: tow 200 metres or less, towing vessel less than 50 metres"
+        },
+        {
+          "src": "img/colregs/NRHB_24_av.webp",
+          "caption": "Towing astern: tow exceeds 200 metres — three masthead lights and a diamond"
+        },
+        {
+          "src": "img/colregs/NRHB_24_d.webp",
+          "caption": "Towing vessel showing the after masthead light under Rule 23(a)(ii)"
+        },
+        {
+          "src": "img/colregs/NRHB_24_eiii.webp",
+          "caption": "Vessel or object being towed: tow exceeds 200 metres"
+        },
+        {
+          "src": "img/colregs/NRHB_24_f.webp",
+          "caption": "Vessel being towed alongside"
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 25",
+      "title": "Sailing vessels underway and vessels under oars",
+      "example": "—",
+      "commentary": [
+        "A sailing vessel underway shall exhibit sidelights and a sternlight; a sailing vessel of less than 20 metres in length may combine these in a single combined lantern at or near the top of the mast.",
+        "A sailing vessel may in addition exhibit two all-round lights in a vertical line at the masthead (red over green), but not in combination with the combined lantern.",
+        "A vessel under oars may exhibit the lights prescribed for sailing vessels, or may instead have ready at hand an electric torch or lighted lantern showing a white light to be exhibited in sufficient time to prevent collision.",
+        "A sailing vessel proceeding under sail when also being propelled by machinery shall exhibit, forward, a black conical shape, apex downwards."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A sailing vessel underway shall exhibit:\n(i) sidelights;\n(ii) a sternlight."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "In a sailing vessel of less than 20 meters in length the lights prescribed in Rule 25(a) may be combined in one lantern carried at or near the top of the mast where it can best be seen."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A sailing vessel underway may, in addition to the lights prescribed in Rule 25(a), exhibit at or near the top of the mast, where they can best be seen, two all-round lights in a vertical line, the upper being red and the lower green, but these lights shall not be exhibited in conjunction with the combined lantern permitted by Rule 25(b)."
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "A sailing vessel of less than 7 meters in length shall, if practicable, exhibit the lights prescribed in Rule 25(a) or (b), but if she does not, she shall have ready at hand an electric torch or lighted lantern showing a white light which shall be exhibited in sufficient time to prevent collision."
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "A vessel under oars may exhibit the lights prescribed in this rule for sailing vessels, but if she does not, she shall have ready at hand an electric torch or lighted lantern showing a white light which shall be exhibited in sufficient time to prevent collision."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "A vessel proceeding under sail when also being propelled by machinery shall exhibit forward where it can best be seen a conical shape, apex downwards."
+        }
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_25_a.webp",
+          "caption": "Sailing vessel underway"
+        },
+        {
+          "src": "img/colregs/NRHB_25_b.webp",
+          "caption": "Sailing vessel less than 20 metres — combined lantern at the masthead"
+        },
+        {
+          "src": "img/colregs/NRHB_25_c.webp",
+          "caption": "Sailing vessel underway with the optional red-over-green lights"
+        },
+        {
+          "src": "img/colregs/NRHB_25_d.webp",
+          "caption": "Sailing vessel of less than 7 metres"
+        },
+        {
+          "src": "img/colregs/NRHB_25_dii.webp",
+          "caption": "Vessel under oars"
+        },
+        {
+          "src": "img/colregs/NRHB_25_e.webp",
+          "caption": "Vessel under sail and machinery — cone apex downwards"
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 26",
+      "title": "Fishing vessels",
+      "example": "—",
+      "commentary": [
+        "Trawling: two all-round lights in a vertical line (green over white); by day, two cones with apexes together in a vertical line (or a basket, for vessels less than 20 metres in length).",
+        "Fishing other than trawling: two all-round lights (red over white), the same day shape; if outlying gear extends more than 150 metres, an additional all-round white light or a cone apex upwards in the direction of the gear.",
+        "When making way through the water, sidelights and a sternlight shall additionally be exhibited.",
+        "Vessels engaged in fishing in close proximity to one another may exhibit additional signals as described in Annex II."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A vessel engaged in fishing, whether underway or at anchor, shall exhibit only the lights and shapes prescribed in this Rule."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A vessel when engaged in trawling, by which is meant the dragging through the water of a dredge net or other apparatus used as a fishing appliance, shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "two all-round lights in a vertical line, the upper being green and the lower white, or a shape consisting of two cones with their apexes together in a vertical line one above the other;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "a masthead light abaft of and higher than the all-round green light; a vessel of less than 50 meters in length shall not be obliged to exhibit such a light but may do so;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "when making way through the water, in addition to the lights prescribed in this paragraph, sidelights and a sternlight."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A vessel engaged in fishing, other than trawling, shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "two all-round lights in a vertical line, the upper being red and the lower white, or a shape consisting of two cones with their apexes together in a vertical line one above the other;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "when there is outlying gear extending more than 150 meters horizontally from the vessel, an all-round white light or a cone apex upwards in the direction of the gear."
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "when making way through the water, in addition to the lights prescribed in this paragraph, sidelights and a sternlight."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "The additional signals described in Annex II to these Regulations apply to a vessel engaged in fishing in close proximity to other vessels engaged in fishing."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "A vessel when not engaged in fishing shall not exhibit the lights or shapes prescribed in this Rule, but only those prescribed for a vessel of her length."
+        }
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_26_b.webp",
+          "caption": "Vessel engaged in trawling, not making way, more than 50 metres"
+        },
+        {
+          "src": "img/colregs/NRHB_26_biii.webp",
+          "caption": "Vessel engaged in trawling, making way, less than 50 metres"
+        },
+        {
+          "src": "img/colregs/NRHB_26_ciii.webp",
+          "caption": "Vessel engaged in fishing other than trawling, making way"
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 27",
+      "title": "Vessels not under command or restricted in their ability to manoeuvre",
+      "example": "—",
+      "commentary": [
+        "Not under command: two all-round red lights in a vertical line; when making way, additionally sidelights and a sternlight; by day, two black balls.",
+        "Restricted in ability to manoeuvre (other than mine clearance): three all-round lights, red-white-red, in a vertical line; when underway, additionally masthead light(s)/all-round white light, sidelights and a sternlight; by day, a ball-diamond-ball shape; at anchor, additionally anchor lights/shapes.",
+        "Dredging or underwater operations: as above, plus, if an obstruction exists, two red lights/balls in a vertical line indicating the side on which the obstruction lies, and two green lights/diamonds indicating the side on which another vessel may pass.",
+        "Diving operations (small vessels): three lights red-white-red plus a rigid replica of the International Code flag \"A\", not less than 1 metre in height.",
+        "Mine clearance: the lights of a power-driven vessel plus three all-round green lights (or three balls) at or near the foremast head and at the extremities of the fore yard; other vessels shall keep at least 1000 metres clear.",
+        "Vessels of less than 12 metres in length, except those engaged in diving operations, are exempted from the requirements of this Rule."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A vessel not under command shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "two all-round red lights in a vertical line where they can best be seen;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "two balls or similar shapes in a vertical line where they can best be seen;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "when making way through the water, in addition to the lights prescribed in this paragraph, sidelights and a sternlight."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A vessel restricted in her ability to maneuver, except a vessel engaged in mine clearance operations, shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "three all-round lights in a vertical line where they can best be seen. The highest and lowest of these lights shall be red and the middle light shall be white;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "three shapes in a vertical line where they can best be seen. The highest and lowest of these shapes shall be balls and the middle one a diamond."
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "when making way through the water, a masthead light(s), sidelights and a sternlight in addition to the lights prescribed in Rule 27(b)(i);"
+        },
+        {
+          "label": "(iv)",
+          "level": 1,
+          "text": "when at anchor, in addition to the lights or shapes prescribed in Rule 27(b)(i) and (ii), the light, lights, or shapes prescribed in Rule 30."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A power-driven vessel engaged in a towing operation such as severely restricts the towing vessel and her tow in their ability to deviate from their course shall, in addition to the lights or shape prescribed in Rule 24(a), exhibit the lights or shapes prescribed in subparagraphs (b)(i) and (ii) of this Rule."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "A vessel engaged in dredging or underwater operations, when restricted in her ability to maneuver, shall exhibit the lights and shapes prescribed in Rules 27(b)(i), (ii) and (iii) and shall in addition when an obstruction exists, exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "two all-round red lights or two balls in a vertical line to indicate the side on which the obstruction exists;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "two all-round green lights or two diamonds in a vertical line to indicate the side on which another vessel may pass; and"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "when at anchor, the lights or shapes prescribed in this paragraph instead of the lights or shapes prescribed in Rule 30."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "Whenever the size of a vessel engaged in diving operations makes it impracticable to exhibit all lights and shapes prescribed in Rule 27(d), the following shall be exhibited:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "Three all-round lights in a vertical line where they can best be seen. The highest and lowest of these lights shall be red and the middle light shall be white;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "a rigid replica of the International Code flag \"A\" not less than 1 meter in height. Measures shall be taken to ensure its all-round visibility."
+        },
+        {
+          "label": "(f)",
+          "level": 0,
+          "text": "A vessel engaged in mine clearance operations shall, in addition to the lights prescribed for a power-driven vessel in Rule 23(a) or to the lights or shape prescribed for a vessel at anchor in Rule 30 as appropriate, exhibit three all-round green lights or three balls. One of these lights or shapes shall be exhibited near the foremast head and one at each end of the fore yard. These lights or shapes indicate that it is dangerous for another vessel to approach within 1000 meters of the mine clearance vessel."
+        },
+        {
+          "label": "(g)",
+          "level": 0,
+          "text": "Vessels of less than 12 meters in length, except those engaged in diving operations, shall not be required to exhibit the lights and shapes prescribed in this Rule."
+        },
+        {
+          "label": "(h)",
+          "level": 0,
+          "text": "The signals prescribed in this Rule are not signals of vessels in distress and requiring assistance. Such signals are contained in Annex IV to these Rules."
+        }
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_27_a.webp",
+          "caption": "Vessel not under command, not making way"
+        },
+        {
+          "src": "img/colregs/NRHB_27_aiii.webp",
+          "caption": "Vessel not under command, making way"
+        },
+        {
+          "src": "img/colregs/NRHB_27_biii.webp",
+          "caption": "Vessel restricted in her ability to manoeuvre, making way"
+        },
+        {
+          "src": "img/colregs/NRHB_27_biv.webp",
+          "caption": "Vessel restricted in her ability to manoeuvre, at anchor"
+        },
+        {
+          "src": "img/colregs/NRHB_27_c.webp",
+          "caption": "Towing operation severely restricting the ability to deviate from course"
+        },
+        {
+          "src": "img/colregs/NRHB_27_d.webp",
+          "caption": "Dredging, not making way; obstruction on the starboard side"
+        },
+        {
+          "src": "img/colregs/NRHB_27_diii.webp",
+          "caption": "Dredging, making way; obstruction on the starboard side"
+        },
+        {
+          "src": "img/colregs/NRHB_27_eii.webp",
+          "caption": "Small vessel engaged in diving operations by day — flag \"A\""
+        },
+        {
+          "src": "img/colregs/NRHB_27_f.webp",
+          "caption": "Vessel engaged in mine clearance operations"
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 28",
+      "title": "Vessels constrained by their draught",
+      "example": "—",
+      "commentary": [
+        "A vessel constrained by her draught may, in addition to the lights prescribed for power-driven vessels, exhibit three all-round red lights in a vertical line, or a cylinder, in the most visible position."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "A vessel constrained by her draft may, in addition to the lights prescribed for power-driven vessels in Rule 23(a), exhibit where they can best be seen three all-round red lights in a vertical line, or a cylinder."
+        }
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_28.webp",
+          "caption": "Vessel constrained by her draught, underway"
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 29",
+      "title": "Pilot vessels",
+      "example": "—",
+      "commentary": [
+        "A vessel engaged on pilotage duty shall exhibit two all-round lights at or near the masthead (white over red); when underway, additionally sidelights and a sternlight; at anchor, additionally anchor lights.",
+        "A pilot vessel not on pilotage duty shall exhibit the lights or shapes prescribed for a vessel of her type and size."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A vessel engaged on pilotage duty shall exhibit:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "at or near the masthead, two all-round lights in a vertical line, the upper being white and the lower red;"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "when underway, in addition, sidelights and a sternlight;"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "when at anchor, in addition to the lights prescribed in Rule 29(a)(i), the light, lights, or shape prescribed in Rule 30 for vessels at anchor."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A pilot vessel when not engaged on pilotage duty shall exhibit the lights or shapes prescribed for a similar vessel of her length."
+        }
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_29_a.webp",
+          "caption": "Vessel engaged on pilotage duty, underway"
+        },
+        {
+          "src": "img/colregs/NRHB_29_aiii.webp",
+          "caption": "Vessel engaged on pilotage duty, at anchor"
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 30",
+      "title": "Anchored vessels and vessels aground",
+      "example": "—",
+      "commentary": [
+        "At anchor: an all-round white light forward (vessels 50 metres or more in length shall additionally exhibit a lower all-round white light aft); by day, a black ball.",
+        "Vessels of 100 metres or more in length may use available working or equivalent lights to illuminate their decks.",
+        "Aground: anchor lights/shapes plus two all-round red lights in a vertical line; by day, three black balls.",
+        "A vessel of less than 7 metres at anchor outside a narrow channel, fairway or area of congested traffic need not exhibit the above lights/shapes; a vessel of less than 12 metres aground in the same circumstances need not exhibit the additional aground signals."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A vessel at anchor shall exhibit where it can best be seen:\n(i) in the fore part, an all-round white light or one ball;\n(ii) at or near the stern and at a lower level than the light prescribed in Rule 30(a)(i), an all-round white light."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A vessel of less than 50 meters in length may exhibit an all-round white light where it can best be seen instead of the lights prescribed in Rule 30(a)."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A vessel at anchor may, and a vessel of 100 meters and more in length shall, also use the available working or equivalent lights to illuminate her decks."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "A vessel aground shall exhibit the lights prescribed in Rule 30(a) or (b) and in addition, if practicable, where they can best be seen:\n(i) two all-round red lights in a vertical line;\n(ii) three balls in a vertical line."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "A vessel of less than 7 meters in length, when at anchor not in or near a narrow channel, fairway or where other vessels normally navigate, shall not be required to exhibit the lights or shape prescribed in Rule 30(a) and (b)."
+        },
+        {
+          "label": "(f)",
+          "level": 0,
+          "text": "A vessel of less than 12 meters in length, when aground, shall not be required to exhibit the lights or shapes prescribed in Rule 30(d)(i) and (ii)."
+        }
+      ],
+      "figures": [
+        {
+          "src": "img/colregs/NRHB_30_d.webp",
+          "caption": "Vessel at anchor with deck illumination"
+        },
+        {
+          "src": "img/colregs/NRHB_30_a.webp",
+          "caption": "Vessel at anchor, less than 50 metres"
+        },
+        {
+          "src": "img/colregs/NRHB_30_dii.webp",
+          "caption": "Vessel aground"
+        }
+      ]
+    },
+    {
+      "part": "Part C — Lights and shapes (Rules 20-31)",
+      "number": "Rule 31",
+      "title": "Seaplanes",
+      "example": "—",
+      "commentary": [
+        "A seaplane (or a hydrofoil craft) unable, owing to her construction, to exhibit lights and shapes of the character and in the position prescribed shall exhibit lights and shapes as closely resembling those requirements in characteristics and position as is possible."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "Where it is impracticable for a seaplane or a WIG craft to exhibit lights or shapes of the characteristics or in the positions prescribed in Rules 20-31 she shall exhibit lights and shapes as closely similar in characteristics and position as is possible."
+        }
+      ]
+    },
+    {
+      "part": "Part D — Sound and light signals (Rules 32-37)",
+      "number": "Rule 32",
+      "title": "Definitions",
+      "example": "—",
+      "commentary": [
+        "\"Whistle\" means any sound-signalling appliance capable of producing the prescribed blasts.",
+        "\"Short blast\" means a blast of about one second's duration.",
+        "\"Prolonged blast\" means a blast of from four to six seconds' duration."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "The word \"whistle\" means any sound signaling appliance capable of producing the prescribed blasts and which complies with the specifications in Annex III to these Rules."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "The term \"short blast\" means a blast of about one second's duration."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "The term \"prolonged blast\" means a blast of from four to six seconds duration."
+        }
+      ]
+    },
+    {
+      "part": "Part D — Sound and light signals (Rules 32-37)",
+      "number": "Rule 33",
+      "title": "Equipment for sound signals",
+      "example": "—",
+      "commentary": [
+        "Vessels of 12 metres or more in length shall be provided with a whistle and a bell (vessels of 100 metres or more in length shall additionally be provided with a gong, the tone and sound of which cannot be confused with that of the bell); characteristics as specified in Annex III.",
+        "A vessel of less than 12 metres in length is not obliged to carry these sound signalling appliances but, if she does not, shall be provided with some other means of making an efficient sound signal."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A vessel of 12 meters or more in length shall be provided with a whistle, a vessel of 20 meters or more in length shall be provided with a bell in addition to a whistle, and a vessel of 100 meters or more in length shall, in addition be provided with a gong, the tone and sound of which cannot be confused with that of the bell. The whistle, bell and gong shall comply with the specifications in Annex III to these Regulations. The bell or gong or both may be replaced by other equipment having the same respective sound characteristics, provided that manual sounding of the prescribed signals shall always be possible."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A vessel of less than 12 meters in length shall not be obliged to carry the sound signaling appliances prescribed in Rule 33(a) but if she does not, she shall be provided with some other means of making an efficient signal."
+        }
+      ]
+    },
+    {
+      "part": "Part D — Sound and light signals (Rules 32-37)",
+      "number": "Rule 34",
+      "title": "Manoeuvring and warning signals",
+      "example": "A vessel hears one short blast from an approaching vessel — this means the approaching vessel is altering her course to starboard.",
+      "commentary": [
+        "One short blast — \"I am altering my course to starboard.\"",
+        "Two short blasts — \"I am altering my course to port.\"",
+        "Three short blasts — \"I am operating astern propulsion.\"",
+        "In a narrow channel, when overtaking: two prolonged blasts followed by one short blast — \"I intend to overtake you on your starboard side\"; two prolonged blasts followed by two short blasts — \"I intend to overtake you on your port side.\"",
+        "Agreement by the vessel about to be overtaken: one prolonged, one short, one prolonged, one short blast in that order; if in doubt, the doubt/danger signal shall be sounded.",
+        "The doubt/danger signal — not less than five short and rapid blasts, which may be supplemented by a flashing light signal.",
+        "On approaching a bend or an area of a channel or fairway where other vessels may be obscured — one prolonged blast; this shall be answered with a prolonged blast by any approaching vessel that may be within hearing."
+      ],
+      "official": [
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "When vessels are in sight of one another, a power-driven vessel underway, when maneuvering as authorized or required by these Rules, shall indicate that maneuver by the following signals on her whistle:\n– One short blast to mean “I am altering my course to starboard”\n– Two short blasts to mean “I am altering my course to port”\n– Three short blasts to mean “I am operating astern propulsion”"
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "Any vessel may supplement the whistle signals prescribed in Rule 34(a) by light signals, repeated as appropriate, while the maneuver is being carried out:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "these signals shall have the following significance:\n– One flash to mean “I am altering my course to starboard”\n– Two flashes to mean “I am altering my course to port”\n– Three flashes to mean “I am operating astern propulsion”"
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "the duration of each flash shall be about one second, the interval between flashes shall be about one second, and the interval between successive signals shall not be less than ten seconds"
+        },
+        {
+          "label": "(iii)",
+          "level": 1,
+          "text": "the light used for this signal shall, if fitted, be an all-round white, visible at a minimum range of 5 miles, and shall comply with the provisions of Annex I to these Regulations."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "When in sight of one another in a narrow channel or fairway:"
+        },
+        {
+          "label": "(i)",
+          "level": 1,
+          "text": "a vessel intending to overtake another shall in compliance with Rule 9(e)(i) indicate her intention by the following signals on her whistle: –two prolonged blasts followed by one short blast to mean \"I intend to overtake you on your starboard side\" –two prolonged blasts followed by two short blasts to mean \"I intend to overtake you on your port side\""
+        },
+        {
+          "label": "(ii)",
+          "level": 1,
+          "text": "the vessel about to be overtaken when acting in accordance with Rule 9(e)(i) shall indicate her agreement by the following signal on her whistle: –one prolonged, one short, one prolonged and one short blast, in that order."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "When vessels in sight of one another are approaching each other and from any cause either vessel fails to understand the intentions or actions of the other, or is in doubt whether sufficient action is being taken by the other to avoid collision, the vessel in doubt shall immediately indicate such doubt by giving at least five short and rapid blasts on the whistle. Such signal may be supplemented by at least five short and rapid flashes."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "A vessel nearing a bend or an area of a channel or fairway where other vessels may be obscured by an intervening obstruction shall sound one prolonged blast. This signal shall be answered with a prolonged blast by any approaching vessel that may be within hearing around the bend or behind the intervening obstruction."
+        },
+        {
+          "label": "(f)",
+          "level": 0,
+          "text": "If whistles are fitted on a vessel at a distance apart of more than 100 meters, one whistle only shall be used for giving maneuvering and warning signals."
+        }
+      ]
+    },
+    {
+      "part": "Part D — Sound and light signals (Rules 32-37)",
+      "number": "Rule 35",
+      "title": "Sound signals in restricted visibility",
+      "example": "In fog, one long blast is heard every couple of minutes — this is most likely a power-driven vessel making way through the water.",
+      "commentary": [
+        "A power-driven vessel making way through the water: one prolonged blast, at intervals of not more than 2 minutes.",
+        "A power-driven vessel underway but stopped, making no way through the water: two prolonged blasts in succession with an interval of about 2 seconds between them, repeated at intervals of not more than 2 minutes.",
+        "A vessel not under command, a vessel restricted in her ability to manoeuvre, a vessel constrained by her draught, a sailing vessel, a vessel engaged in fishing, and a vessel towing or pushing another vessel: one prolonged blast followed by two short blasts, at intervals of not more than 2 minutes.",
+        "A vessel being towed, if manned (or, if more than one vessel is towed, only the last vessel): one prolonged blast followed by three short blasts, sounded immediately after the signal made by the towing vessel.",
+        "At anchor: rapid ringing of the bell for about 5 seconds at intervals of not more than 1 minute (vessels of 100 metres or more shall additionally sound the gong); may be supplemented by a short-prolonged-short signal to give warning of her position.",
+        "Aground: the anchor signal plus three separate and distinct strokes on the bell immediately before and after the rapid ringing of the bell.",
+        "Vessels of less than 12 metres in length are not obliged to give the above signals, but, if they do not, shall make some other efficient sound signal at intervals of not more than 2 minutes."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "In or near an area of restricted visibility, whether by day or night the signals prescribed in this Rule shall be used as follows:"
+        },
+        {
+          "label": "(a)",
+          "level": 0,
+          "text": "A power-driven vessel making way through the water shall sound at intervals of not more than 2 minutes one prolonged blast."
+        },
+        {
+          "label": "(b)",
+          "level": 0,
+          "text": "A power-driven vessel underway but stopped and making no way through the water shall sound at intervals of no more than 2 minutes two prolonged blasts in succession with an interval of about 2 seconds between them."
+        },
+        {
+          "label": "(c)",
+          "level": 0,
+          "text": "A vessel not under command, a vessel restricted in her ability to maneuver, a vessel constrained by her draft, a sailing vessel, a vessel engaged in fishing and a vessel engaged in towing or pushing another vessel shall, instead of the signals prescribed in Rule 35(a) or (b), sound at intervals of not more than 2 minutes three blasts in succession, namely one prolonged followed by two short blasts."
+        },
+        {
+          "label": "(d)",
+          "level": 0,
+          "text": "A vessel engaged in fishing, when at anchor, and a vessel restricted in her ability to maneuver when carrying out her work at anchor, shall instead of the signals prescribed in Rule 35(g) sound the signal prescribed in Rule 35(c)."
+        },
+        {
+          "label": "(e)",
+          "level": 0,
+          "text": "A vessel towed or if more than one vessel is towed the last vessel of the tow, if manned, shall at intervals of not more than 2 minutes sound four blasts in succession, namely one prolonged followed by three short blasts. When practicable, this signal shall be made immediately after the signal made by the towing vessel."
+        },
+        {
+          "label": "(f)",
+          "level": 0,
+          "text": "When a pushing vessel and a vessel being pushed ahead are rigidly connected in a composite unit they shall be regarded as a power-driven vessel and shall give the signals prescribed in Rule 35(a) or (b)."
+        },
+        {
+          "label": "(g)",
+          "level": 0,
+          "text": "A vessel at anchor shall at intervals of not more than 1 minute ring the bell rapidly for about 5 seconds. In a vessel 100 meters or more in length the bell shall be sounded in the forepart of the vessel and immediately after the ringing of the bell the gong shall be sounded rapidly for about 5 seconds in the after part of the vessel. A vessel at anchor may in addition sound three blasts in succession, namely one short, one prolonged and one short blast, to give warning of her position and of the possibility of collision to an approaching vessel."
+        },
+        {
+          "label": "(h)",
+          "level": 0,
+          "text": "A vessel aground shall give the bell signal and if required the gong signal prescribed in Rule 35(g) and shall, in addition, give three separate and distinct strokes on the bell immediately before and after the rapid ringing of the bell. A vessel aground may in addition sound an appropriate whistle signal."
+        },
+        {
+          "label": "(i)",
+          "level": 0,
+          "text": "A vessel of 12 meters or more but less than 20 meters in length shall not be obliged to give the bell signals prescribed in Rule 35(g) and (h). However, if she does not, she shall make some other efficient sound signal at intervals of not more than 2 minutes."
+        },
+        {
+          "label": "(j)",
+          "level": 0,
+          "text": "A vessel of less than 12 meters in length shall not be obliged to give the above mentioned signals but, if she does not, shall make some other efficient sound signal at intervals of not more than 2 minutes."
+        },
+        {
+          "label": "(k)",
+          "level": 0,
+          "text": "A pilot vessel when engaged on pilotage duty may, in addition to the signals prescribed in Rule 35(a), (b) or (g), sound an identity signal consisting of four short blasts."
+        }
+      ]
+    },
+    {
+      "part": "Part D — Sound and light signals (Rules 32-37)",
+      "number": "Rule 36",
+      "title": "Signals to attract attention",
+      "example": "—",
+      "commentary": [
+        "Any vessel may use light or sound signals to attract the attention of another vessel, provided such signals cannot be mistaken for any signal prescribed elsewhere in these Rules, or may direct the beam of her searchlight in the direction of danger, in such a way as not to embarrass any vessel."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "If necessary to attract the attention of another vessel, any vessel may make light or sound signals that cannot be mistaken for any signal authorized elsewhere in these Rules, or may direct the beam of her searchlight in the direction of the danger, in such a way as not to embarrass any vessel. Any light to attract the attention of another vessel shall be such that it cannot be mistaken for any aid to navigation. For the purpose of this Rule the use of high intensity intermittent or revolving lights, such as strobe lights, shall be avoided."
+        }
+      ]
+    },
+    {
+      "part": "Part D — Sound and light signals (Rules 32-37)",
+      "number": "Rule 37",
+      "title": "Distress signals",
+      "example": "—",
+      "commentary": [
+        "A vessel in distress and requiring assistance shall use the signals listed in Annex IV to COLREGs 1972 — see the separate topic \"Distress Signals\" (in preparation)."
+      ],
+      "official": [
+        {
+          "label": "",
+          "level": 0,
+          "text": "When a vessel is in distress and requires assistance she shall use or exhibit the signals described in Annex IV to these Rules."
+        }
+      ]
+    },
+    {
+      "part": "Part E — Exemptions (Rule 38)",
+      "number": "Rule 38",
+      "title": "Exemptions",
+      "example": "—",
+      "commentary": [
+        "Applies to vessels whose keels were laid before the entry into force of these Rules, provided they comply with the requirements of the International Regulations for Preventing Collisions at Sea, 1960.",
+        "For 4 years: exemption from the requirement for lights to have the prescribed visibility ranges, and from compliance with the prescribed colour specifications for lights.",
+        "Permanent exemption: no requirement to reposition lights as a result of conversion to metric units; no requirement to reposition masthead lights on vessels of less than 150 metres in length; no requirement to reposition all-round lights.",
+        "For 9 years: exemption from repositioning masthead lights on vessels of 150 metres or more in length, from repositioning masthead/sidelights to the new standards, and from fitting the prescribed sound-signalling appliances."
+      ]
+    },
+    {
+      "part": "Part F — Verification of compliance with the provisions of the Convention (Rules 39-41)",
+      "number": "Rule 39",
+      "title": "Definitions",
+      "commentary": [
+        "Part F was added by the 2013 amendments (resolution A.1085(28), in force since 1 January 2016).",
+        "It is addressed to States Parties, not to the officer of the watch: it introduces mandatory audits of how each State implements COLREGs (IMO Member State Audit Scheme, III Code).",
+        "These rules are not applied on the bridge, but are useful for examinations and for understanding the structure of the Convention."
+      ]
+    },
+    {
+      "part": "Part F — Verification of compliance with the provisions of the Convention (Rules 39-41)",
+      "number": "Rule 40",
+      "title": "Application",
+      "commentary": []
+    },
+    {
+      "part": "Part F — Verification of compliance with the provisions of the Convention (Rules 39-41)",
+      "number": "Rule 41",
+      "title": "Verification of compliance",
+      "commentary": []
+    },
+    {
+      "part": "Annexes to COLREGs 1972",
+      "number": "Annex I",
+      "title": "Positioning and technical details of lights and shapes",
+      "example": "—",
+      "commentary": [
+        "Minimum height of the masthead light: vessels less than 20 metres — not less than 2.5 metres above the gunwale; vessels 20 metres or more — not less than 6 metres above the hull (or equal to the vessel's breadth, if greater, but need not exceed 12 metres).",
+        "Where two masthead lights are carried, the after one shall be at least 4.5 metres higher than the forward one.",
+        "Sidelights on vessels of 20 metres or more shall be placed not higher than three-quarters of the height of the forward masthead light; on vessels of less than 20 metres with a combined lantern, at least 1 metre lower than the masthead light.",
+        "Day shapes (black): a ball — diameter not less than 0.6 metres; a cone — base diameter not less than 0.6 metres and height equal to the diameter; a cylinder — diameter not less than 0.6 metres and height twice the diameter; a diamond — two cones sharing a common base. Vertical separation between shapes — at least 1.5 metres."
+      ]
+    },
+    {
+      "part": "Annexes to COLREGs 1972",
+      "number": "Annex II",
+      "title": "Additional signals for fishing vessels fishing in close proximity",
+      "example": "—",
+      "commentary": [
+        "Purse seine fishing: two yellow lights in a vertical line, flashing alternately every second with equal light and occultation duration — shown only when the vessel's manoeuvrability is restricted by her gear.",
+        "Trawling in pairs: at night, a searchlight beam directed forward towards the partner vessel; while shooting the net, white lights; while hauling the net, a white light over a red light; when the net has come fast upon an obstruction, two red lights (all steady, not flashing)."
+      ]
+    },
+    {
+      "part": "Annexes to COLREGs 1972",
+      "number": "Annex III",
+      "title": "Technical details of sound-signalling appliances",
+      "example": "—",
+      "commentary": [
+        "Whistle frequency range: 70-200 Hz (vessels 200 metres or more), 130-350 Hz (75-199 metres), 250-700 Hz (less than 75 metres).",
+        "Whistle sound pressure level at 1 metre: not less than 143 dB (200 m+), 138 dB (75-199 m), 130 dB (20-74 m); for vessels less than 20 m — by three 1/3-octave bands: 120 dB (180-450 Hz), 115 dB (450-800 Hz), 111 dB (800-2100 Hz).",
+        "Bell: mouth diameter not less than 300 mm for vessels 20 m and over (no separate diameter is specified for vessels under 20 m); clapper mass not less than 3% of the mass of the bell; corrosion-resistant material, clear tone.",
+        "Bell and gong (or other device with similar sound characteristics): sound pressure level at 1 metre — not less than 110 dB."
+      ]
+    },
+    {
+      "part": "Annexes to COLREGs 1972",
+      "number": "Annex IV",
+      "title": "Distress signals",
+      "example": "—",
+      "commentary": [
+        "A gun or other explosive signal fired at intervals of about one minute.",
+        "A continuous sounding with any fog-signalling apparatus.",
+        "Rockets or shells throwing red stars, fired one at a time at short intervals.",
+        "The Morse code signal SOS (···---···) by any signalling method.",
+        "The spoken word \"Mayday\" over radiotelephony.",
+        "The International Code Signal of distress indicated by \"NC\".",
+        "A signal consisting of a square flag having above or below it a ball or anything resembling a ball.",
+        "Flames on the vessel (as from a burning tar barrel, oil barrel, etc.).",
+        "A rocket parachute flare or a hand flare showing a red light.",
+        "A smoke signal giving off orange-coloured smoke.",
+        "Slowly and repeatedly raising and lowering arms outstretched to each side.",
+        "The radiotelegraph or radiotelephone alarm signal.",
+        "Signals transmitted by emergency position-indicating radio beacons (including satellite EPIRBs).",
+        "Other approved signals adopted by the Organization (IMO), including radiocommunication systems."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2516 @@
+/**
+ * Визуальный язык PWA-версии ShipHelper.
+ *
+ * Почему тёмная тема — не только "модно": на мостике ночью используют
+ * приглушённое освещение (яркий белый экран сбивает ночное зрение
+ * вахтенного), так что тёмный интерфейс здесь функционально уместен для
+ * реального сценария использования, а не только эстетический выбор.
+ *
+ * Палитра: глубокий тёмно-синий фон (не чёрный — у чёрного нет "глубины"
+ * и он жёстче для глаз), электрик-циан как акцент (ассоциация с
+ * навигационными огнями/экранами радаров), с индиго во вторых градиентах.
+ * Крупная типографика на результатах расчётов — то, что человек ищет
+ * взглядом в первую очередь, должно быть визуально доминирующим.
+ */
+
+@import url('../vendor/fonts/fonts.css');
+
+:root {
+  --bg: #0a0f1c;
+  --bg-elevated: #0f1526;
+  --surface: #131b30;
+  --surface-hover: #1a2340;
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --surface-border-strong: rgba(255, 255, 255, 0.14);
+
+  --text: #f2f5fc;
+  --text-secondary: #8b96b8;
+  --text-tertiary: #5b6584;
+
+  --accent: #22d3ee;
+  --accent-strong: #06b6d4;
+  --accent-soft: rgba(34, 211, 238, 0.12);
+  --accent-2: #6366f1;
+
+  --success: #34d399;
+  --warning: #f5b942;
+  --warning-soft: rgba(245, 185, 66, 0.1);
+
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 0 1px rgba(34, 211, 238, 0.25), 0 8px 30px rgba(34, 211, 238, 0.15);
+
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Моушн-токены — по запросу пользователя ("более плавные нажатия на
+     кнопки, более футуристично, плавные переходы, как будто мы
+     работаем с Джарвисом"). Единая, чуть пружинистая кривая для всех
+     интерактивных элементов вместо разрозненных "ease"/"all 0.15s
+     ease" по всему файлу — так переходы ощущаются как один
+     согласованный язык, а не набор случайных таймингов. */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 0.18s;
+  --dur-normal: 0.28s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
+  }
+}
+
+@keyframes sh-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sh-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.35); }
+  50% { box-shadow: 0 0 0 6px rgba(34, 211, 238, 0); }
+}
+
+/* Применяется JS-ом при показе калькулятора/группы/раздела теории —
+   не подменяет [hidden] (тот по-прежнему полностью убирает элемент из
+   потока, ничего в существующей логике видимости не меняется), а
+   добавляется ПОВЕРХ уже показанного элемента как чисто визуальный
+   штрих. */
+.sh-fade-in {
+  animation: sh-fade-in var(--dur-normal) var(--ease-smooth);
+}
+
+/* Светлая тема — по прямому запросу пользователя ("темная тема, но
+   тогда можно добавить и светлую, для светлого времени суток"). Тёмная
+   остаётся значением по умолчанию (обоснование — ночное зрение на
+   мостике, см. комментарий вверху файла), светлая включается вручную
+   через переключатель (js/app.js::setupThemeToggle) и запоминается в
+   localStorage на этом устройстве. */
+:root[data-theme="light"] {
+  /* Палитра, раунд 3 (2026-09-30): "жемчуг/серебро" из прошлого раунда
+     (#e6e9f1) на реальном экране пользователя всё ещё читался как
+     "белый фон" ("белый фон меня по-прежнему не устраивает") — разница
+     с прошлым #ffffff была слишком тонкой, чтобы её заметить без
+     пипетки. Фон страницы (--bg) заметно затемнён до дымчато-стального
+     серо-синего — теперь ощутимо отличается от карточек (--surface
+     оставлен светлым, почти жемчужным), что и даёт контраст и "глубину"
+     вместо ровного светлого листа. Карточки на этом фоне физически
+     светлее страницы вокруг них — как лист бумаги на столе, а не самим
+     столом. */
+  --bg: #d6dbe6;
+  --bg-elevated: #eef0f6;
+  --surface: #f8f9fc;
+  --surface-hover: #eceef5;
+  --surface-border: rgba(16, 22, 42, 0.11);
+  --surface-border-strong: rgba(16, 22, 42, 0.22);
+
+  --text: #10162a;
+  --text-secondary: #4b5573;
+  --text-tertiary: #838db0;
+
+  --accent: #0891b2;
+  --accent-strong: #0e7490;
+  --accent-soft: rgba(8, 145, 178, 0.10);
+  --accent-2: #4f46e5;
+
+  --success: #059669;
+  --warning: #b45309;
+  --warning-soft: rgba(180, 83, 9, 0.08);
+
+  --shadow-card: 0 1px 2px rgba(16, 22, 42, 0.06), 0 16px 40px rgba(16, 22, 42, 0.10);
+  --shadow-glow: 0 0 0 1px rgba(8, 145, 178, 0.18), 0 8px 24px rgba(8, 145, 178, 0.12);
+}
+
+/* Фоновая "подкладка" — раунд 4 (2026-09-30). Раунд 3 (отдельная
+   координатная сетка + тайл с 4 морскими значками) пользователь прямо
+   назвал непрофессиональным: "расчерченные линии, параллельные и
+   перпендикулярные, и вставленные в них мультяшные картинки" — по
+   факту он хотел не геометрическую сетку с иконками, а нечто похожее
+   на настоящую НАВИГАЦИОННУЮ КАРТУ. Вместо очередной правки того же
+   приёма (тайл + сетка) — полностью другой подход: ОДНА большая
+   нетайловая SVG-иллюстрация на тему (`chart-*.svg`, 1920×1080,
+   background-size: cover, без повтора), стилизованная под подлинный
+   портолан/навигационную карту:
+     - тонкая рамка-нейтлиния с частыми делениями по верхнему и левому
+       краю — как градусная шкала на полях морской карты;
+     - 3 плавные волнистые изолинии через весь холст — глубинные
+       контуры (батиметрия), а не прямые линии сетки;
+     - компас-роза с ЛУЧАМИ-РУМБАМИ через весь холст (характерная
+       "паутина" старинных портоланов), смещена в угол, частично за
+       кадром;
+     - несколько редких глубинных отметок (маленькие цифры) — деталь,
+       которая продаёт "это карта", а не декоративный узор.
+   Так как это один крупный рисунок, а не мелкий повторяющийся тайл,
+   даже сравнительно низкая прозрачность (для эталонной ширины 1920px)
+   остаётся отчётливо видна — не нужно поднимать контраст до
+   "режет глаз", как приходилось с мелкими деталями в прошлых раундах.
+   Проверено рендером в headless Chromium на полном 1920×1080 перед
+   заливкой (см. CLAUDE.md). */
+:root[data-theme="light"] body {
+  background:
+    radial-gradient(circle at 15% -10%, rgba(79, 70, 229, 0.07), transparent 45%),
+    radial-gradient(circle at 90% 0%, rgba(8, 145, 178, 0.08), transparent 40%),
+    radial-gradient(circle at 50% 115%, rgba(8, 145, 178, 0.05), transparent 55%),
+    url("../img/chart-light.svg"),
+    var(--bg);
+  background-repeat: no-repeat;
+  background-size: auto, auto, auto, cover, auto;
+  background-position: center, center, center, bottom right, center;
+  background-attachment: fixed;
+}
+
+:root[data-theme="light"] .btn-primary,
+:root[data-theme="light"] .segmented button.active {
+  color: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+/* Без этого правила элемент с атрибутом [hidden] и одновременно классом,
+   задающим display (.field-grid { display: grid }, .segmented
+   { display: inline-flex } и т.п.), НЕ скрывается: у авторского класса
+   та же специфичность, что у встроенного [hidden]{display:none} браузера,
+   и класс идёт позже в каскаде — побеждает он, элемент остаётся видимым.
+   Поймано Playwright-скриншотом при проверке переключателя режимов
+   V/T/S/ETA — все 4 группы полей показывались одновременно вместо одной
+   активной. !important здесь оправдан: это единственное место, где он
+   нужен, чтобы гарантировать работу [hidden] независимо от того, какой
+   display задаёт любой текущий или будущий класс. */
+[hidden] { display: none !important; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Та же "подкладка"-карта, что у светлой темы (см. комментарий там),
+   поверх уже имевшихся цветных бликов и радарного свечения снизу. */
+/* Найдено при проверке мобильной адаптивности (Часть E, 2026-09-30):
+   всплывающие подсказки (.info-tooltip) у полей ввода позиционированы
+   absolute и центрированы над своей иконкой; у иконок близко к правому
+   краю экрана эта подсказка (max-width 240px) выступает за границу
+   viewport. visibility:hidden (в отличие от display:none) не убирает
+   элемент из расчёта scrollWidth — на реальном мобильном устройстве
+   это давало "фантомную" область горизонтальной прокрутки (свайп вправо
+   открывал пустое пространство) даже там, где сама подсказка не видна.
+   overflow-x: hidden на html — стандартное и безопасное решение: не
+   задевает НАМЕРЕННО горизонтально прокручиваемые блоки (у них своя
+   прокрутка на уровне собственного контейнера — .sidebar-top,
+   .calc-switcher — а не уровня страницы).
+
+   НАЙДЕННЫЙ БАГ (2026-10-02, по прямому отзыву пользователя — сайдбар
+   уезжал вверх вместе с прокруткой рабочей области): overflow-x:hidden
+   стоял ОДНОВРЕМЕННО и на html, и на body. По спецификации CSS, если
+   overflow-x задан любым значением, кроме visible, а overflow-y не
+   задан явно — overflow-y вычисляется как auto (а не остаётся visible).
+   Это превращало body в САМОСТОЯТЕЛЬНЫЙ scroll-контейнер — хотя
+   реальная прокрутка страницы физически происходит на html (корневом
+   элементе), а не на body (у body нет собственного переполнения, он
+   просто растягивается под контент через min-height:100vh). .sidebar
+   внутри .app-shell (потомок body) — `position: sticky` — вычисляет
+   "прилипание" относительно БЛИЖАЙШЕГО предка-scroll-контейнера; им
+   оказывался body, а не html. Поскольку body сам не скроллится (его
+   scrollTop всегда 0 — весь реальный скролл идёт на html), sticky не
+   получал от него никаких изменений прокрутки и вёл себя как обычный
+   статичный элемент — визуально это и есть "меню уезжает вместе с
+   прокруткой". Фикс — оставить overflow-x:hidden ТОЛЬКО на html (этого
+   достаточно, чтобы гасить тот самый горизонтальный баг из Части E,
+   т.к. именно html и есть настоящий скроллер документа); на body
+   overflow-x больше не задаётся явно, поэтому он остаётся обычным
+   (non-scroll-container) элементом, и ближайшим scroll-предком для
+   .sidebar становится html — то есть сам реальный скроллер страницы,
+   для которого sticky и работает правильно. */
+html { overflow-x: hidden; }
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% -10%, rgba(99, 102, 241, 0.16), transparent 45%),
+    radial-gradient(circle at 90% 0%, rgba(34, 211, 238, 0.10), transparent 40%),
+    radial-gradient(circle at 50% 115%, rgba(34, 211, 238, 0.06), transparent 55%),
+    url("../img/chart-dark.svg"),
+    var(--bg);
+  background-repeat: no-repeat;
+  background-size: auto, auto, auto, cover, auto;
+  background-position: center, center, center, bottom right, center;
+  background-attachment: fixed;
+}
+
+::selection { background: var(--accent); color: #04141a; }
+
+/* ---------------------------------------------------------------- */
+/* App shell — боковое меню слева + рабочая область по центру        */
+/* (по прямому запросу пользователя: "контекстное меню слева, а по    */
+/* центру сами расчёты", раньше группы калькуляторов были вкладками  */
+/* сверху). На узких экранах (см. media-запрос внизу файла) сайдбар  */
+/* превращается в горизонтальную панель сверху — второй JS-переключа- */
+/* тель "burger"-меню не заводился, чтобы не усложнять первую версию.*/
+/* ---------------------------------------------------------------- */
+
+.app-shell {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+/* Раунд 4 (2026-09-30): "боковое меню фон не менял, оно так и осталось
+   белым" — сайдбар до сих пор наследовал общие токены темы (--bg-elevated/
+   --surface/--text), поэтому в светлой теме автоматически становился
+   светлым вместе со всей остальной страницей. Вместо очередной подгонки
+   оттенка — сайдбар выделен в САМОСТОЯТЕЛЬНУЮ, не зависящую от темы,
+   тёмно-синюю "приборную панель" (тот же приём, что у Linear/Vercel/
+   Stripe: тёмная боковая рейка навигации + светлая рабочая область).
+   Технически это переопределение тех же CSS-переменных (--surface,
+   --text и т.д.) ЛОКАЛЬНО внутри .sidebar — все вложенные правила
+   (.sidebar-nav button, .lang-switch, .sidebar-link и т.д. ниже по
+   файлу) automatически подхватывают тёмную палитру, без переписывания
+   каждого селектора по отдельности. В тёмной теме сайдбар теперь
+   почти сливается с фоном страницы (тот же тон), в светлой — даёт
+   контрастную тёмную рейку слева на светлом фоне. */
+.sidebar {
+  --bg-elevated: #0c1220;
+  --surface: #141c33;
+  --surface-hover: #1b2540;
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --surface-border-strong: rgba(255, 255, 255, 0.16);
+  --text: #eef1fa;
+  --text-secondary: #92a0c4;
+  --text-tertiary: #5c6790;
+  /* Акцент сайдбара сознательно НЕ совпадает с общим циановым акцентом
+     приложения — тут используется брасс/золото (#e3c07f), утверждённое
+     пользователем при ребрендинге (см. CLAUDE.md, раздел про
+     "Джарвис"-ребрендинг/новые иконки меню, 2026-10-02): "использую
+     сочетания тёмных тонов и золота". Тот же приём локального
+     переопределения переменной каскадом, что и остальные --text/
+     --surface выше в этом блоке. */
+  --accent: #e3c07f;
+  --accent-soft: rgba(201, 163, 90, 0.16);
+
+  /* color: var(--text) ЗДЕСЬ ОБЯЗАТЕЛЕН, не косметика. Переменные
+     --text/--text-secondary выше переопределены ЛОКАЛЬНО для .sidebar,
+     но CSS-свойство color наследуется потомками как уже ВЫЧИСЛЕННОЕ
+     значение родителя, а не как живая ссылка на var(--text) — оно
+     переоценивается заново только там, где var(--text) написано явно.
+     .app-brand-text h1 (название "ShipHelper") такого явного color не
+     имеет — значит наследует color, вычисленный на body ДО входа в
+     .sidebar (тёмно-синий текст светлой темы), и рисует тёмный текст
+     на тёмном фоне сайдбара = невидимо. Баг найден по прямому отзыву
+     пользователя со скриншотом ("название приложения не написано") —
+     в тёмной теме совпадение исходного тёмного текстового цвета с
+     ЕЩЁ более тёмным фоном тела не проявлялось, там инверсии нет.
+     Явный color здесь даёт всем потомкам без своего color правильную
+     отправную точку для наследования. */
+  color: var(--text);
+
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 16px;
+  background: linear-gradient(185deg, #10182c, #0a0f1e);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 6px 0 32px rgba(8, 12, 24, 0.18);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 6px;
+}
+
+.app-brand-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: radial-gradient(circle at 50% 30%, #26221a, #000 75%);
+  border: 1px solid rgba(227, 192, 127, 0.55);
+  box-shadow: inset 0 0 0 2px #000, inset 0 0 0 3px rgba(227, 192, 127, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-glow);
+  flex-shrink: 0;
+}
+
+.app-brand-text h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.15;
+}
+
+.app-brand-text p {
+  margin: 2px 0 0;
+  font-size: 11.5px;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sidebar-nav button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-smooth),
+    color var(--dur-fast) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-snap);
+}
+
+.sidebar-nav .nav-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebar-nav .nav-icon svg {
+  color: var(--text-secondary);
+  transition: color var(--dur-fast) var(--ease-smooth);
+}
+
+.sidebar-nav button.active .nav-icon svg,
+.sidebar-nav button:hover:not(:disabled) .nav-icon svg {
+  color: var(--accent);
+}
+
+.sidebar-nav button:hover:not(:disabled) {
+  color: var(--text);
+  background: var(--surface-hover);
+  transform: translateX(2px);
+}
+
+.sidebar-nav button:active:not(:disabled) {
+  transform: translateX(2px) scale(0.98);
+}
+
+.sidebar-nav button.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.sidebar-nav button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Кнопки окна в версии для Windows (app.js → setupDesktopWindow) */
+.desktop-win-row { display: flex; gap: 6px; }
+.desktop-win-row #win-fullscreen-btn { flex: 1; min-width: 0; }
+.desktop-win-row .win-icon-btn { width: 40px; flex: 0 0 40px; justify-content: center; padding: 9px 0; font-size: 14px; }
+.desktop-win-row .win-close:hover { background: rgba(220, 60, 60, 0.85); color: #fff; border-color: transparent; }
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: 1px solid var(--surface-border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-smooth),
+    color var(--dur-fast) var(--ease-smooth),
+    border-color var(--dur-fast) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-snap);
+}
+
+.sidebar-link:hover {
+  color: var(--text);
+  border-color: var(--surface-border-strong);
+  transform: translateY(-1px);
+}
+.sidebar-link:active { transform: translateY(0) scale(0.98); }
+
+.lang-switch {
+  display: flex;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
+}
+
+.lang-switch button {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  /* Часть E (2026-09-30): было padding 6px 14px — высота кнопки ~27px,
+     заметно ниже рекомендованного минимума для тач-таргета (Apple HIG/
+     Material — 44px, WCAG 2.5.8 AA — 24px минимум формально проходил,
+     но с запасом лучше не впритык). Увеличено до ~35px — тот же
+     размер, что уже у соседних .sidebar-link (theme-toggle/about-btn) в
+     этом же ряду, визуально выравнивает высоту всех кнопок нижнего
+     блока сайдбара заодно. */
+  padding: 10px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-smooth),
+    color var(--dur-fast) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-snap);
+}
+
+.lang-switch button:active { transform: scale(0.94); }
+
+.lang-switch button.active {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 32px clamp(20px, 4vw, 56px) 80px;
+}
+
+.main-inner {
+  /* Было 720px, затем 1040px, затем 1280px (2026-09-30) — расширялось,
+     пока переключателем калькуляторов была горизонтальная лента вкладок
+     и требовалось вместить их без обрезки по краю. С переходом на
+     выпадающий пикер (.calc-picker) эта причина отпала, но 1280px
+     сама по себе удобная ширина для длинных форм/таблиц (драфт-сюрвей,
+     остойчивость) — оставлено как есть. */
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ---------------------------------------------------------------- */
+/* Calc picker — выбор калькулятора ВНУТРИ группы сайдбара (сайдбар   */
+/* выбирает группу, этот виджет — конкретный калькулятор в группе;    */
+/* у "Судовождение" их 10). Один calc-page виден одновременно,        */
+/* остальные [hidden].                                                */
+/* ---------------------------------------------------------------- */
+
+/* Раунд 4 (2026-09-30): выпадающий поповер из раунда 3 пользователь
+   тоже не принял ("выплывающий список тоже мне не нравится, придумай
+   что-нибудь другое... что-нибудь дизайнерское, крутое, дорогое") —
+   попросил прямо решать самому. Выбрано то, что в премиальных рабочих
+   инструментах (Linear/Raycast/Notion/VS Code) читается как самый
+   "дорогой" паттерн выбора из длинного списка: командная палитра —
+   компактный триггер-кнопка + по клику ПО ЦЕНТРУ ЭКРАНА открывается
+   карточка с полем поиска наверху и списком калькуляторов под ним,
+   список живо фильтруется по мере набора текста. Это не косметическая
+   правка прежнего поповера, а другой паттерн взаимодействия: поповер
+   был "меню рядом с кнопкой", палитра — самостоятельный модальный
+   слой с своим фокусом и вводом текста.
+   Разметка (.calc-switcher с кнопками data-calc/data-i18n) и логика
+   выбора калькулятора — те же, JS (setupCalcPicker) достраивает вокруг
+   нужную обёртку. */
+.calc-picker {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.calc-picker-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px 14px 18px;
+  font-family: var(--font);
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--dur-fast) var(--ease-smooth),
+    box-shadow var(--dur-normal) var(--ease-smooth);
+}
+.calc-picker-trigger:hover { border-color: var(--surface-border-strong); }
+
+.calc-picker-trigger-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.calc-picker-trigger-icon svg { width: 16px; height: 16px; }
+
+.calc-picker-trigger-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calc-picker-trigger-count {
+  flex-shrink: 0;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+/* Шеврон справа в триггере — раунд 5: с уходом поля поиска (см. ниже)
+   значок лупы перестал что-либо означать, вернулся обычный шеврон
+   "здесь открывается список". */
+.calc-picker-trigger-chevron {
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+}
+
+/* Затемнение на весь экран под палитрой — position: fixed, не зависит
+   от прокрутки/расположения триггера (в отличие от поповера, который
+   был привязан к нему). Клик по затемнению закрывает палитру. */
+.calc-picker-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh 20px 20px;
+  background: rgba(6, 9, 18, 0.55);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-normal) var(--ease-smooth), visibility 0s var(--dur-normal);
+}
+.calc-picker.open .calc-picker-backdrop {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--dur-normal) var(--ease-smooth);
+}
+
+/* Сама карточка палитры — заголовок сверху + список калькуляторов
+   (переиспользованный .calc-switcher) снизу.
+   Раунд 5 (2026-09-30): убрано поле поиска — прямой отзыв пользователя
+   "их всего 10 штук, зачем искать" был справедлив: поиск как основная
+   функция диалога имел смысл для длинного списка, но у самой длинной
+   группы всего 10 пунктов — глазами найти нужный быстрее, чем печатать
+   запрос. Вместо строки поиска — простой заголовок с названием группы
+   и кнопкой закрытия, сам диалог (по центру экрана, с затемнением)
+   оставлен — эту ЧАСТЬ прошлого решения ("дизайнерское, крутое")
+   пользователь не раскритиковал, дело было конкретно в поиске. */
+.calc-picker-modal {
+  width: 100%;
+  max-width: 420px;
+  max-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elevated);
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  transform: translateY(-14px) scale(0.97);
+  opacity: 0;
+  transition: transform var(--dur-normal) var(--ease-smooth), opacity var(--dur-normal) var(--ease-smooth);
+}
+.calc-picker.open .calc-picker-modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.calc-picker-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 8px 16px 20px;
+  border-bottom: 1px solid var(--surface-border);
+  flex-shrink: 0;
+}
+.calc-picker-modal-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+}
+.calc-picker-modal-close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-smooth), color var(--dur-fast) var(--ease-smooth);
+}
+.calc-picker-modal-close:hover { background: var(--surface-hover); color: var(--text); }
+
+/* Сам список — то, что раньше было горизонтальной лентой/поповером.
+   Теперь просто вертикальный скроллящийся список внутри модалки. */
+.calc-switcher {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-border-strong) transparent;
+}
+.calc-switcher::-webkit-scrollbar { width: 6px; }
+.calc-switcher::-webkit-scrollbar-track { background: transparent; }
+.calc-switcher::-webkit-scrollbar-thumb {
+  background: var(--surface-border-strong);
+  border-radius: var(--radius-pill);
+}
+
+/* ===================== Модальное окно "О программе" =====================
+   Часть D (2026-09-30) — тот же паттерн модалки по центру экрана с
+   затемнением, что уже применён для палитры калькуляторов
+   (.calc-picker-backdrop/.calc-picker-modal), но со своим набором
+   классов: у палитры видимость управляется классом .open на родителе
+   .calc-picker, а этой модалке (единственный экземпляр на странице, не
+   привязана к конкретной группе калькуляторов) проще и honest управлять
+   напрямую атрибутом [hidden] через JS — то же самое переключение
+   видимости, что уже используется по всему приложению для .calc-page/
+   .group-content, а не ещё один новый механизм. */
+.about-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh 20px 20px;
+  background: rgba(6, 9, 18, 0.55);
+  backdrop-filter: blur(3px);
+}
+.about-modal {
+  width: 100%;
+  max-width: 440px;
+  max-height: 76vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elevated);
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+.about-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 8px 16px 20px;
+  border-bottom: 1px solid var(--surface-border);
+  flex-shrink: 0;
+}
+.about-modal-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+}
+.about-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+}
+.about-app-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.about-app-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+.about-app-name {
+  font-size: 20px;
+  font-weight: 600;
+}
+.about-app-version {
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+.about-description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0 0 8px;
+}
+.about-changelog {
+  margin: 8px 0 16px;
+  padding-left: 20px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.about-changelog li { margin-bottom: 8px; }
+
+/* ===================== Активация / пэйволл (2026-10-02) =====================
+   Бейдж статуса в кнопке "Активация" сайдбара (.sidebar — своя тёмная
+   палитра независимо от темы приложения, см. "Раунд 4" в CLAUDE.md,
+   поэтому цвета здесь заданы явно, а не через var(--text-*) основной
+   темы). Пэйволл-оверлей (.paywall-overlay) накрывает .card платного
+   калькулятора или всю группу "Теория" целиком (position: absolute,
+   родитель — .paywall-host с position: relative, см.
+   calculators.js::setupPaywall()). */
+.license-status-badge {
+  margin-left: auto;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.55);
+}
+.license-status-badge.full {
+  background: rgba(227, 192, 127, 0.18);
+  color: #e3c07f;
+}
+
+.paywall-host {
+  position: relative;
+}
+.paywall-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 24px;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  backdrop-filter: blur(5px);
+}
+.paywall-icon {
+  font-size: 28px;
+  opacity: 0.85;
+}
+.paywall-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  max-width: 320px;
+}
+.paywall-unlock-btn {
+  margin-top: 2px;
+}
+/* Платный калькулятор остаётся в DOM (и в списке командной палитры —
+   человек видит, что такой расчёт вообще есть), но взаимодействие с
+   полями под оверлеем блокируется самим фактом перекрытия (оверлей —
+   верхний слой по z-index, поглощает клики) — отдельного disabled на
+   каждое поле не требуется. */
+
+/* Раунд 5: и шрифт списка, и точки-маркеры перед пунктами пользователь
+   назвал некрасивыми напрямую. Точки (::before, декоративный кружок)
+   убраны совсем — активный пункт теперь отмечен не кружком слева, а
+   заливкой + жирным текстом + галочкой справа (тот же язык, что у
+   выбора в нативных приложениях/меню ОС, а не самодельный индикатор).
+   Шрифт пунктов увеличен и избавлен от uppercase-трансформации нигде
+   не применявшейся — обычный текст того же начертания, что заголовки
+   калькуляторов, чтобы список не выглядел как отдельная, чужеродная
+   типографика внутри того же приложения. */
+.calc-switcher button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 14.5px;
+  font-weight: 500;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-smooth), color var(--dur-fast) var(--ease-smooth);
+}
+.calc-switcher button:hover:not(.active) { color: var(--text); background: var(--surface-hover); }
+.calc-switcher button.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 700;
+}
+/* Галочка у активного пункта — раунд 5, второй заход. Сначала галочка
+   была отдельным <span><svg></span>, вставляемым В КНОПКУ через JS при
+   сборке списка (buttons.forEach(btn => btn.appendChild(check))). Она
+   пропадала после первой же смены языка/перерисовки строк: applyStrings()
+   для элементов с data-i18n (а data-i18n стоит прямо на <button>) делает
+   `el.textContent = перевод`, что стирает ВСЕ дочерние узлы кнопки,
+   включая только что вставленный SVG. Раз узел живёт в DOM кнопки —
+   он неизбежно гибнет при следующей перерисовке текста, в каком бы
+   порядке скрипты ни запускались. Правильное решение — не класть
+   галочку в DOM кнопки вообще: рисуем её псевдоэлементом ::after,
+   он не подчиняется textContent и переживает любые перерисовки. */
+.calc-switcher button.active::after {
+  content: "";
+  flex-shrink: 0;
+  width: 6px;
+  height: 11px;
+  margin-left: 4px;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(45deg) translateY(-1px);
+}
+
+.calc-page[hidden] { display: none; }
+
+/* ---------------------------------------------------------------- */
+/* Составные калькуляторы — несколько под-расчётов на одной карточке */
+/* (счисление по лагу, ортодромия+локсодромия, остойчивость и т.д.)  */
+/* ---------------------------------------------------------------- */
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--surface-border);
+  margin: 28px 0 24px;
+}
+
+.section-header {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.section-caption {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+
+.result-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.result-row .result {
+  margin-top: 0;
+}
+
+.field-hint {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin: -16px 0 20px;
+}
+
+.field-hint.warning {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+/* .field-hint переиспользуется в двух РАЗНЫХ контекстах: (1) подсказка
+   под полем ввода — отрицательный верхний отступ там нужен, чтобы
+   подтянуть текст к полю выше; и (2) подпись СРАЗУ ПОД крупной цифрой
+   результата (`.result-value`) внутри `.result` — например "Начальный
+   курс: 218.9°" под расстоянием в ортодромии/локсодромии, предупреждение
+   об отрицательном GM и т.п. Второй случай тот же класс с тем же
+   отрицательным отступом просто ЗАТЯГИВАЕТ подпись под саму цифру,
+   убирая между ними интервал целиком (жалоба пользователя, со
+   скриншотом: "между цифрами и текстом под цифрами нету расстояния").
+   Вместо ручной правки класса в каждом из ~7 мест разметки (риск
+   пропустить одно) — переопределение по структурному контексту: везде,
+   где .field-hint лежит прямо внутри .result, отступ положительный. */
+.result > .field-hint {
+  margin-top: 6px;
+}
+
+/* Группа "Грузовые операции" — драфт-сюрвей: вложенная сетка полей
+   (борт/борт внутри одного поля осадки) и динамические таблицы
+   (статьи запасов / балластные танки, добавление и удаление строк). */
+.ds-2col {
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 0;
+}
+.ds-3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+.ds-survey-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 8px 0 16px;
+  color: var(--accent);
+}
+.ds-step-header {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.dyn-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.dyn-table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+.dyn-table-row.dyn-table-row-3 {
+  grid-template-columns: 1.4fr 1fr 1fr auto;
+}
+/* Ячейки грида по умолчанию не ужимаются уже своего содержимого
+   (min-width:auto) — поле даты в журнале тревог раздвигало строку за
+   край экрана телефона. */
+.dyn-table-row > * { min-width: 0; }
+.dyn-table-row input, .dyn-table-row select { width: 100%; min-width: 0; }
+.dyn-table-row.dyn-table-row-4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr auto;
+}
+.dyn-cell { display: block; min-width: 0; }
+.dyn-cell-label { display: none; }
+.dyn-table-row.dyn-table-row-5 {
+  grid-template-columns: 1.2fr 0.9fr 0.9fr 0.9fr 0.9fr auto;
+}
+/* Заголовки колонок над таблицей танков (остаток балласта) — отдельный
+   ряд ВНЕ .dyn-table (createDynTable делает innerHTML="" на самом
+   контейнере #bs-table при каждой перестройке/смене языка, так что
+   заголовки, будь они внутри, стирались бы вместе со строками). */
+.dyn-table-col-labels {
+  margin-bottom: 6px;
+}
+.dyn-table-col-labels span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-tertiary);
+  padding: 0 12px;
+}
+
+/* Журнал судовых тревог — список статусов (отдельный рендер, не через
+   .steps-list: это не шаги вычисления, а таблица результатов по
+   нескольким тревогам сразу, со своей цветовой индикацией срочности). */
+.dl-status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 0;
+}
+.dl-status-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+}
+.dl-status-name { font-weight: 600; }
+.dl-status-meta { font-size: 13px; color: var(--text-secondary); }
+.dl-badge {
+  justify-self: end;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.dl-badge-overdue { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+.dl-badge-due_soon { background: var(--warning-soft); color: var(--warning); }
+.dl-badge-ok { background: rgba(52, 211, 153, 0.15); color: var(--success); }
+.dl-badge-manual { background: var(--surface-border); color: var(--text-tertiary); }
+
+@media (max-width: 760px) {
+  .dl-status-row { grid-template-columns: 1fr; justify-items: start; }
+  .dl-badge { justify-self: start; }
+}
+.dyn-table-row input,
+.dyn-table-row select {
+  font-family: var(--font);
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--surface-border);
+  background: var(--bg-elevated);
+  color: var(--text);
+}
+.dyn-table-row select {
+  font-family: var(--font);
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 28px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-tertiary) 50%),
+    linear-gradient(135deg, var(--text-tertiary) 50%, transparent 50%);
+  background-position: calc(100% - 15px) 52%, calc(100% - 10px) 52%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  background-color: var(--bg-elevated);
+}
+.dyn-table-row input[type="date"] { font-family: var(--font-mono); }
+.dyn-table-remove {
+  background: transparent;
+  border: 1px solid var(--surface-border);
+  color: var(--text-tertiary);
+  border-radius: var(--radius-sm);
+  width: 32px;
+  height: 38px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1;
+  transition: color var(--dur-fast) var(--ease-snap), border-color var(--dur-fast) var(--ease-snap),
+    transform var(--dur-fast) var(--ease-snap), background var(--dur-fast) var(--ease-snap);
+}
+.dyn-table-remove:hover {
+  color: var(--danger, #ef4444);
+  border-color: var(--danger, #ef4444);
+  background: rgba(239, 68, 68, 0.08);
+}
+.dyn-table-remove:active {
+  transform: scale(0.9);
+}
+.dyn-table-add {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.ds-print-report {
+  margin-top: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.ds-print-report table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 16px;
+}
+.ds-print-report th,
+.ds-print-report td {
+  text-align: left;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--surface-border);
+}
+.ds-print-report h4 {
+  margin: 18px 0 6px;
+}
+@media print {
+  .sidebar, .btn-primary, .btn-secondary, .calc-switcher, .steps-toggle,
+  .disclaimer, #ds-print-btn {
+    display: none !important;
+  }
+  .main-inner { max-width: none !important; }
+  .card { box-shadow: none; border: none; }
+}
+
+/* ---------------------------------------------------------------- */
+/* Cards                                                              */
+/* ---------------------------------------------------------------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 16px;
+  /* position: relative — точка отсчёта для .paywall-overlay
+     (position: absolute; inset: 0), который накрывает карточку целиком
+     у платных калькуляторов. См. calculators.js::setupPaywall(). */
+  position: relative;
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0 0 6px;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------------- */
+/* Form fields                                                       */
+/* ---------------------------------------------------------------- */
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 26px 16px;
+  margin-bottom: 24px;
+}
+
+.field label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Значок-подсказка "i" рядом с названием поля — по запросу пользователя
+   ("наводишь на него и выплывает мини окно — что это такое и где это
+   взять значение"). Значки добавляются JS-ом (setupFieldTooltips() в
+   calculators.js) только для полей, у которых есть текст подсказки —
+   не для всех 130+ полей руками в разметке, а централизованно по
+   словарю FIELD_TOOLTIP_IDS, что не даёт разметке и подсказкам разойтись. */
+.info-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--surface-border);
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  font-style: italic;
+  font-family: Georgia, "Times New Roman", serif;
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: help;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.info-icon:hover, .info-icon:focus-visible {
+  background: var(--accent);
+  color: #fff;
+  outline: none;
+}
+
+.info-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 9px);
+  transform: translateX(-50%) translateY(4px) scale(0.98);
+  width: max-content;
+  max-width: 240px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--surface-border);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  /* display:none, а не visibility:hidden — невидимая, но занимающая место
+     подсказка у полей справа раздвигала страницу на телефоне шире экрана
+     (мобильный браузер расширял "layout viewport" до 460px, вся страница
+     уменьшалась и ездила вбок; overflow-x:hidden на html это не лечит).
+     Сдвиг --tip-shift считает JS (setupFieldTooltips), чтобы открытая
+     подсказка не вылезала за край экрана. */
+  display: none;
+  pointer-events: none;
+  z-index: 30;
+  --tip-shift: 0px;
+}
+.info-icon:hover .info-tooltip,
+.info-icon:focus .info-tooltip,
+.info-icon:focus-visible .info-tooltip {
+  display: block;
+  max-width: min(240px, calc(100vw - 32px));
+  transform: translateX(calc(-50% + var(--tip-shift)));
+  animation: sh-tip-in 0.15s ease;
+}
+@keyframes sh-tip-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.field input, .field select {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 600;
+  padding: 12px 14px;
+  transition: border-color var(--dur-normal) var(--ease-smooth),
+    box-shadow var(--dur-normal) var(--ease-smooth), transform var(--dur-fast) var(--ease-snap);
+}
+
+.field input:focus, .field select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+/* Флажок-переключатель ("стеснённый фарватер" в UKC и т.п.) — первое
+   использование нативного checkbox в проекте, раньше калькуляторы
+   обходились number/select/segmented. Стилизуем только цвет акцента
+   (accent-color — поддерживается всеми актуальными браузерами, не
+   нужно рисовать чекбокс с нуля через ::before/::after). */
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text);
+  user-select: none;
+}
+.checkbox-field input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-snap);
+}
+.checkbox-field input[type="checkbox"]:active {
+  transform: scale(0.85);
+}
+
+.segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  margin-bottom: 24px;
+}
+
+.segmented button {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-smooth),
+    color var(--dur-fast) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-snap);
+}
+.segmented button:active { transform: scale(0.95); }
+
+.segmented button.active {
+  background: var(--accent);
+  color: #04141a;
+}
+
+/* ---------------------------------------------------------------- */
+/* Buttons                                                            */
+/* ---------------------------------------------------------------- */
+
+/* Редизайн 2026-09-30 (запрос "более красивый, футуристичный шрифт на
+   кнопках... максимально дорого-богато, как Apple или Тесла"):
+   компактнее (меньше площадь, крупный текст в приземистой пилюле
+   выглядел тяжеловесно), с прописными буквами и разрядкой — тот же
+   приём, что у ярлыков кнопок в приложении Tesla ("SUMMON", "UNLOCK"),
+   плюс тонкий блик сверху (inset-подсветка) для эффекта стекла/металла
+   вместо плоской заливки.
+
+   ВАЖНО — попутно исправлен реальный баг вёрстки, а не только стиль:
+   .btn-primary раньше не имел margin-bottom, а следующий за ним
+   .result скрыт (display:none) до расчёта — то есть пока пользователь
+   не нажал кнопку, между ней и СЛЕДУЮЩИМ элементом разметки (обычно
+   .section-header соседнего под-расчёта, margin-top которого — 0)
+   не было вообще никакого зазора. Именно это выглядело как "кнопки
+   очень близко к тексту" на скриншоте (Точка росы, раздел 2→3).
+   Margin-bottom ниже гарантирует отступ независимо от того, показан
+   ли уже результат. */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #04141a;
+  border: none;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  padding: 13px 24px;
+  margin-bottom: 30px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(34, 211, 238, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform var(--dur-fast) var(--ease-snap),
+    box-shadow var(--dur-normal) var(--ease-smooth);
+}
+
+.btn-primary:hover { box-shadow: 0 8px 32px rgba(34, 211, 238, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0) scale(0.97); box-shadow: 0 3px 14px rgba(34, 211, 238, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-hover);
+  color: var(--text);
+  border: 1px solid var(--surface-border);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-snap);
+}
+.btn-secondary:hover { background: var(--surface-border); transform: translateY(-1px); }
+.btn-secondary:active { transform: translateY(0) scale(0.97); }
+
+/* ---------------------------------------------------------------- */
+/* "Сбросить"/"Сохранить" — по прямому запросу пользователя, у каждого
+   калькулятора (кроме журнала тревог, см. CALC_PERSISTENCE_EXCLUDE в
+   calculators.js — у него своё постоянное автосохранение, кнопка
+   "Сбросить" там рискует случайно стереть историю тревог). Сознательно
+   МЕЛЬЧЕ и тише основной .btn-secondary (которая уже используется как
+   "+ Добавить строку"/переключатели режимов) — это вспомогательное
+   действие, а не часть основного потока калькулятора, не должно
+   визуально спорить с главной кнопкой "Рассчитать". */
+.calc-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: -8px 0 20px;
+}
+.calc-controls button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--surface-border);
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-smooth),
+    color var(--dur-fast) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-snap);
+}
+.calc-controls button:hover { background: var(--surface-hover); color: var(--text); transform: translateY(-1px); }
+.calc-controls button:active { transform: translateY(0) scale(0.96); }
+.calc-controls button:disabled { opacity: 0.6; cursor: default; transform: none; }
+/* Отметка автосохранения (v1.4.2: всё введённое сохраняется само, кнопки «Сохранить» нет) */
+.calc-autosave {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: auto;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+.calc-autosave::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.7;
+}
+
+@media (max-width: 760px) {
+  .calc-controls { align-items: center; }
+}
+
+/* ---------------------------------------------------------------- */
+/* Раскрывающийся блок ("expander" в терминах старой Streamlit-версии) —
+   используется для вспомогательных под-расчётов внутри карточки
+   калькулятора, например "привести склонение с карты к году плавания"
+   внутри карточки поправки компаса. Обычный <details>/<summary> —
+   раскрытие/закрытие работает без JS, встроенное поведение браузера. */
+/* ---------------------------------------------------------------- */
+
+.expander {
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.expander summary {
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.expander summary::-webkit-details-marker { display: none; }
+.expander summary::before {
+  content: "›";
+  display: inline-block;
+  transition: transform 0.15s ease;
+  color: var(--text-secondary);
+}
+.expander[open] summary::before { transform: rotate(90deg); }
+
+.expander-body {
+  padding: 4px 18px 18px;
+  border-top: 1px solid var(--surface-border);
+}
+.expander-body .card-subtitle { margin-top: 14px; }
+.expander-body .btn-secondary { margin-top: 4px; }
+
+.expander-result {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.expander-result strong { color: var(--accent); }
+
+/* ---------------------------------------------------------------- */
+/* Result                                                             */
+/* ---------------------------------------------------------------- */
+
+.result {
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.10), rgba(99, 102, 241, 0.08));
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  display: none;
+}
+
+.result.visible {
+  display: block;
+  animation: result-in var(--dur-normal) var(--ease-smooth),
+    sh-glow-pulse 1.1s var(--ease-smooth) 1;
+}
+
+@keyframes result-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.result-value {
+  font-family: var(--font-mono);
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+/* ---------------------------------------------------------------- */
+/* Steps (collapsible)                                                */
+/* ---------------------------------------------------------------- */
+
+.steps-toggle {
+  margin-top: 16px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.steps-toggle:hover { color: var(--text); }
+.steps-toggle .chevron { transition: transform 0.15s ease; }
+.steps-toggle.open .chevron { transform: rotate(90deg); }
+
+.steps-list {
+  display: none;
+  margin-top: 14px;
+  border-top: 1px solid var(--surface-border);
+  padding-top: 14px;
+}
+.steps-list.visible { display: block; }
+
+.step-item {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--surface-border);
+  font-size: 13.5px;
+}
+.step-item:last-child { border-bottom: none; }
+.step-desc { color: var(--text-secondary); margin-bottom: 4px; }
+.step-formula { font-family: var(--font-mono); color: var(--text-tertiary); font-size: 12.5px; }
+.step-result { font-family: var(--font-mono); color: var(--accent); font-weight: 600; margin-top: 2px; }
+
+/* ---------------------------------------------------------------- */
+/* Disclaimer — тихий, не жёлтый крикливый баннер                    */
+/* ---------------------------------------------------------------- */
+
+.disclaimer {
+  margin-top: 20px;
+  font-size: 11.5px;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+.disclaimer .dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--text-tertiary);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+/* Пометка "verify" — по прямому запросу пользователя (2026-09-30:
+   "мне не нравятся вот эти восклицательные знаки желтые в теории... либо
+   очень сильно затемнить, чтобы их вообще бы не было видно") сделана
+   МАКСИМАЛЬНО тихой: убран заливной жёлтый/оранжевый "баннер"-пилюля,
+   вместо него — приглушённый текст в тон второстепенным подписям
+   (--text-tertiary), без заливки фона и почти без акцентного цвета;
+   значок ⚠️ убран из строки перевода (см. data/strings/{ru,en}.json,
+   ключ theory.verify_caption) — вместо него маленькая точка-маркер, как
+   у обычного .disclaimer, чтобы пометка не "кричала" с экрана, но
+   оставалась читаемой при внимательном просмотре (правило проекта №8 —
+   предупреждение не удаляется по смыслу, только визуально приглушается).
+*/
+.verify-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  background: transparent;
+  padding: 2px 0;
+  border-radius: 0;
+}
+.verify-badge .dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+/* Раздел "Теория и справочник" — карточка одного пункта темы */
+.theory-part-header {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 28px 0 14px;
+  color: var(--accent);
+}
+.theory-entry-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+.theory-entry {
+  margin-bottom: 22px;
+}
+.theory-entry ul {
+  margin: 16px 0 0;
+  padding-left: 20px;
+}
+.theory-entry li {
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.theory-entry li:last-child {
+  margin-bottom: 0;
+}
+/* Пример под списком пунктов — раньше по ошибке использовался
+   .field-hint (отрицательный верхний отступ, рассчитанный на то, чтобы
+   прилегать под полем ввода) — вплотную к последнему пункту списка,
+   без видимого разделения. Отдельный класс с нормальным отступом. */
+.theory-example {
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px dashed var(--surface-border);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-tertiary);
+}
+.theory-diagram {
+  margin-top: 24px;
+}
+.theory-diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------------------------------------------------------------- */
+/* Loading state                                                      */
+/* ---------------------------------------------------------------- */
+
+/* Заставка AZIMUTH (js/splash.js): чёрный + золото, «футуристичный реализм».
+   Цвета заданы явно, а не токенами темы: заставка одинакова в светлой и тёмной теме. */
+.loading-screen {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background:
+    radial-gradient(60% 50% at 50% 42%, rgba(201,163,90,.13), transparent 70%),
+    radial-gradient(120% 90% at 50% 120%, rgba(201,163,90,.08), transparent 60%),
+    #030303;
+  color: #e9d7a8;
+  overflow: hidden;
+  transition: opacity .8s cubic-bezier(.4,0,.2,1), transform .9s cubic-bezier(.4,0,.2,1), filter .8s ease;
+}
+.loading-screen.hidden { opacity: 0; transform: scale(1.06); filter: blur(6px); pointer-events: none; }
+/* лёгкий «шум плёнки» и виньетка — убирают цифровую плоскость чёрного */
+.loading-screen::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,.85) 100%);
+}
+.loading-screen > * { position: relative; }
+
+/* Важно: двигаются только transform и opacity HTML-обёрток — их браузер анимирует в отдельном
+   потоке, поэтому заставка плавная, даже пока основной поток занят загрузкой Python (Pyodide).
+   Анимации внутри SVG, stroke-dashoffset, blur, background-position в это время замирают. */
+.splash-stage { width: min(56vmin, 340px); aspect-ratio: 1; position: relative; margin-bottom: 18px; }
+.splash-ring, .splash-bezel, .splash-sextant { position: absolute; inset: 0; }
+.splash-ring, .splash-bezel svg, .splash-sextant svg { width: 100%; height: 100%; overflow: visible; display: block; }
+.splash-ring { opacity: 0; animation: sp-fade .7s .05s forwards; }
+.splash-bezel { opacity: 0; will-change: transform; animation: sp-bezel 1.7s .15s cubic-bezier(.16,1,.3,1) forwards; }
+@keyframes sp-bezel { from { transform: rotate(-236deg) scale(.92); opacity: 0; } 30% { opacity: 1; } to { transform: rotate(0deg) scale(1); opacity: 1; } }
+.splash-cardinal { font: 600 15px "Cinzel", Georgia, serif; fill: #f3dfa6; text-anchor: middle; dominant-baseline: central; }
+.splash-deg { font: 500 9px "JetBrains Mono", monospace; fill: #c9a35a; opacity: .75; text-anchor: middle; dominant-baseline: central; letter-spacing: .05em; }
+
+/* вращающийся «радарный» луч под лимбом */
+.splash-sweep {
+  position: absolute; inset: 4%; border-radius: 50%; opacity: 0; will-change: transform;
+  background: conic-gradient(from 0deg, rgba(227,192,127,0) 0deg, rgba(227,192,127,0) 300deg, rgba(227,192,127,.22) 356deg, rgba(255,240,200,.5) 360deg);
+  -webkit-mask: radial-gradient(circle, transparent 0 40%, #000 41% 100%); mask: radial-gradient(circle, transparent 0 40%, #000 41% 100%);
+  animation: sp-spin 2.4s linear infinite, sp-fade 1s .2s forwards;
+}
+@keyframes sp-spin { to { transform: rotate(360deg); } }
+
+/* секстант «собирается»: проявление с лёгким наездом и мягким золотым ореолом */
+.splash-sextant { opacity: 0; transform: scale(.82) translateY(10px); will-change: transform;
+  filter: drop-shadow(0 0 10px rgba(227,192,127,.35));
+  animation: sp-sextant 1.3s .55s cubic-bezier(.16,1,.3,1) forwards; }
+@keyframes sp-sextant { to { opacity: 1; transform: none; } }
+
+.splash-word {
+  position: relative; overflow: hidden; display: flex; gap: .02em; padding: 4px 0;
+  font: 600 clamp(38px, 8vmin, 64px)/1 "Cinzel", Georgia, serif;
+  letter-spacing: .22em; margin-right: -.22em;
+}
+.splash-word span {
+  background: linear-gradient(180deg, #fbeec6 0%, #e2c07a 46%, #b98c42 56%, #f1d898 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  opacity: 0; transform: translateY(18px) scale(1.18); will-change: transform;
+  animation: sp-letter .9s cubic-bezier(.16,1,.3,1) forwards;
+}
+.splash-word span:nth-child(2) { animation-delay: 1.1s; }
+.splash-word span:nth-child(3) { animation-delay: 1.18s; }
+.splash-word span:nth-child(4) { animation-delay: 1.26s; }
+.splash-word span:nth-child(5) { animation-delay: 1.34s; }
+.splash-word span:nth-child(6) { animation-delay: 1.42s; }
+.splash-word span:nth-child(7) { animation-delay: 1.5s; }
+.splash-word span:nth-child(8) { animation-delay: 1.58s; }
+@keyframes sp-letter { to { opacity: 1; transform: none; } }
+/* блик по слову — когда модуль загружен (.is-ready), перед уходом заставки */
+.splash-shine { position: absolute; top: 0; bottom: 0; left: 0; width: 34%; pointer-events: none; z-index: 1;
+  background: linear-gradient(100deg, transparent 0%, rgba(255,246,214,0) 20%, rgba(255,246,214,.55) 50%, rgba(255,246,214,0) 80%, transparent 100%);
+  mix-blend-mode: soft-light; transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+.loading-screen.is-ready .splash-shine { animation: sp-shine 1s .1s cubic-bezier(.4,0,.2,1) forwards; }
+@keyframes sp-shine { 0% { opacity: 1; transform: translateX(-120%) skewX(-18deg); } 100% { opacity: 1; transform: translateX(330%) skewX(-18deg); } }
+
+.splash-rule { width: min(62vmin, 360px); height: 10px; margin: 16px 0 12px; display: flex; align-items: center; justify-content: center; }
+.splash-rule::before, .splash-rule::after { content: ""; flex: 1; height: 1px; transform: scaleX(0);
+  animation: sp-rule .9s 1.9s cubic-bezier(.16,1,.3,1) forwards; }
+.splash-rule::before { background: linear-gradient(90deg, transparent, #c9a35a); transform-origin: 100% 50%; }
+.splash-rule::after { background: linear-gradient(90deg, #c9a35a, transparent); transform-origin: 0 50%; }
+.splash-rule i { width: 7px; height: 7px; margin: 0 10px; transform: rotate(45deg) scale(0); background: linear-gradient(135deg, #fff1c8, #b68a3e);
+  animation: sp-diamond .6s 1.85s cubic-bezier(.16,1,.3,1) forwards; }
+@keyframes sp-rule { to { transform: scaleX(1); } }
+@keyframes sp-diamond { to { transform: rotate(45deg) scale(1); } }
+
+.splash-tagline { font: 600 11.5px var(--font); letter-spacing: .42em; margin-right: -.42em; color: #bfa36a;
+  opacity: 0; animation: sp-up .9s 2.2s cubic-bezier(.16,1,.3,1) forwards; }
+@keyframes sp-up { from { opacity: 0; transform: translateY(8px) scaleX(1.12); } to { opacity: 1; transform: none; } }
+@keyframes sp-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.splash-progress { position: absolute; left: 50%; bottom: max(64px, 9vh); width: min(46vmin, 220px); height: 1px;
+  transform: translateX(-50%); background: rgba(201,163,90,.18); overflow: hidden; opacity: 0; animation: sp-fade .6s 1s forwards; }
+.splash-progress span { position: absolute; top: 0; bottom: 0; width: 40%; left: -40%;
+  background: linear-gradient(90deg, transparent, #f3dfa6, transparent); animation: sp-scan 1.4s ease-in-out infinite; }
+@keyframes sp-scan { to { left: 100%; } }
+.loading-screen.is-ready .splash-progress span { animation: none; left: 0; width: 100%; background: linear-gradient(90deg, transparent, #c9a35a, transparent); }
+.loading-screen.is-error .splash-progress { display: none; }
+
+.loading-screen .loading-text { position: absolute; left: 0; right: 0; bottom: max(30px, 5vh); text-align: center;
+  font: 500 11px "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: rgba(201,163,90,.65); padding: 0 24px; }
+.loading-screen.is-error .loading-text { color: #f0c27a; text-transform: none; letter-spacing: 0; font: 500 14px var(--font); bottom: 18vh; }
+
+/* HUD: уголки кадра и боковые показания — «прибор», а не картинка */
+.splash-hud i { position: absolute; width: 26px; height: 26px; border-color: rgba(201,163,90,.55); border-style: solid; border-width: 0;
+  opacity: 0; animation: sp-fade .8s .5s forwards; }
+.splash-hud i:nth-child(1) { top: 22px; left: 22px; border-top-width: 1px; border-left-width: 1px; }
+.splash-hud i:nth-child(2) { top: 22px; right: 22px; border-top-width: 1px; border-right-width: 1px; }
+.splash-hud i:nth-child(3) { bottom: 22px; left: 22px; border-bottom-width: 1px; border-left-width: 1px; }
+.splash-hud i:nth-child(4) { bottom: 22px; right: 22px; border-bottom-width: 1px; border-right-width: 1px; }
+.splash-hud { position: absolute; inset: 0; pointer-events: none; }
+.splash-readout { position: absolute; top: 30px; font: 500 11px "JetBrains Mono", monospace; letter-spacing: .14em; color: rgba(201,163,90,.7);
+  opacity: 0; animation: sp-fade .8s .6s forwards; }
+.splash-readout b { color: #f3dfa6; font-weight: 500; }
+.splash-readout-l { left: 60px; } .splash-readout-r { right: 60px; }
+@media (max-width: 520px) { .splash-readout { top: 28px; font-size: 10px; } .splash-readout-l { left: 54px; } .splash-readout-r { right: 54px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen *, .loading-screen *::before, .loading-screen *::after { animation: none !important; }
+  .splash-word span, .splash-tagline, .splash-hud i, .splash-readout, .splash-progress,
+  .splash-ring, .splash-bezel, .splash-sextant { opacity: 1; transform: none; }
+  .splash-rule::before, .splash-rule::after { transform: none; }
+  .splash-rule i { transform: rotate(45deg); }
+  .splash-sweep { display: none; }
+}
+
+/* Фирменное слово AZIMUTH (сайдбар, главная, «О программе») */
+.wordmark {
+  font-family: "Cinzel", Georgia, serif !important; font-weight: 600; text-transform: uppercase; letter-spacing: .16em;
+  background: linear-gradient(180deg, #fbeec6 0%, #e2c07a 46%, #b98c42 56%, #f1d898 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent !important;
+}
+
+@media (max-width: 760px) {
+  .app-shell { flex-direction: column; }
+
+  /* Таблица с 5 колонками (остаток балласта с поправками) слишком
+     тесная на узком экране в одну строку-грид — переходит в простую
+     сетку 2 колонки (5 полей + кнопка удаления построчно перетекают). */
+  .dyn-table-row.dyn-table-row-5,
+  .dyn-table-row.dyn-table-row-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .dyn-table-row.dyn-table-row-5 .dyn-table-remove,
+  .dyn-table-row.dyn-table-row-4 .dyn-table-remove {
+    justify-self: end;
+    width: auto;
+    padding: 4px 14px;
+  }
+  /* Заголовки колонок теряют смысл при переходе таблицы в 2-колоночную
+     мобильную раскладку (строки больше не выстроены по тем же колонкам). */
+  .dyn-table-col-labels { display: none; }
+  .dyn-table-row.dyn-table-row-5:not(.dyn-table-col-labels),
+  .dyn-table-row.dyn-table-row-4:not(.dyn-table-col-labels) {
+    padding: 10px; border: 1px solid var(--surface-border); border-radius: 12px; margin-bottom: 10px;
+  }
+  .dyn-cell-label {
+    display: block; margin: 0 0 4px; font-size: 10.5px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.04em; color: var(--text-tertiary); line-height: 1.3;
+  }
+
+  /* На мобильном сайдбар превращается в ДВЕ строки сверху, а не в одну:
+     первая (sidebar-top) — бренд + горизонтально прокручиваемая
+     навигация, вторая (sidebar-bottom) — переключатели темы/языка.
+     Раньше обе группы были в одной строке flex-direction: row внутри
+     .sidebar с overflow-x: auto — при большом числе пунктов навигации
+     кнопки темы/языка просто уезжали за пределы экрана вправо без
+     видимой подсказки, что там есть скролл (найдено скриншотом
+     Playwright при проверке, не видно было бы без реального рендера
+     на узком экране). Теперь вторая строка — свой блок, всегда видна
+     целиком, не участвует в горизонтальной прокрутке первой. */
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--surface-border);
+  }
+
+  .sidebar-top {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sidebar-top::-webkit-scrollbar { display: none; }
+
+  .app-brand { flex-shrink: 0; }
+  .app-brand-text p { display: none; }
+  .sidebar-nav { flex-direction: row; flex-shrink: 0; }
+  .sidebar-nav button span:last-child { display: none; }
+  .sidebar-nav .nav-icon { font-size: 18px; }
+
+  .sidebar-bottom {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  .sidebar-link { width: auto; }
+  .sidebar-link span:last-child { display: none; }
+  .lang-switch { flex-shrink: 0; }
+
+  .main { padding: 20px 16px 60px; }
+}
+
+@media (max-width: 560px) {
+  .card { padding: 20px; }
+  .result-value { font-size: 34px; }
+  /* Сегментные переключатели (4 режима V/T/S/ETA, 4 категории конвертера)
+     на телефоне не помещались в строку и раздвигали страницу — теперь
+     кнопки делят ширину и переносятся, скругление — "плашкой". */
+  /* Журнал тревог (3 поля + удалить): название на всю ширину, ниже
+     периодичность и дата — иначе на телефоне всё обрезается. */
+  .dyn-table-row.dyn-table-row-3 {
+    grid-template-columns: 1fr 1fr auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--surface-border);
+  }
+  .dyn-table-row.dyn-table-row-3 > :first-child { grid-column: 1 / 3; }
+  .dyn-table-row.dyn-table-row-3 > .dyn-table-remove { grid-column: 3; grid-row: 1; }
+  .segmented { display: flex; border-radius: var(--radius-md); }
+  .segmented button { flex: 1 1 auto; padding: 8px 10px; border-radius: var(--radius-sm); }
+  .sidebar-nav { gap: 2px; }
+  .sidebar-nav button { padding-left: 10px; padding-right: 10px; }
+}
+
+/* Кнопки отчёта драфт-сюрвея: Word + печать в одну строку. */
+.ds-report-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.ds-report-actions .btn-primary,
+.ds-report-actions .btn-secondary {
+  margin: 0;
+}
+@media print {
+  .ds-report-actions { display: none !important; }
+}
+
+/* ================================================================== */
+/* Теория «как в книге» (2026-10): официальный текст + комментарий,     */
+/* оглавление, рисунки, интерактивные сцены МППСС.                     */
+/* ================================================================== */
+:root {
+  --book-serif: "Literata", "PT Serif", Georgia, "Noto Serif", "Times New Roman", serif;
+  --book-ink: #e9e4d8;          /* тёплый «бумажный» белый на тёмной теме */
+  --book-ink-2: #b9b3a5;
+  --book-gold: #d6b26e;
+  --book-paper: transparent;
+}
+:root[data-theme="light"] {
+  --book-ink: #22252b;
+  --book-ink-2: #545a66;
+  --book-gold: #9a7330;
+  --book-paper: #fffdf8;
+}
+
+.book .book-source {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 16px 18px; margin: 4px 0 14px;
+  border: 1px solid color-mix(in srgb, var(--book-gold) 45%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--book-gold) 7%, transparent);
+}
+.book-source-badge {
+  align-self: flex-start;
+  font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--book-gold);
+}
+.book-source p { margin: 0; font-family: var(--book-serif); font-size: 14.5px; line-height: 1.55; color: var(--book-ink-2); }
+
+/* Оглавление */
+.book-toc {
+  margin: 0 0 8px; border: 1px solid var(--surface-border); border-radius: var(--radius-md);
+  background: var(--surface); padding: 0 16px;
+}
+.book-toc > summary {
+  cursor: pointer; list-style: none; padding: 14px 0; font-weight: 700; font-size: 13px;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary);
+}
+.book-toc > summary::-webkit-details-marker { display: none; }
+.book-toc > summary::after { content: "›"; float: right; transition: transform .2s; }
+.book-toc[open] > summary::after { transform: rotate(90deg); }
+.book-toc-body { padding-bottom: 14px; }
+.toc-part { margin: 10px 0 6px; font-size: 12.5px; color: var(--text-tertiary); }
+.toc-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.toc-chip {
+  min-width: 38px; height: 34px; padding: 0 10px; border-radius: 9px;
+  border: 1px solid var(--surface-border); background: var(--bg-elevated);
+  color: var(--text); font: 600 13px var(--font-mono); cursor: pointer;
+  transition: border-color var(--dur-fast), color var(--dur-fast), transform var(--dur-fast);
+}
+.toc-chip:hover { border-color: var(--book-gold); color: var(--book-gold); }
+.toc-chip:active { transform: scale(.94); }
+
+/* Заголовок части — по центру, с тонкими линиями, как в печатном издании */
+.book-part {
+  display: flex; align-items: center; gap: 14px; margin: 34px 0 16px;
+}
+.book-part .theory-part-header {
+  margin: 0; text-align: center; flex: 0 1 auto;
+  font-family: var(--book-serif); font-weight: 600; font-size: 17px; line-height: 1.35;
+  color: var(--book-gold); letter-spacing: .01em;
+}
+.book-part-rule { flex: 1 1 24px; height: 1px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--book-gold) 55%, transparent), transparent); }
+
+.book-entry { background: var(--book-paper), var(--surface); scroll-margin-top: 16px; }
+:root[data-theme="light"] .book-entry { background: var(--book-paper); }
+.book-head { margin-bottom: 14px; }
+.book-num {
+  display: block; font: 700 11.5px var(--font); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--book-gold); margin-bottom: 6px;
+}
+.book-title.theory-entry-title {
+  font-family: var(--book-serif); font-size: 21px; font-weight: 600; line-height: 1.3;
+  color: var(--book-ink); margin: 0;
+}
+
+/* Официальный текст: засечки, висячие номера пунктов, выключка по ширине */
+.book-text {
+  font-family: var(--book-serif); color: var(--book-ink);
+  font-size: 16.5px; line-height: 1.68;
+  hyphens: auto; -webkit-hyphens: auto;
+}
+.book-text .bp { margin: 0 0 .62em; display: grid; grid-template-columns: minmax(2.2em, max-content) 1fr; column-gap: .7em; text-align: justify; }
+.book-text .bp.nolabel { display: block; text-indent: 1.4em; }
+.book-text .bp.l1 { padding-left: 2.9em; grid-template-columns: minmax(2.4em, max-content) 1fr; }
+.book-text .bp.l2 { padding-left: 5.8em; grid-template-columns: 1em 1fr; margin-bottom: .3em; }
+.book-text .bp-label { color: var(--book-gold); font-variant-numeric: oldstyle-nums; white-space: nowrap; }
+.book-text .bp.l0 .bp-label { font-weight: 600; }
+.book-note { font-size: 13px; color: var(--text-tertiary); font-style: italic; margin: 0 0 10px; }
+
+/* Комментарий практика */
+.book-comment, .book-plain { margin-top: 18px; }
+.book-comment {
+  border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 4px 16px 14px;
+}
+.book-comment > summary {
+  cursor: pointer; list-style: none; padding: 10px 0 2px; font: 700 12px var(--font);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
+}
+.book-comment > summary::-webkit-details-marker { display: none; }
+.book-comment ul, .book-plain ul { margin: 10px 0 0; padding-left: 18px; }
+.book-plain ul { font-family: var(--book-serif); }
+.book-plain li { font-size: 16px !important; line-height: 1.65 !important; color: var(--book-ink) !important; }
+.book-comment .theory-example, .book-plain .theory-example { border-top-color: color-mix(in srgb, var(--accent) 25%, transparent); }
+.theory-example b { color: var(--text-secondary); font-weight: 700; }
+
+/* Рисунки */
+.book-figures { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-top: 18px; }
+.book-figure { margin: 0; }
+.book-figure img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: contain; display: block; border-radius: 10px;
+  background: #d9e2e2; box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 10px 26px rgba(0,0,0,.25);
+}
+.book-figure figcaption { margin-top: 8px; font-family: var(--book-serif); font-size: 13.5px; line-height: 1.45; color: var(--book-ink-2); }
+.book-figure figcaption b { color: var(--book-gold); font-family: var(--font); font-size: 12px; }
+.book-corr-title { margin-top: 12px !important; font-weight: 700; color: var(--text-secondary); }
+
+/* ------------------------- Интерактивная сцена ------------------------- */
+.book-scene { margin-top: 20px; }
+.scene-root { border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); background: #071a2b;
+  box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+.scene-stage { position: relative; }
+.scene-canvas { display: block; width: 100%; aspect-ratio: 16 / 9; }
+.scene-top { position: absolute; left: 0; right: 0; top: 0; display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 10px; pointer-events: none; }
+.scene-rule { pointer-events: none; font: 700 11px var(--font); letter-spacing: .14em; text-transform: uppercase; color: #fff;
+  background: rgba(4,10,20,.55); border: 1px solid rgba(255,255,255,.14); padding: 6px 10px; border-radius: 999px; backdrop-filter: blur(6px); }
+.scene-toggles { display: flex; gap: 6px; pointer-events: auto; }
+.scene-tgl { font: 600 12px var(--font); color: #cfe0f2; background: rgba(4,10,20,.55); border: 1px solid rgba(255,255,255,.16);
+  padding: 6px 11px; border-radius: 999px; cursor: pointer; backdrop-filter: blur(6px); transition: all var(--dur-fast); }
+.scene-tgl.on { background: #e3c07f; color: #0a1020; border-color: #e3c07f; }
+.scene-bar { padding: 12px 14px 14px; background: linear-gradient(180deg, #0a1626, #08121f); }
+.scene-caption { display: flex; gap: 10px; align-items: baseline; min-height: 3.2em; }
+.scene-step { flex-shrink: 0; font: 700 12px var(--font-mono); color: #e3c07f; }
+.scene-text { font-size: 14.5px; line-height: 1.5; color: #e6edf7; }
+.scene-text.in { animation: scene-text-in .45s var(--ease-smooth); }
+@keyframes scene-text-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.scene-controls { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.scene-btn { width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06); color: #fff; display: grid; place-items: center; cursor: pointer; transition: transform var(--dur-fast); }
+.scene-btn:active { transform: scale(.92); }
+.scene-play { background: #22d3ee; color: #04141a; border-color: #22d3ee; }
+.scene-track { position: relative; flex: 1; height: 34px; display: flex; align-items: center; }
+.scene-ticks { position: absolute; left: 8px; right: 8px; top: 50%; height: 0; }
+.scene-ticks span { position: absolute; top: -7px; width: 2px; height: 14px; background: rgba(227,192,127,.65); border-radius: 1px; }
+.scene-range { width: 100%; accent-color: #22d3ee; background: transparent; position: relative; }
+@media (max-width: 560px) {
+  .scene-canvas { aspect-ratio: 4 / 3.4; }
+  .scene-text { font-size: 13.5px; }
+  .book-text { font-size: 15.5px; text-align: left; }
+  .book-text .bp { text-align: left; }
+  .book-text .bp.l1 { padding-left: 1.2em; }
+  .book-text .bp.l2 { padding-left: 3.4em; }
+  .book-title.theory-entry-title { font-size: 19px; }
+  .scene-tgl { font-size: 11px; padding: 5px 9px; white-space: nowrap; }
+  .scene-rule { font-size: 10px; padding: 5px 8px; white-space: nowrap; }
+  .scene-top { padding: 8px; }
+}
+
+/* Сцены теории (theory-scenes.js): ползунок силы ветра и «высокий» холст */
+.scene-canvas.tall { aspect-ratio: 4 / 3.2; }
+.scene-slider { display: flex; align-items: center; gap: 10px; margin-top: 8px; font: 600 12px var(--font); color: #9fb0c8; }
+.scene-slider span { flex-shrink: 0; letter-spacing: .04em; }
+.scene-slider input { flex: 1; accent-color: #e3c07f; }
+.scene-slider b { flex-shrink: 0; min-width: 2ch; text-align: right; font: 700 15px var(--font-mono); color: #e3c07f; }
+@media (max-width: 560px) { .scene-canvas.tall { aspect-ratio: 3 / 3.6; } }
+
+/* Таблицы в теории — книжные */
+.book-table-wrap { margin-top: 16px; overflow-x: auto; border-radius: 12px; border: 1px solid var(--surface-border-strong); background: var(--surface); }
+.book-table { width: 100%; border-collapse: collapse; font-family: var(--book-serif); font-size: 15px; color: var(--book-ink); }
+.book-table th { font: 700 11.5px var(--font); letter-spacing: .08em; text-transform: uppercase; color: var(--book-gold);
+  text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--surface-border-strong); background: rgba(227,192,127,.06); }
+.book-table td { padding: 9px 12px; border-bottom: 1px solid var(--surface-border-strong); vertical-align: top; line-height: 1.45; }
+.book-table tbody tr:last-child td { border-bottom: 0; }
+.book-table tbody tr:nth-child(even) td { background: rgba(127,140,170,.05); }
+.book-table td:first-child { font-family: var(--font-mono); font-size: 13.5px; white-space: nowrap; color: var(--text); }
+.book-table .flag-cell { display: flex; align-items: center; gap: 10px; }
+.book-table .flag-cell b { font: 700 15px var(--font-mono); }
+.ics-flag { flex-shrink: 0; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,.35); }
+@media (max-width: 560px) { .book-table { font-size: 14px; } .book-table td, .book-table th { padding: 8px 9px; }
+  .book-table td:first-child { white-space: normal; word-break: break-word; } .book-table .flag-cell { white-space: nowrap; } }
+
+.book-ref { margin: 0 0 10px; font: 600 12px var(--font); letter-spacing: .06em; color: var(--book-gold); opacity: .9; }
+.book-ref::before { content: "§ "; }
+
+/* ===================================================================
+   Главная страница (js/home.js)
+   =================================================================== */
+.home { padding-bottom: 24px; }
+.home-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: end;
+  padding: 44px 40px 36px; border-radius: 24px; border: 1px solid var(--surface-border-strong);
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(227,192,127,.18), transparent 55%),
+    radial-gradient(90% 120% at 0% 100%, rgba(227,192,127,.07), transparent 60%),
+    linear-gradient(160deg, #15130f 0%, #050505 100%);
+  border-color: rgba(227,192,127,.35);
+  box-shadow: var(--shadow-card); color: #eef1fa; }
+.home-hero-rose { position: absolute; right: -70px; top: -70px; width: 380px; height: 380px; color: #e3c07f; opacity: .22;
+  animation: home-rose 120s linear infinite; pointer-events: none; }
+@keyframes home-rose { to { transform: rotate(360deg); } }
+.home-hero-body { position: relative; max-width: 620px; min-width: 0; }
+.home-eyebrow { font: 700 11.5px var(--font); letter-spacing: .2em; text-transform: uppercase; color: #e3c07f; }
+.home-eyebrow::before { content: ""; display: inline-block; width: 28px; height: 1px; background: #e3c07f; vertical-align: middle; margin-right: 10px; }
+.home-title { margin: 12px 0 10px; font-size: clamp(38px, 5.6vw, 62px); line-height: 1.05; letter-spacing: .14em; }
+.home-sub { margin: 0; font-size: 16.5px; line-height: 1.55; color: #cdbf9f; max-width: 560px; }
+.home-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.home-cta .btn-primary, .home-cta .btn-secondary { margin: 0; width: auto; }
+.home-continue-name { text-transform: none; letter-spacing: 0; font-weight: 600; opacity: .92; margin-left: 10px; padding-left: 10px; border-left: 1px solid rgba(4,20,26,.35); }
+.home-continue-name:empty { display: none; }
+.home-continue { display: inline-flex; align-items: center; max-width: 100%; white-space: nowrap; }
+.home-continue-name { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.home-clock { position: relative; min-width: 200px; padding: 16px 18px; border-radius: 16px; background: rgba(4,9,18,.55);
+  border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(8px); }
+.home-clock-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.home-clock-row + .home-clock-row { margin-top: 4px; }
+.home-clock-label { font: 700 11px var(--font); letter-spacing: .14em; text-transform: uppercase; color: #8b96b8; }
+.home-clock-time { font: 600 26px var(--font-mono); color: #fff; font-variant-numeric: tabular-nums; }
+.home-clock-row:first-child .home-clock-time { color: #e3c07f; }
+.home-clock-date { margin-top: 8px; font-size: 12.5px; color: #8b96b8; }
+
+.home-h { margin: 34px 0 14px; font: 700 12px var(--font); letter-spacing: .16em; text-transform: uppercase; color: var(--text-secondary); }
+.home-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(176px, 1fr)); gap: 14px; }
+.home-tile { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; cursor: pointer;
+  padding: 20px 18px 18px; border-radius: 18px; border: 1px solid var(--surface-border); background: var(--surface); color: var(--text);
+  box-shadow: var(--shadow-card); font: inherit;
+  transition: transform var(--dur-normal) var(--ease-smooth), border-color var(--dur-fast), box-shadow var(--dur-normal); }
+.home-tile:hover { transform: translateY(-3px); border-color: rgba(227,192,127,.55); box-shadow: 0 18px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(227,192,127,.2); }
+.home-tile:active { transform: scale(.98); }
+.home-tile-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; color: #e3c07f;
+  background: linear-gradient(145deg, #16213a, #0a0f1c); border: 1px solid rgba(227,192,127,.35); margin-bottom: 6px; }
+.home-tile-icon svg { width: 22px; height: 22px; }
+.home-tile-title { font-weight: 700; font-size: 16px; }
+.home-tile-desc { font-size: 13px; line-height: 1.45; color: var(--text-secondary); flex: 1; }
+.home-tile-count { margin-top: 6px; font: 600 12px var(--font-mono); color: var(--accent); }
+
+.home-quick { display: flex; flex-wrap: wrap; gap: 8px; }
+.home-chip { font: 600 13.5px var(--font); color: var(--text); background: var(--surface); border: 1px solid var(--surface-border-strong);
+  padding: 9px 14px; border-radius: 999px; cursor: pointer; transition: all var(--dur-fast) var(--ease-smooth); }
+.home-chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+.home-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 34px; }
+.home-card { padding: 22px 22px 20px; border-radius: 18px; border: 1px solid var(--surface-border); background: var(--surface); box-shadow: var(--shadow-card); }
+.home-card-eyebrow { font: 700 11px var(--font); letter-spacing: .16em; text-transform: uppercase; color: var(--book-gold, #d6b26e); margin-bottom: 10px; }
+.home-rule-title { margin: 0 0 10px; font: 700 19px/1.3 var(--book-serif); color: var(--book-ink, var(--text)); }
+.home-rule-text { margin: 0 0 16px; font: 15.5px/1.6 var(--book-serif); color: var(--book-ink-2, var(--text-secondary)); }
+.home-rule .btn-secondary { margin: 0; width: auto; }
+.home-logs { display: flex; flex-direction: column; gap: 10px; }
+.home-log { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left; cursor: pointer; font: inherit;
+  padding: 14px 16px; border-radius: 14px; border: 1px solid var(--surface-border); background: var(--bg-elevated); color: var(--text);
+  transition: border-color var(--dur-fast), transform var(--dur-fast); }
+.home-log:hover { border-color: var(--accent); transform: translateY(-1px); }
+.home-log-title { font-weight: 600; font-size: 14.5px; }
+.home-log-meta { font-size: 12.5px; color: var(--text-secondary); }
+.home-foot { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; font-size: 12.5px; color: var(--text-tertiary); }
+#home-offline.ok { color: var(--success); }
+
+:root[data-theme="light"] .home-tile-icon { background: linear-gradient(145deg, #16213a, #0a0f1c); }
+
+@media (max-width: 760px) {
+  .home-hero { grid-template-columns: minmax(0, 1fr); padding: 30px 20px 22px; border-radius: 20px; gap: 20px; }
+  .home-hero-rose { width: 260px; height: 260px; right: -80px; top: -60px; }
+  .home-sub { font-size: 15px; }
+  .home-clock { min-width: 0; }
+  .home-cta .btn-primary, .home-cta .btn-secondary { width: 100%; }
+  .home-tiles { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .home-tile { padding: 14px 12px; }
+  .home-tile-desc { display: none; }
+  .home-tile:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .home-row { grid-template-columns: 1fr; }
+  .home-clock { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; padding: 12px 14px; }
+  .home-clock-row + .home-clock-row { margin-top: 0; }
+  .home-clock-time { font-size: 22px; }
+  .home-clock-date { grid-column: 1 / -1; }
+  .home-foot { flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+  .home-foot-sep { display: none; }
+}
+
+/* ===================================================================
+   Журнал корректуры ИМ / NAVAREA
+   =================================================================== */
+.nl-toolbar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px; margin-bottom: 18px; }
+.nl-toolbar .field { margin: 0; min-width: 150px; flex: 1; }
+.nl-toolbar .nl-new-year { margin: 0; width: auto; flex-shrink: 0; }
+.nl-form { margin-top: 6px; }
+.nl-summary { margin-top: 8px; }
+.nl-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.nl-stat { padding: 14px 16px; border-radius: 14px; border: 1px solid var(--surface-border); background: var(--bg-elevated); }
+.nl-stat.has-gaps { border-color: rgba(239,68,68,.45); box-shadow: inset 3px 0 0 #ef4444; }
+.nl-stat-label { font: 700 11px var(--font); letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); }
+.nl-stat-main { margin: 6px 0 4px; font: 700 22px var(--font-mono); color: var(--text); }
+.nl-stat-line { font-size: 13px; line-height: 1.45; color: var(--text-secondary); }
+.nl-gap { color: #ef4444; }
+.nl-gap b { font-weight: 700; }
+.nl-ok { color: var(--success); }
+.nl-dup { color: var(--warning); }
+.nl-muted { color: var(--text-tertiary); }
+.nl-pending { margin-top: 12px; padding: 12px 14px; border-radius: 12px; font-size: 14px; background: var(--warning-soft); color: var(--warning); }
+.nl-pending-title { font-weight: 700; }
+.nl-pending.nl-all-done { background: rgba(52,211,153,.12); color: var(--success); }
+.nl-list-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 26px; }
+.nl-list-head .section-header { margin: 0; }
+.nl-list-head .nl-export { margin: 0; width: auto; }
+.nl-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.nl-empty { margin: 4px 0; color: var(--text-tertiary); font-size: 14px; }
+.nl-row { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 12px; padding: 12px 14px;
+  border-radius: 14px; border: 1px solid var(--surface-border); background: var(--bg-elevated); }
+.nl-row.done { opacity: .78; }
+.nl-row-main { display: flex; flex-wrap: wrap; gap: 6px; }
+.nl-chip { display: inline-flex; align-items: baseline; gap: 6px; padding: 4px 10px; border-radius: 999px; font: 600 13.5px var(--font-mono);
+  background: var(--surface); border: 1px solid var(--surface-border-strong); color: var(--text); }
+.nl-chip i { font: 700 10.5px var(--font); font-style: normal; letter-spacing: .08em; text-transform: uppercase; color: var(--text-secondary); }
+.nl-chip.issue { border-color: rgba(227,192,127,.5); }
+.nl-chip.nav { border-color: rgba(34,211,238,.45); }
+.nl-date { font: 500 13px var(--font-mono); color: var(--text-secondary); }
+.nl-toggle { font: 600 12.5px var(--font); padding: 6px 11px; border-radius: 999px; cursor: pointer; white-space: nowrap;
+  border: 1px solid var(--warning); color: var(--warning); background: transparent; transition: all var(--dur-fast); }
+.nl-row.done .nl-toggle { border-color: var(--success); color: var(--success); background: rgba(52,211,153,.1); }
+.nl-del { width: auto; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; border: 1px solid var(--surface-border-strong); background: transparent;
+  color: var(--text-secondary); cursor: pointer; font: 600 14px var(--font); }
+.nl-del.armed { border-color: #ef4444; color: #ef4444; font-size: 12px; }
+@media (max-width: 760px) {
+  .nl-stats { grid-template-columns: 1fr; }
+  .nl-row { grid-template-columns: 1fr auto auto; gap: 8px 10px; }
+  .nl-del, .nl-toggle { width: auto; }
+  .nl-row-main { grid-column: 1 / -1; }
+  .nl-toolbar .nl-new-year { width: 100%; }
+}
+
+/* ===================================================================
+   Прокрутка: полоса прогресса, «наверх», плашка текущей записи теории
+   =================================================================== */
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: rgba(227,192,127,.45) transparent; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(227,192,127,.35); border-radius: 10px; border: 3px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { background: rgba(227,192,127,.7); background-clip: padding-box; border: 2px solid transparent; }
+:root[data-theme="light"] { scrollbar-color: rgba(154,115,48,.5) transparent; }
+:root[data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(154,115,48,.4); background-clip: padding-box; }
+
+.read-progress { position: fixed; left: 0; right: 0; top: 0; height: 3px; z-index: 60; pointer-events: none; opacity: 0; transition: opacity .3s; }
+.read-progress.on { opacity: 1; }
+.read-progress span { display: block; height: 100%; transform-origin: 0 50%; transform: scaleX(0);
+  background: linear-gradient(90deg, #22d3ee, #e3c07f); box-shadow: 0 0 10px rgba(227,192,127,.6); }
+
+.to-top { position: fixed; right: 22px; bottom: 22px; z-index: 60; width: 50px; height: 50px; padding: 3px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.12); background: rgba(10,16,30,.82); backdrop-filter: blur(10px); cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0,0,0,.4); opacity: 0; transform: translateY(14px) scale(.9); pointer-events: none;
+  transition: opacity var(--dur-normal) var(--ease-smooth), transform var(--dur-normal) var(--ease-smooth); }
+.to-top.on { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { transform: translateY(-2px); }
+.to-top svg { display: block; }
+.to-top-track { fill: none; stroke: rgba(255,255,255,.12); stroke-width: 2.5; }
+.to-top-ring { fill: none; stroke: #e3c07f; stroke-width: 2.5; stroke-linecap: round; transform: rotate(-90deg); transform-origin: 22px 22px; transition: stroke-dashoffset .1s linear; }
+.to-top-arrow { fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.reading-chip { position: fixed; bottom: 26px; left: calc(50% + 130px); z-index: 59; display: flex; align-items: center; gap: 2px;
+  max-width: min(560px, calc(100vw - 260px - 120px)); padding: 4px; border-radius: 999px;
+  background: rgba(10,16,30,.86); border: 1px solid rgba(227,192,127,.3); backdrop-filter: blur(12px); box-shadow: 0 14px 36px rgba(0,0,0,.45);
+  opacity: 0; transform: translate(-50%, 16px); pointer-events: none;
+  transition: opacity var(--dur-normal) var(--ease-smooth), transform var(--dur-normal) var(--ease-smooth); }
+.reading-chip.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.rc-nav { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; border: 0; background: transparent; color: #e3c07f;
+  font: 600 22px/1 var(--font); cursor: pointer; transition: background var(--dur-fast); }
+.rc-nav:hover:not(:disabled) { background: rgba(227,192,127,.15); }
+.rc-nav:disabled { opacity: .3; cursor: default; }
+.rc-label { display: flex; align-items: baseline; gap: 8px; min-width: 0; border: 0; background: transparent; cursor: pointer; padding: 0 6px; color: #eef1fa; font: inherit; }
+.rc-num { flex-shrink: 0; font: 700 11px var(--font); letter-spacing: .12em; text-transform: uppercase; color: #e3c07f; }
+.rc-title { font: 600 13.5px var(--book-serif); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 760px) {
+  .to-top { right: 14px; bottom: 14px; width: 46px; height: 46px; }
+  .to-top svg { width: 38px; height: 38px; }
+  .reading-chip { left: 12px; right: 70px; bottom: 16px; max-width: none; transform: translateY(16px); }
+  .reading-chip.on { transform: none; }
+}
+@media print { .read-progress, .to-top, .reading-chip { display: none !important; } }
+
+/* ===================== Тренажёр МППСС (colregs-trainer.js) ===================== */
+.group-content[data-group="theory"] .trainer-card { display: none; }
+.group-content[data-group="theory"][data-mode="trainer"] .trainer-card { display: block; }
+.group-content[data-group="theory"][data-mode="trainer"] .theory-only { display: none !important; }
+#theory-mode-switch { margin-bottom: 22px; }
+.trainer-meta { color: var(--text-secondary); font-size: 13px; margin: 0 0 22px; }
+.trainer-meta b { color: var(--text); }
+.trainer-progress-bar { height: 3px; border-radius: 3px; background: var(--surface-border); overflow: hidden; margin: 4px 0 16px; }
+.trainer-progress-bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), #e3c07f); transition: width var(--dur-normal) var(--ease-smooth); }
+.trainer-head { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 10px; }
+.trainer-canvas { display: block; width: 100%; height: clamp(300px, 52vw, 470px); border-radius: var(--radius-md); border: 1px solid var(--surface-border-strong); background: #0b3350; }
+.trainer-situation { margin: 18px 0 6px; line-height: 1.6; color: var(--text); }
+.trainer-question { margin: 0 0 14px; font-weight: 700; color: var(--text); }
+.trainer-options { display: grid; gap: 10px; }
+.trainer-option {
+  text-align: left; padding: 13px 16px; border-radius: var(--radius-md); cursor: pointer;
+  background: var(--surface-hover); color: var(--text); border: 1px solid var(--surface-border-strong);
+  font: inherit; font-size: 15px; line-height: 1.4;
+  transition: border-color var(--dur-fast) var(--ease-snap), transform var(--dur-fast) var(--ease-snap), background var(--dur-fast);
+}
+.trainer-option:hover:not(:disabled) { border-color: var(--accent); transform: translateY(-1px); }
+.trainer-option:disabled { cursor: default; opacity: 0.6; }
+.trainer-option.correct { opacity: 1; border-color: var(--success); background: rgba(52, 211, 153, 0.14); }
+.trainer-option.wrong { opacity: 1; border-color: #ff6b6b; background: rgba(255, 107, 107, 0.12); }
+.trainer-feedback { margin-top: 18px; padding: 16px 18px; border-radius: var(--radius-md); border: 1px solid rgba(255, 107, 107, 0.45); background: rgba(255, 107, 107, 0.06); }
+.trainer-feedback.ok { border-color: rgba(52, 211, 153, 0.5); background: rgba(52, 211, 153, 0.06); }
+.trainer-verdict { font-weight: 700; margin-bottom: 8px; color: #ff8a8a; }
+.trainer-feedback.ok .trainer-verdict { color: var(--success); }
+.trainer-explain { margin: 0 0 8px; line-height: 1.6; }
+.trainer-rules { margin: 0 0 14px; font-size: 13px; color: var(--text-secondary); }
+.trainer-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.trainer-actions .btn-primary, .trainer-actions .btn-secondary { margin: 0; }
+.trainer-summary { text-align: center; padding: 18px 0 8px; }
+.trainer-score { font-family: var(--font-mono); font-size: 56px; font-weight: 700; color: var(--accent); }
+.trainer-score-text { color: var(--text-secondary); margin: 6px 0 22px; }
+.trainer-summary .trainer-actions { justify-content: center; margin-bottom: 18px; }
+@media (max-width: 760px) {
+  .trainer-actions > * { flex: 1 1 100%; }
+  .trainer-option { font-size: 14px; }
+}
+.home-chip.home-chip-accent { border-color: rgba(227, 192, 127, 0.6); color: #e3c07f; }
+.group-content[data-group="theory"][data-mode="trainer"] #theory-mode-switch { margin-bottom: 0; }
+
+/* Текст ошибки/сообщения в поле результата — обычным размером (см. setupResultTextFit) */
+.result-value.is-long { font-size: 36px; }
+@media (max-width: 760px) { .result-value.is-long { font-size: 27px; } }
+.result-value.is-message { font-family: var(--font); font-size: 16px; font-weight: 600; line-height: 1.45; letter-spacing: 0; color: var(--warning, #f59e0b); }
+
+/* ===================== Лицензия v2, документы, первый запуск ===================== */
+.license-status-badge.warn { background: rgba(245, 158, 11, 0.18); color: #f5b041; }
+.license-status-badge.bad { background: rgba(239, 68, 68, 0.18); color: #f87171; }
+#license-backdrop .about-modal { max-width: 520px; max-height: 84vh; }
+#license-backdrop .about-modal-backdrop, #license-backdrop { padding-top: 8vh; }
+.lic-status { border: 1px solid var(--surface-border-strong); border-radius: var(--radius-md, 12px); padding: 14px 16px; margin-bottom: 16px; background: var(--surface); }
+.lic-status-head { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
+.lic-status-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--text-tertiary); flex-shrink: 0; }
+.lic-status[data-state="active"] .lic-status-dot { background: #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, 0.6); }
+.lic-status[data-state="expired"] .lic-status-dot,
+.lic-status[data-state="wrong_device"] .lic-status-dot,
+.lic-status[data-state="clock"] .lic-status-dot,
+.lic-status[data-state="legacy"] .lic-status-dot,
+.lic-status[data-state="invalid"] .lic-status-dot { background: #ef4444; }
+.lic-facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 12px 0 0; font-size: 14px; }
+.lic-facts dt { color: var(--text-tertiary); }
+.lic-facts dd { margin: 0; white-space: pre-line; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; }
+.lic-facts[hidden] { display: none; }
+.lic-status .field-hint { margin: 10px 0 0; }
+.lic-device { margin-bottom: 16px; }
+.lic-device-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-tertiary); margin-bottom: 8px; }
+.lic-device-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.lic-device-row code { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 20px; font-weight: 600; letter-spacing: 0.06em; color: var(--accent); background: var(--surface); border: 1px solid var(--surface-border-strong); border-radius: 10px; padding: 8px 14px; user-select: all; }
+.lic-device-row .lic-copy { margin: 0; }
+.lic-device .field-hint { margin: 10px 0 0; }
+#license-key-input { width: 100%; resize: vertical; min-height: 78px; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12.5px; line-height: 1.45; word-break: break-all; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--surface-border-strong); background: var(--surface); color: var(--text); }
+.lic-accept { margin: 4px 0 14px; font-size: 13.5px; line-height: 1.45; align-items: flex-start; }
+.lic-accept a, .lic-legal-note a, .doc-links a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+#license-entry .btn-primary { margin-bottom: 10px; }
+#license-state-active { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+#license-state-active[hidden] { display: none; }
+#license-state-active .btn-secondary { margin: 0; }
+.lic-danger.armed { border-color: #ef4444; color: #f87171; }
+.lic-contacts { border-top: 1px solid var(--surface-border); padding-top: 14px; margin-top: 6px; font-size: 14px; line-height: 1.7; }
+.lic-legal-note { font-size: 12px; color: var(--text-tertiary); line-height: 1.5; margin: 12px 0 0; }
+.doc-links { list-style: none; padding: 0; margin: 0 0 14px; display: grid; gap: 8px; font-size: 14px; }
+.doc-backdrop { z-index: 120; padding-top: 5vh; }
+.doc-modal { max-width: 760px; max-height: 88vh; }
+.legal-doc { font-family: Georgia, "Noto Serif", "Times New Roman", serif; font-size: 15px; line-height: 1.6; color: var(--text); }
+.legal-doc h1 { font-family: inherit; font-size: 22px; margin: 0 0 4px; text-align: center; }
+.legal-doc .doc-sub { text-align: center; color: var(--text-tertiary); font-size: 13px; margin: 0 0 18px; }
+.legal-doc h2 { font-family: Inter, system-ui, sans-serif; font-size: 15px; font-weight: 700; margin: 20px 0 8px; }
+.legal-doc p { margin: 0 0 8px; text-align: justify; hyphens: auto; }
+.legal-doc ul, .legal-doc ol { margin: 0 0 10px; padding-left: 22px; }
+.legal-doc li { margin-bottom: 5px; }
+.legal-doc table { width: 100%; border-collapse: collapse; margin: 6px 0 12px; font-size: 13.5px; }
+.legal-doc th, .legal-doc td { border: 1px solid var(--surface-border-strong); padding: 6px 9px; text-align: left; vertical-align: top; }
+.legal-doc th { width: 34%; color: var(--text-secondary); font-weight: 600; }
+.doc-missing { color: #f59e0b; font-family: Inter, system-ui, sans-serif; font-size: 0.9em; }
+.doc-lang-note { font-family: Inter, system-ui, sans-serif; color: var(--text-tertiary); font-size: 13px; }
+#terms-backdrop { z-index: 110; }
+.terms-modal { max-width: 500px; }
+.terms-modal .btn-primary { margin: 6px 0 10px; }
+@media (max-width: 520px) {
+  .lic-facts { grid-template-columns: 1fr; gap: 2px; }
+  .lic-facts dd { margin-bottom: 8px; }
+  .lic-device-row code { font-size: 17px; }
+}
+
+/* Разбивка ETA по точкам маршрута — внутри блока результата. */
+.result-legs { margin-top: 10px; }
+.result-legs .field-hint { margin: 4px 0 0; font-size: 13px; line-height: 1.45; }
+
+/* ===== iPhone / iPad: веб-версия с экрана «Домой» (js/ios.js) ===== */
+.lic-ios-note, .field-hint.lic-ios-keep { display: none; }
+html.is-ios:not(.is-standalone) .lic-ios-note {
+  display: block; margin: 0 0 18px; padding: 14px 16px; border-radius: 14px;
+  border: 1px solid rgba(227, 192, 127, .45); background: rgba(227, 192, 127, .08);
+}
+.lic-ios-note p { margin: 0 0 12px; font-size: 14px; line-height: 1.5; color: var(--text); }
+.lic-ios-note .btn-primary { margin-bottom: 0; }
+html.is-ios:not(.is-standalone) .lic-device,
+html.is-ios:not(.is-standalone) #license-entry,
+html.is-ios:not(.is-standalone) #license-state-active { display: none !important; }
+html.is-ios.is-standalone .field-hint.lic-ios-keep { display: block; margin: 8px 0 0; }
+
+.ios-install-backdrop { z-index: 400; align-items: center; padding: 20px; background: rgba(0, 0, 0, .72); }
+.ios-install { text-align: center; padding: 26px 22px 22px; max-width: 420px; max-height: calc(100vh - 40px); overflow-y: auto; }
+.ios-install-icon { display: block; margin: 0 auto; width: 72px; height: 72px; border-radius: 17px; box-shadow: 0 8px 26px rgba(0, 0, 0, .5); }
+.ios-install h2 { margin: 14px 0 6px; font-size: 19px; line-height: 1.25; color: var(--text); }
+.ios-install-lead { margin: 0 0 16px; font-size: 14px; line-height: 1.45; color: var(--text-secondary); }
+.ios-steps { list-style: none; margin: 0 0 14px; padding: 0; text-align: left; display: grid; gap: 10px; }
+.ios-steps li { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 12px; align-items: center; font-size: 14px; line-height: 1.4; color: var(--text); }
+.ios-step-ico { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; color: #e3c07f;
+  background: rgba(227, 192, 127, .1); border: 1px solid rgba(227, 192, 127, .35); }
+.ios-step-num { font-weight: 700; font-size: 15px; }
+.ios-ico { width: 21px; height: 21px; }
+.field-hint.ios-install-note { margin: 0 0 14px; text-align: left; }
+.ios-install-continue { width: 100%; }
+
+/* iOS увеличивает страницу при нажатии на поле со шрифтом меньше 16px — не даём */
+@supports (-webkit-touch-callout: none) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea { font-size: 16px !important; }
+}
+/* вырез экрана и полоса «Домой» (viewport-fit=cover) */
+@supports (padding: max(0px)) {
+  .app-shell { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); padding-bottom: env(safe-area-inset-bottom); }
+  .to-top { bottom: calc(22px + env(safe-area-inset-bottom)); }
+  .reading-chip { bottom: calc(26px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 760px) {
+  @supports (padding: max(0px)) { .to-top { bottom: calc(14px + env(safe-area-inset-bottom)); } }
+}

@@ -1,0 +1,223 @@
+{
+  "meta": {},
+  "entries": [
+    {
+      "part": "History and Structure of the Code",
+      "number": "1",
+      "title": "Why the ISPS Code came about",
+      "commentary": [
+        "The ISPS Code (International Ship and Port Facility Security Code) was developed by the IMO in response to the terrorist attacks of 11 September 2001 and subsequent attacks on maritime targets (in particular, the bombing of the tanker Limburg in 2002).",
+        "The Code was adopted in December 2002 as a package of amendments to Chapter XI-2 of the International Convention for the Safety of Life at Sea (SOLAS) and entered into force on 1 July 2004.",
+        "The key difference between the ISPS Code and the rest of the SOLAS requirements: previously, ship safety concerned hazards such as storms, fire and collision; the ISPS Code introduced a separate concept of security — protection against intentional, malicious human acts (terrorism, piracy, unlawful seizure, smuggling, sabotage).",
+        "The Code applies to passenger ships, cargo ships of 500 gross tonnage and above, mobile offshore drilling units, and the port facilities serving them on international voyages — ships not engaged in international voyages are not formally covered by the ISPS Code (although many companies apply its principles voluntarily)."
+      ]
+    },
+    {
+      "part": "History and Structure of the Code",
+      "number": "2",
+      "title": "Structure of the Code: Part A and Part B",
+      "commentary": [
+        "Part A contains the mandatory requirements: it is Part A that SOLAS Chapter XI-2 refers to, and it is compliance with Part A that is verified during a ship's survey and the issuance of the International Ship Security Certificate (ISSC).",
+        "Part B provides recommendatory guidance: it explains HOW to practically fulfil the requirements of Part A (example procedures, document forms, more detailed threat assessment). Part B is not mandatory in itself, but individual Contracting Governments/flag Administrations may make certain of its provisions mandatory.",
+        "This two-tier structure (a firm core plus flexible guidance) is also found in other modern IMO codes — it makes it possible to unify the objective (what must be achieved) without dictating a single method (exactly how), given the different types of ships and ports involved.",
+        "In practice, the ship security officer relies on the ship's OWN Ship Security Plan (SSP, see entry No. 8), drawn up with regard to both parts of the Code and approved by the flag Administration — it is the SSP, not the Code itself, that is the working document on board."
+      ]
+    },
+    {
+      "part": "Roles and Responsibilities",
+      "number": "3",
+      "title": "Company Security Officer (CSO)",
+      "commentary": [
+        "The CSO (Company Security Officer) is the security officer of the shipowning/operating COMPANY, does not sail on board, and is responsible for the security of the company's entire fleet as a whole.",
+        "Main duties: arranging for a Ship Security Assessment (SSA) to be carried out for each ship in the fleet, approving and subsequently updating the Ship Security Plan (SSP), ensuring the necessary resources and crew training are provided, and maintaining liaison with flag Administrations and port authorities on security matters.",
+        "The CSO is the person who first receives information about a change in the threat level for the ship's area of operation and passes instructions on to the master/ship security officer.",
+        "One CSO may be responsible for the security of several company ships at the same time (unlike the SSO, who is assigned to a specific ship)."
+      ]
+    },
+    {
+      "part": "Roles and Responsibilities",
+      "number": "4",
+      "title": "Ship Security Officer (SSO)",
+      "commentary": [
+        "The SSO (Ship Security Officer) is the ship's security officer, appointed by the master for EACH ship falling under the ISPS Code, accountable to the master and coordinating with the company's CSO.",
+        "In practice, the role of SSO is usually combined with that of the chief officer or another senior officer who has completed specialized ship security training (a separate course, distinct from general STCW training).",
+        "Duties on board: regular checks of the state of security on board, maintaining and updating the SSP, training and briefing the crew on security matters, coordinating with the PFSO of the port facility on arrival in port, completing a Declaration of Security (DoS) when required, and immediately reporting to the master and CSO any incidents or suspicious activity.",
+        "The SSO must know the ship's current security level at all times and ensure that the corresponding measures (see entries No. 9-12) are carried out at any moment, not only on entering port."
+      ]
+    },
+    {
+      "part": "Roles and Responsibilities",
+      "number": "5",
+      "title": "Port Facility Security Officer (PFSO)",
+      "commentary": [
+        "The PFSO (Port Facility Security Officer) is the security officer of a specific port facility (terminal/berth), appointed by the administration of that port facility rather than by a shipping company.",
+        "Duties: developing and maintaining the Port Facility Security Plan (PFSP), liaising with the SSOs of arriving/departing ships, coordinating security measures at the ship/shore interface, and taking part in completing the Declaration of Security (DoS) when it is required.",
+        "The PFSO is the point of contact for the SSO on all security matters directly within the port: access control at the berth, restricted areas on the shore side, and the plan of action for a rise in the security level are all coordinated with the PFSO."
+      ]
+    },
+    {
+      "part": "Roles and Responsibilities",
+      "number": "6",
+      "title": "How the three roles interact",
+      "diagram": "isps_roles_triangle",
+      "commentary": [
+        "The CSO-SSO-PFSO triangle is the basis of the ISPS Code's practical operation: the CSO sets policy and resources at company level, the SSO carries it out on a specific ship, and the PFSO is the mirror role of the SSO on the side of a specific port facility.",
+        "The SSO and PFSO interact directly on every occasion a ship enters port (coordinating security measures and, where necessary, a Declaration of Security); the CSO becomes involved when a decision falls outside the SSO's authority (a change in security level, a serious incident, or conflicting requirements between different ports).",
+        "None of the three roles supersedes the ship's master: under international law the master retains the absolute right to make decisions necessary for the safety of human life, the ship and the cargo, even if this conflicts with current security instructions."
+      ]
+    },
+    {
+      "part": "Ship Security Assessment and Plan",
+      "number": "7",
+      "title": "Ship Security Assessment (SSA)",
+      "commentary": [
+        "The SSA (Ship Security Assessment) is a mandatory analysis of a ship's vulnerabilities and threats that precedes drawing up the Ship Security Plan (SSP): without a current SSA, an approved SSP is meaningless, since it would not be based on the real risks faced by that particular ship.",
+        "The SSA includes: identifying existing security measures, procedures and operations on the ship; identifying and evaluating key shipboard assets that need to be protected (the bridge, engine room, cargo control stations, spaces holding dangerous goods, communication systems); identifying possible threats to those assets and the likelihood of their occurrence; and identifying weaknesses, including the human element, in existing procedures, policies and operations.",
+        "The SSA is carried out by a suitably qualified person (which may be a Recognized Security Organization, RSO, acting on behalf of the flag Administration) and is approved by, or on behalf of, the flag Administration.",
+        "The SSA is not a one-off exercise: it is reviewed whenever there is a significant change to the ship, its operation or its routes, not merely on a fixed calendar schedule."
+      ]
+    },
+    {
+      "part": "Ship Security Assessment and Plan",
+      "number": "8",
+      "title": "Ship Security Plan (SSP)",
+      "diagram": "isps_ssa_ssp_flow",
+      "commentary": [
+        "The SSP (Ship Security Plan) is the ship's security plan, drawn up on the basis of the SSA and approved by the flag Administration (or an RSO acting on its behalf), with the SSO taking part in its development under the supervision of the CSO.",
+        "The SSP covers measures for each of the three security levels (see entries No. 9-12): procedures for preventing weapons or dangerous devices from being brought on board, procedures for access control and restricted areas, procedures for the security of cargo and ship's stores, arrangements for liaison with port facilities and other ships, the procedure for completing a Declaration of Security, a plan for crew training, drills and exercises, and the procedure for reporting security incidents.",
+        "The SSP is a CONFIDENTIAL document: access to it is restricted and it is protected from unauthorized access or disclosure (this is expressly required by the Code — otherwise the plan itself would become a source of vulnerability, revealing the ship's weak points to a potential attacker).",
+        "Verification that the SSP is being implemented forms part of the ship's survey for the issue/endorsement of the International Ship Security Certificate (ISSC, see entry No. 13)."
+      ]
+    },
+    {
+      "part": "Security Levels",
+      "number": "9",
+      "title": "The general principle of the three security levels",
+      "commentary": [
+        "The ISPS Code introduces three security levels, in ascending order of threat severity: Security Level 1 (normal), Security Level 2 (heightened), Security Level 3 (exceptional).",
+        "The security level for a ship is set by the flag Administration (or communicated through it from the port State/area of operation) — the ship must implement measures no lower than the level set both for its area of operation and for the port facility it is at (whichever of the two is stricter applies).",
+        "Each level has its own set of additional measures laid down in advance in the SSP — moving to a higher level is not improvised, but a pre-prepared course of action for the crew that has been rehearsed in drills.",
+        "A ship is ALWAYS operating at a defined security level, even at sea away from port (by default, Level 1, unless otherwise indicated) — this is not a mode that is switched on only alongside a berth."
+      ]
+    },
+    {
+      "part": "Security Levels",
+      "number": "10",
+      "title": "Security Level 1 — normal",
+      "commentary": [
+        "The baseline level, in effect at all times in the absence of instructions to raise it: the minimum set of protective measures that must be maintained at all times on any ship.",
+        "Typical measures: controlling access to the ship (verifying the identity of persons boarding, keeping a record of visitors), monitoring the deck and the approaches to the ship using the normal watch, routine supervision of cargo handling operations and the ship's stores, and readiness of communication equipment for an emergency call.",
+        "At Level 1, security measures should not noticeably interfere with the ship's normal operation — this is background vigilance, not a state of heightened alert."
+      ]
+    },
+    {
+      "part": "Security Levels",
+      "number": "11",
+      "title": "Security Level 2 — heightened",
+      "commentary": [
+        "Introduced when there is a heightened risk of a security incident — specific threat information exists, although the target has not yet been precisely identified.",
+        "Additional measures on top of Level 1: increased deck patrols, including additional crew members during hours of darkness; reducing the number of access points open on the ship and tightening control of them; extending restricted areas to cover the areas adjacent to access points; more frequent and thorough screening of persons, personal effects and vehicles before they are allowed on board; escorting all visitors for the duration of their presence on the ship; and continuous monitoring of surveillance systems (CCTV, lighting of the approaches).",
+        "The crew receives additional briefing on the signs of suspicious activity and the procedure for reporting them — the crew's overall vigilance is raised alongside the formal procedures."
+      ]
+    },
+    {
+      "part": "Security Levels",
+      "number": "12",
+      "title": "Security Level 3 — exceptional",
+      "commentary": [
+        "Introduced when a security incident is imminent or has already occurred — the strictest, and generally the shortest-lived, regime, imposed for a limited period in response to a specific threat.",
+        "Measures: restricting access to the ship to a single controlled access point, admitting only personnel engaged in responding to the threat; a complete suspension, if necessary, of the embarkation/disembarkation of persons and cargo operations; and, as a last resort, evacuation of the ship, if this is deemed necessary for the safety of persons.",
+        "At this level, the SSO and master act in close coordination with the CSO and with port and government response forces — decisions are often taken not by the ship's crew alone, but jointly with shore-based security/response agencies."
+      ]
+    },
+    {
+      "part": "Security Levels",
+      "number": "13",
+      "title": "How the three levels work together — the overall picture",
+      "diagram": "isps_security_levels",
+      "commentary": [
+        "The levels are cumulative: each successive level ADDS measures to the previous one rather than replacing them — at Level 3, all the measures of Levels 1 and 2 remain in force, plus the additional measures of Level 3 itself.",
+        "A move to a higher level normally comes 'from above' (from the flag Administration/port State, through the CSO), but the SSO both may and must raise the level of measures on board independently in the face of a directly observed threat, without waiting for a formal instruction, followed by an immediate report to the master and CSO.",
+        "A return to a lower level takes place only on official instruction — the crew has no authority to lower the security level on its own initiative, even if the situation appears to have been resolved."
+      ]
+    },
+    {
+      "part": "Documents and Procedures",
+      "number": "14",
+      "title": "International Ship Security Certificate (ISSC)",
+      "diagram": "isps_issc_timeline",
+      "commentary": [
+        "The ISSC (International Ship Security Certificate) confirms that a ship and its SSP have been surveyed and meet the requirements of the ISPS Code — without a valid ISSC, a ship risks being denied entry to port or being detained by port State control.",
+        "It is issued by the flag Administration, or by a Recognized Security Organization (RSO) acting on its behalf, for a period not exceeding 5 years.",
+        "At least one intermediate verification is required during the period of validity, to be carried out between the second and third anniversary dates of the certificate's issue.",
+        "An Interim ISSC is issued for a period of up to 6 months in specific cases: a new ship entering service for the first time; a change of the ship's flag; or a change of the operating shipping company — an interim certificate is NOT renewable; it remains valid only until a full verification has been completed and a regular ISSC has been issued."
+      ]
+    },
+    {
+      "part": "Documents and Procedures",
+      "number": "15",
+      "title": "Declaration of Security (DoS)",
+      "diagram": "isps_dos_flow",
+      "commentary": [
+        "The DoS (Declaration of Security) is an agreement between a ship and a port facility (or between two ships during a ship-to-ship interface) that sets out exactly which security measures each party undertakes to apply for the duration of the interface.",
+        "A DoS is requested (usually by the ship, though the port side/administration may also initiate it) when: the ship is operating at a higher security level than the port facility or the partner ship; there is an agreement in force between States requiring a DoS for certain voyages/ships; a security incident has occurred or threat information has been received; the ship calls at a port without an approved port facility security plan; or a ship-to-ship operation is conducted with a ship that has no approved SSP.",
+        "It is signed on the ship's side by the master or the SSO, and on the port side by the PFSO (or another person authorized by the administration); both parties sign and date the document, confirming their agreement to carry out the measures listed.",
+        "Copies of the DoS are retained for the minimum period set by the administration/flag — the specific retention periods are determined by the national legislation/requirements of the flag State and port State."
+      ]
+    },
+    {
+      "part": "Documents and Procedures",
+      "number": "16",
+      "title": "Security records and records of incidents",
+      "commentary": [
+        "The SSP provides for the keeping of records on security matters: drills and exercises carried out, crew briefings, changes in the security level and the dates they applied, occasions on which a DoS was completed, and any incidents or suspicious activity and the action taken in response.",
+        "These records, like the deck and engine log books, serve as objective evidence that the Code's requirements are being met during inspections by port State control and the flag Administration.",
+        "Checks and testing of security equipment are recorded separately (access control systems, security CCTV, lighting, where such equipment is fitted on the ship) — the serviceability of this equipment is confirmed in writing, not merely by word of mouth."
+      ]
+    },
+    {
+      "part": "Practice on Board",
+      "number": "17",
+      "title": "Access control and restricted areas",
+      "diagram": "isps_restricted_areas",
+      "commentary": [
+        "The SSP defines the ship's restricted areas — typically: the bridge, radio communication spaces, the engine room and control stations, spaces holding ship's documents/charts, spaces used to store dangerous goods, spaces storing weapons/security equipment (where fitted), and life-support systems (generators, ballast systems).",
+        "Access to these areas is restricted to authorized persons only; entry by outsiders (including port personnel, contractors and visitors) is permitted only when escorted and with the knowledge of the watch/SSO.",
+        "Access control at the gangway/point of entry to the ship is the first line of control: verification of identity and purpose of visit, screening of personal effects where necessary, and entry in a visitors' log recording the time of arrival and departure.",
+        "At security levels 2 and 3, restricted areas are extended and access control is tightened — see entries No. 11-12."
+      ]
+    },
+    {
+      "part": "Practice on Board",
+      "number": "18",
+      "title": "Screening of persons, effects, vehicles and cargo",
+      "commentary": [
+        "Screening before boarding is a standard procedure whose intensity increases with the security level: from spot checks at Level 1 to screening of virtually all persons, effects and vehicles at Levels 2-3.",
+        "Particular attention is paid to detecting weapons, explosives and other dangerous devices, as well as the unauthorized bringing aboard of tools/equipment that could be used for sabotage.",
+        "Control of cargo and ship's stores is aimed at preventing dangerous or prohibited items from being smuggled aboard disguised as ordinary cargo/supplies — checking accompanying documentation against the actual contents, and visually inspecting packaging for signs of tampering or damage.",
+        "Screening is carried out with respect for the personal dignity of the persons being screened and in accordance with applicable national legislation — the Code does not grant unlimited powers; the procedure must be set out in the SSP and must comply with the laws of the port State."
+      ]
+    },
+    {
+      "part": "Practice on Board",
+      "number": "19",
+      "title": "Response to suspicious activity or a breach of security",
+      "commentary": [
+        "Any crew member who notices suspicious activity (an attempted unauthorized access, an unattended item, unusual behaviour by an outsider) must immediately report it to the officer of the watch/SSO — the Code places the duty of vigilance not on the security officer alone but on the entire crew.",
+        "The SSO assesses the situation and decides on the course of action: increasing surveillance, calling for additional forces, raising the security level on board, and, if necessary, immediately informing the master, the CSO and, through them, the port/government authorities.",
+        "On discovering a suspicious object, it must not be touched or moved; the area must be isolated and the crew must act according to the procedure rehearsed in drills (similar to the actions taken for a bomb threat under other shipboard instructions).",
+        "Every security incident, whatever the outcome, is recorded in the security records (see entry No. 16) and reviewed by the company for possible revision of the SSP."
+      ]
+    },
+    {
+      "part": "Summary",
+      "number": "20",
+      "title": "The place of the ISPS Code among a ship's other safety and security systems",
+      "commentary": [
+        "The ISPS Code concerns intentional, malicious human acts (security); it does not replace or duplicate the requirements for the safety of navigation and of life at sea (safety) — fire safety, stability and life-saving appliances are governed by other chapters of SOLAS and do not, as such, fall within the SSO's remit.",
+        "Piracy and armed robbery in certain regions of the world (the Gulf of Guinea, parts of South-East Asia) is a related but separate subject with its own industry guidance (for example, BMP — Best Management Practices); the ISPS Code's measures provide the basic foundation for security, on top of which a company may introduce additional, more specific procedures for particular areas of operation.",
+        "An understanding of the principles of the ISPS Code is needed not only by the designated SSO: every crew member plays a part in maintaining the ship's security in one way or another — from the watch rating checking passes at the gangway to the engineer who notices an outsider in the engine room."
+      ]
+    }
+  ]
+}
