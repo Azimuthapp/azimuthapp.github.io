@@ -112,6 +112,7 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
 .rv-pick{display:flex;gap:6px}
 .rv-pick button{width:44px;height:44px;border-radius:12px;border:1px solid var(--line2);background:#0a0a0c;color:#4a4a50;font-size:22px;cursor:pointer;transition:color .15s,border-color .15s}
 .rv-pick button.on{color:var(--gold);border-color:rgba(227,192,127,.5)}
+.rv-send:disabled{opacity:.6;cursor:wait}
 .rv-send{margin-top:16px;width:100%;height:48px;border:0;border-radius:12px;background:var(--grad);color:#1a1306;font:700 13px var(--font);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .rv-note{margin-top:10px;font-size:12.5px;color:var(--dim)}
 .rv-form label.rv-ok{display:flex;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;font-size:13.5px;font-weight:400;color:var(--muted);margin:14px 0 0;cursor:pointer}
@@ -272,7 +273,7 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
     <div class="rv-sum" id="rv-sum" hidden></div>
     <div class="rv-grid">
       <div class="rv-list" id="rv-list"><div class="rv-empty">Отзывов пока нет — станьте первым. Расскажите, какие расчёты пригодились на вахте и чего не хватает.</div></div>
-      <form class="box rv-form" id="rv-form" novalidate>
+      <form class="box rv-form" id="rv-form" novalidate style="position:relative">
         <h4>Оставить отзыв</h4>
         <label for="rv-name">Ник или имя — будет виден всем</label>
         <input id="rv-name" maxlength="40" placeholder="Например: Старпом с балкера" autocomplete="off">
@@ -284,8 +285,9 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
         <textarea id="rv-text" maxlength="1200" placeholder="Что понравилось, что улучшить"></textarea>
         <label class="rv-ok"><input type="checkbox" id="rv-consent"> <span>Согласен(на) на публикацию ника, оценки и текста на этой странице — <a href="docs/soglasie-otzyv.html" target="_blank">условия согласия</a></span></label>
         <div class="rv-err" id="rv-err"></div>
+        <input id="rv-hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="rv-send" type="submit">Отправить отзыв</button>
-        <p class="rv-note">Откроется ваша почта с готовым письмом — останется нажать «Отправить». Отзыв появится на странице после проверки — обычно в течение суток. Публикуются только ник или имя, оценка и текст; адрес почты не публикуется. Настоящее имя указывать не обязательно.</p>
+        <p class="rv-note">Почту указывать не нужно. Отзыв появится на странице после проверки — обычно в течение суток. Публикуются только ник или имя, оценка и текст. Настоящее имя указывать не обязательно.</p>
       </form>
     </div>
   </section>
@@ -312,26 +314,40 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
 (function(){
   var esc=function(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
   var stars=function(n){n=Math.max(1,Math.min(5,Math.round(n)));return "★".repeat(n)+"<i>"+"★".repeat(5-n)+"</i>"};
-  fetch("reviews.json",{cache:"no-cache"}).then(function(r){return r.ok?r.json():[]}).then(function(list){
+  var API="__REVIEWS_API__";
+  var fmtDate=function(ms){try{return new Date(ms).toLocaleDateString("ru-RU",{day:"numeric",month:"long",year:"numeric"})}catch(e){return ""}};
+  function render(list){
     if(!Array.isArray(list)||!list.length)return;
     var avg=list.reduce(function(a,x){return a+Number(x.stars||0)},0)/list.length;
     var sum=document.getElementById("rv-sum");sum.hidden=false;
     sum.innerHTML="<b>"+avg.toFixed(1).replace(".",",")+"</b><span class='rv-stars'>"+stars(avg)+"</span><span>отзывов: "+list.length+"</span>";
     document.getElementById("rv-list").innerHTML=list.map(function(x){
       return "<div class='rv-item'><div class='rv-head'><span class='rv-name'>"+esc(x.name||"Аноним")+"</span><span class='rv-stars'>"+stars(x.stars)+"</span></div>"+
-        "<p class='rv-text'>"+esc(x.text||"")+"</p><div class='rv-date'>"+esc(x.date||"")+"</div></div>"}).join("");
-  }).catch(function(){});
+        "<p class='rv-text'>"+esc(x.text||"")+"</p><div class='rv-date'>"+esc(x.created?fmtDate(x.created):(x.date||""))+"</div></div>"}).join("");
+  }
+  fetch(API+"?action=list",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){render(d.reviews)})
+    .catch(function(){fetch("reviews.json",{cache:"no-cache"}).then(function(r){return r.ok?r.json():[]}).then(render).catch(function(){})});
   var val=0,pick=document.getElementById("rv-pick");
   pick.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;val=+b.dataset.v;
     [].forEach.call(pick.children,function(c){c.classList.toggle("on",+c.dataset.v<=val)})});
-  document.getElementById("rv-form").addEventListener("submit",function(e){e.preventDefault();
-    var name=document.getElementById("rv-name").value.trim(),text=document.getElementById("rv-text").value.trim(),err=document.getElementById("rv-err");
-    if(!val){err.textContent="Поставьте оценку от 1 до 5 звёзд.";return}
-    if(text.length<5){err.textContent="Напишите пару слов о приложении.";return}
-    if(!document.getElementById("rv-consent").checked){err.textContent="Отметьте согласие на публикацию — без него отзыв нельзя разместить.";return}
-    err.textContent="";
-    var body="Отзыв об AZIMUTH\n\nИмя или ник: "+(name||"Аноним")+"\nОценка: "+val+" из 5\n\n"+text+"\n\n— — —\nСОГЛАСИЕ НА РАСПРОСТРАНЕНИЕ ПЕРСОНАЛЬНЫХ ДАННЫХ\nВ соответствии со ст. 10.1 Федерального закона № 152-ФЗ даю согласие Полывянному В. М. (ИНН 616117679959) на публикацию указанных выше ника или имени, оценки и текста отзыва в разделе «Отзывы» страницы https://azimuthapp.github.io. Адрес моей почты не публикуется. Передача и иная обработка моих данных неограниченным кругом лиц запрещены. Согласие действует до отзыва; отозвать его можно письмом на azimuthseahelp@yandex.ru. Полный текст: https://azimuthapp.github.io/docs/soglasie-otzyv.html";
-    location.href="mailto:azimuthseahelp@yandex.ru?subject="+encodeURIComponent("Отзыв об AZIMUTH — "+val+"★")+"&body="+encodeURIComponent(body);
+  var MSG={stars:"Поставьте оценку от 1 до 5 звёзд.",name:"Укажите ник или имя — от 2 до 40 знаков.",text:"Напишите отзыв — хотя бы пару предложений (от 10 знаков).",
+    consent:"Отметьте согласие на публикацию — без него отзыв нельзя разместить.",links:"Ссылки и контакты в отзыве не публикуются — уберите их, пожалуйста.",
+    words:"Отзыв содержит недопустимые слова.",limit:"С этого устройства уже отправлено 2 отзыва за сутки. Попробуйте завтра.",spam:"Не удалось отправить отзыв."};
+  var form=document.getElementById("rv-form"),err=document.getElementById("rv-err"),btn=form.querySelector(".rv-send");
+  form.addEventListener("submit",function(e){e.preventDefault();
+    var name=document.getElementById("rv-name").value.trim(),text=document.getElementById("rv-text").value.trim(),consent=document.getElementById("rv-consent").checked;
+    if(!val){err.textContent=MSG.stars;return}
+    if(name.length<2){err.textContent=MSG.name;return}
+    if(text.length<10){err.textContent=MSG.text;return}
+    if(!consent){err.textContent=MSG.consent;return}
+    err.textContent="";btn.disabled=true;btn.textContent="Отправляем…";
+    fetch(API+"?action=submit",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({name:name,stars:val,text:text,consent:true,website:document.getElementById("rv-hp").value})})
+    .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d}})})
+    .then(function(x){
+      if(x.ok){form.innerHTML="<h4>Спасибо за отзыв!</h4><p class='rv-note' style='font-size:15px;color:var(--muted)'>Он появится на странице после проверки — обычно в течение суток.</p>";return}
+      err.textContent=MSG[x.d&&x.d.error]||"Не удалось отправить отзыв. Попробуйте ещё раз позже.";btn.disabled=false;btn.textContent="Отправить отзыв";
+    }).catch(function(){err.textContent="Нет связи с сервером. Проверьте интернет и попробуйте ещё раз.";btn.disabled=false;btn.textContent="Отправить отзыв"});
   });
 })();
 </script>

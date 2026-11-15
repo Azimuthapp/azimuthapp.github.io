@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Модерация отзывов — AZIMUTH</title>
+<style>
+:root{--bg:#050506;--panel:#0e0e11;--line:#2a2a30;--text:#f2ede4;--muted:#a59f94;--gold:#e3c07f;--ok:#4ade80;--bad:#f87171}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Inter,"Segoe UI",system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 16px 60px}
+h1{font:600 24px Georgia,serif;color:var(--gold);margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 22px;font-size:14px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:14px}
+input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#0a0a0c;color:var(--text);font:16px inherit}
+button{border:1px solid var(--line);background:#141418;color:var(--text);padding:10px 16px;border-radius:12px;font:600 14px inherit;cursor:pointer}
+button.main{background:linear-gradient(180deg,#f0d49a,#c9a35a);color:#1a1306;border:0}
+button.ok{color:var(--ok);border-color:rgba(74,222,128,.45)}button.del{color:var(--bad);border-color:rgba(248,113,113,.45)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.tabs{margin:0 0 14px}.tabs button.on{border-color:var(--gold);color:var(--gold)}
+.item .head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.name{font-weight:700}.stars{color:var(--gold);letter-spacing:.1em}.meta{color:var(--muted);font-size:13px}
+.text{margin:8px 0 12px;white-space:pre-wrap}
+.badge{font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.badge.pending{color:var(--gold);border-color:rgba(227,192,127,.5)}.badge.approved{color:var(--ok);border-color:rgba(74,222,128,.45)}
+.msg{color:var(--muted);font-size:14px;min-height:1.3em;margin-top:8px}.msg.err{color:var(--bad)}
+.empty{color:var(--muted);text-align:center;padding:30px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Модерация отзывов</h1>
+  <p class="sub">Новые отзывы видны только здесь. На странице AZIMUTH отзыв появляется после «Одобрить».</p>
+
+  <div class="box" id="login">
+    <label for="pw" class="meta">Пароль модерации (Яндекс Облако → Lockbox → секрет «azimuth-reviews-admin»)</label>
+    <div class="row" style="margin-top:8px"><input id="pw" type="password" autocomplete="current-password" style="flex:1;min-width:220px"><button class="main" id="enter">Войти</button></div>
+    <div class="msg" id="lmsg"></div>
+  </div>
+
+  <div id="panel" hidden>
+    <div class="row tabs" id="tabs">
+      <button data-f="pending" class="on">Ждут проверки <span id="c-pending"></span></button>
+      <button data-f="approved">Опубликованы <span id="c-approved"></span></button>
+      <button id="refresh">Обновить</button>
+      <button id="logout" style="margin-left:auto">Выйти</button>
+    </div>
+    <div id="list"></div>
+  </div>
+</main>
+<script>
+(function(){
+  var API="__REVIEWS_API__", pw="", filter="pending", rows=[];
+  try{pw=sessionStorage.getItem("az-mod")||""}catch(e){}
+  var $=function(id){return document.getElementById(id)};
+  var esc=function(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+  function call(action,body){
+    return fetch(API+"?action="+action,{method:body?"POST":"GET",cache:"no-store",
+      headers:Object.assign({"X-Admin-Password":pw},body?{"Content-Type":"application/json"}:{}),body:body?JSON.stringify(body):undefined})
+      .then(function(r){return r.json().then(function(d){return {code:r.status,d:d}})});
+  }
+  function load(){
+    return call("admin_list").then(function(x){
+      if(x.code===403){logout("Неверный пароль.");return}
+      if(x.code!==200){$("list").innerHTML="<div class='empty'>Сервер не ответил. Попробуйте позже.</div>";return}
+      $("login").hidden=true;$("panel").hidden=false;rows=x.d.reviews||[];draw();
+    }).catch(function(){$("lmsg").textContent="Нет связи с сервером.";$("lmsg").className="msg err"});
+  }
+  function draw(){
+    var p=rows.filter(function(r){return r.status==="pending"}).length;
+    $("c-pending").textContent="("+p+")";$("c-approved").textContent="("+(rows.length-p)+")";
+    var list=rows.filter(function(r){return r.status===filter});
+    $("list").innerHTML=list.length?list.map(function(r){
+      return "<div class='box item' data-id='"+esc(r.id)+"'><div class='head'><span class='name'>"+esc(r.name)+"</span><span class='stars'>"+"★".repeat(r.stars)+"</span></div>"+
+        "<div class='meta'>"+new Date(r.created).toLocaleString("ru-RU")+" · <span class='badge "+r.status+"'>"+(r.status==="pending"?"ждёт проверки":"опубликован")+"</span></div>"+
+        "<div class='text'>"+esc(r.text)+"</div><div class='row'>"+(r.status==="pending"?"<button class='ok' data-a='approve'>Одобрить и опубликовать</button>":"")+
+        "<button class='del' data-a='delete'>"+(r.status==="pending"?"Отклонить (удалить)":"Снять с публикации (удалить)")+"</button></div></div>"}).join("")
+      :"<div class='empty'>"+(filter==="pending"?"Новых отзывов нет.":"Опубликованных отзывов пока нет.")+"</div>";
+  }
+  function logout(msg){pw="";try{sessionStorage.removeItem("az-mod")}catch(e){}$("panel").hidden=true;$("login").hidden=false;$("lmsg").textContent=msg||"";$("lmsg").className="msg err"}
+  $("enter").onclick=function(){pw=$("pw").value;try{sessionStorage.setItem("az-mod",pw)}catch(e){}$("lmsg").textContent="Проверяем…";$("lmsg").className="msg";load()};
+  $("pw").addEventListener("keydown",function(e){if(e.key==="Enter")$("enter").click()});
+  $("logout").onclick=function(){logout("")};
+  $("refresh").onclick=load;
+  $("tabs").addEventListener("click",function(e){var b=e.target.closest("button[data-f]");if(!b)return;filter=b.dataset.f;
+    [].forEach.call($("tabs").querySelectorAll("button[data-f]"),function(x){x.classList.toggle("on",x===b)});draw()});
+  $("list").addEventListener("click",function(e){var b=e.target.closest("button[data-a]");if(!b)return;
+    var id=b.closest(".item").dataset.id,a=b.dataset.a;
+    if(a==="delete"&&!b.dataset.sure){b.dataset.sure="1";b.textContent="Точно удалить? Нажмите ещё раз";return}
+    b.disabled=true;call(a,{id:id}).then(function(x){if(x.code===403)return logout("Сессия истекла.");load()})});
+  if(pw)load();
+})();
+</script>
+</body>
+</html>
