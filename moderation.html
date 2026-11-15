@@ -36,6 +36,7 @@ button.ok{color:var(--ok);border-color:rgba(74,222,128,.45)}button.del{color:var
   <div class="box" id="login">
     <label for="pw" class="meta">Пароль модерации (Яндекс Облако → Lockbox → секрет «azimuth-reviews-admin»)</label>
     <div class="row" style="margin-top:8px"><input id="pw" type="password" autocomplete="current-password" style="flex:1;min-width:220px"><button class="main" id="enter">Войти</button></div>
+    <label class="meta" style="display:flex;gap:8px;align-items:center;margin-top:10px;cursor:pointer"><input type="checkbox" id="remember" style="width:18px;height:18px;margin:0"> Запомнить на этом компьютере (только на личном компьютере)</label>
     <div class="msg" id="lmsg"></div>
   </div>
 
@@ -44,7 +45,7 @@ button.ok{color:var(--ok);border-color:rgba(74,222,128,.45)}button.del{color:var
       <button data-f="pending" class="on">Ждут проверки <span id="c-pending"></span></button>
       <button data-f="approved">Опубликованы <span id="c-approved"></span></button>
       <button id="refresh">Обновить</button>
-      <button id="logout" style="margin-left:auto">Выйти</button>
+      <button id="logout" style="margin-left:auto" title="Выйти и забыть пароль на этом компьютере">Выйти</button>
     </div>
     <div id="list"></div>
   </div>
@@ -52,7 +53,8 @@ button.ok{color:var(--ok);border-color:rgba(74,222,128,.45)}button.del{color:var
 <script>
 (function(){
   var API="https://functions.yandexcloud.net/d4ebj4caadv8pom0ia8l", pw="", filter="pending", rows=[];
-  try{pw=sessionStorage.getItem("az-mod")||""}catch(e){}
+  try{pw=localStorage.getItem("az-mod")||sessionStorage.getItem("az-mod")||""}catch(e){}
+  function clearPw(){try{localStorage.removeItem("az-mod");sessionStorage.removeItem("az-mod")}catch(e){}}
   var $=function(id){return document.getElementById(id)};
   var esc=function(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
   function call(action,body){
@@ -78,8 +80,8 @@ button.ok{color:var(--ok);border-color:rgba(74,222,128,.45)}button.del{color:var
         "<button class='del' data-a='delete'>"+(r.status==="pending"?"Отклонить (удалить)":"Снять с публикации (удалить)")+"</button></div></div>"}).join("")
       :"<div class='empty'>"+(filter==="pending"?"Новых отзывов нет.":"Опубликованных отзывов пока нет.")+"</div>";
   }
-  function logout(msg){pw="";try{sessionStorage.removeItem("az-mod")}catch(e){}$("panel").hidden=true;$("login").hidden=false;$("lmsg").textContent=msg||"";$("lmsg").className="msg err"}
-  $("enter").onclick=function(){pw=$("pw").value;try{sessionStorage.setItem("az-mod",pw)}catch(e){}$("lmsg").textContent="Проверяем…";$("lmsg").className="msg";load()};
+  function logout(msg){pw="";clearPw();$("panel").hidden=true;$("login").hidden=false;$("lmsg").textContent=msg||"";$("lmsg").className="msg err"}
+  $("enter").onclick=function(){pw=$("pw").value;clearPw();try{($("remember").checked?localStorage:sessionStorage).setItem("az-mod",pw)}catch(e){}$("lmsg").textContent="Проверяем…";$("lmsg").className="msg";load()};
   $("pw").addEventListener("keydown",function(e){if(e.key==="Enter")$("enter").click()});
   $("logout").onclick=function(){logout("")};
   $("refresh").onclick=load;
