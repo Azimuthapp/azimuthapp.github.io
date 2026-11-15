@@ -314,7 +314,7 @@ footer .fm{font:600 15px "Cinzel",serif;letter-spacing:.2em;color:var(--gold2)}
 (function(){
   var esc=function(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
   var stars=function(n){n=Math.max(1,Math.min(5,Math.round(n)));return "★".repeat(n)+"<i>"+"★".repeat(5-n)+"</i>"};
-  var API="__REVIEWS_API__";
+  var API="https://functions.yandexcloud.net/d4ebj4caadv8pom0ia8l";
   var fmtDate=function(ms){try{return new Date(ms).toLocaleDateString("ru-RU",{day:"numeric",month:"long",year:"numeric"})}catch(e){return ""}};
   function render(list){
     if(!Array.isArray(list)||!list.length)return;

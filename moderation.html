@@ -51,7 +51,7 @@ button.ok{color:var(--ok);border-color:rgba(74,222,128,.45)}button.del{color:var
 </main>
 <script>
 (function(){
-  var API="__REVIEWS_API__", pw="", filter="pending", rows=[];
+  var API="https://functions.yandexcloud.net/d4ebj4caadv8pom0ia8l", pw="", filter="pending", rows=[];
   try{pw=sessionStorage.getItem("az-mod")||""}catch(e){}
   var $=function(id){return document.getElementById(id)};
   var esc=function(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
