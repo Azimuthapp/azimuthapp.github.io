@@ -466,8 +466,8 @@ function applyTheme(theme) {
 // версии сборки). Синхронизируется вручную с CACHE_NAME в sw.js при
 // каждом релизе — единой автоматической привязки пока нет, при
 // расхождении ориентироваться на дату последнего релиза ниже.
-const APP_VERSION = "1.6.1";
-const APP_BUILD_DATE = "2026-11-14";
+const APP_VERSION = "1.6.2";
+const APP_BUILD_DATE = "2026-11-15";
 window.ShipHelperAppVersion = APP_VERSION;
 
 /**
