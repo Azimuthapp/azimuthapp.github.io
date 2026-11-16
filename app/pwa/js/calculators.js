@@ -109,9 +109,13 @@ function wireStepsToggle(toggleId, listId) {
  */
 function translateError(err) {
   const text = String(err && err.message ? err.message : err);
-  const match = text.match(/ValueError:\s*(err\.[a-zA-Z0-9_.]+)/);
+  const match = text.match(/ValueError:\s*\(?['"]?(err\.[a-zA-Z0-9_.]+)/);
   if (match) {
-    return t(match[1], lang());
+    // Параметризованная ошибка: ValueError: ('err.x', {'draft': '5.2', ...})
+    const params = {};
+    const tail = text.slice(match.index);
+    for (const m of tail.matchAll(/'([a-z_]+)':\s*'([^']*)'/g)) params[m[1]] = m[2];
+    return t(match[1], lang(), params);
   }
   console.error(err);
   return t("app.calc_error", lang());
@@ -1042,7 +1046,8 @@ function createDynTable(container, columns, rows) {
     const row = document.createElement("div");
     row.className = "dyn-table-row" + (columns.length === 3 ? " dyn-table-row-3" : "") +
       (columns.length === 4 ? " dyn-table-row-4" : "") +
-      (columns.length === 5 ? " dyn-table-row-5" : "");
+      (columns.length === 5 ? " dyn-table-row-5" : "") +
+      (columns.length === 6 ? " dyn-table-row-6" : "");
     columns.forEach((col, ci) => {
       let input;
       if (col.type === "select") {
@@ -3336,7 +3341,7 @@ function setupCalcPersistence() {
     let dirty = false;           // пишем только то, что пользователь трогал
 
     const isDataControl = (el) =>
-      !(el.type === "button" || el.type === "submit" || el.type === "file" || el.closest(".paywall-overlay"));
+      !(el.type === "button" || el.type === "submit" || el.type === "file" || el.closest(".paywall-overlay") || el.closest(".ship-fill-bar"));
 
     function snapshot() {
       const s = { v: 2, fields: {}, anon: [], tables: [], switches: {}, ran: ran.slice(), results: {} };
@@ -3638,6 +3643,7 @@ const PAID_CALCS = new Set([
   "draft", "stability", "opposite-draft", "trim-density", "bunker",
   "dew-point", "ullage", "ballast-sounding", "deadweight-scale", "fwa",
   "suspended-load",
+  "wheel-over", "air-draft", "astro",
 ]);
 // Бесплатно: compass, std, unit-converter, coords-converter, ukc, tides
 // (не входят в PAID_CALCS выше).
@@ -3726,6 +3732,244 @@ setupBallastSounding();
 setupDeadweightScale();
 setupFwa();
 setupSuspendedLoad();
+
+/* ================================================================== */
+/* Точка начала поворота — core.wheel_over (с 1.7.0)                   */
+/* ================================================================== */
+
+function setupWheelOver() {
+  const btn = document.getElementById("wo-calc-btn");
+  if (!btn) return;
+  wireStepsToggle("wo-steps-toggle", "wo-steps-list");
+  const modeSel = document.getElementById("wo-mode");
+  const page = btn.closest(".calc-page");
+  const applyMode = () => page.querySelectorAll("[data-wo-only]").forEach((el) => { el.hidden = el.dataset.woOnly !== modeSel.value; });
+  modeSel.addEventListener("change", applyMode);
+  applyMode();
+  // поле восстанавливается из сохранённого снимка без события change
+  document.addEventListener("shiphelper:ready", () => setTimeout(applyMode, 50));
+  document.addEventListener("shiphelper:langchange", () => setTimeout(applyMode, 50));
+  btn.addEventListener("click", async () => {
+    const boxes = ["wo-result-box", "wo-result-box-rot"].map((id) => document.getElementById(id));
+    setBtnBusy(btn, true);
+    try {
+      const radius = modeSel.value === "radius" ? parseNum("wo-radius") : 0;
+      const rot = modeSel.value === "rot" ? parseNum("wo-rot") : 0;
+      const r = await callCore("core.wheel_over", "wheel_over", [
+        parseNum("wo-old-course"), parseNum("wo-new-course"), parseNum("wo-speed"), radius, rot, parseNum("wo-reaction") || 0]);
+      document.getElementById("wo-value").textContent = `${(r.wop_distance_m / 185.2).toFixed(1)} ${u("кбт")}`;
+      document.getElementById("wo-value-extra").textContent = t("calc.wheel_over.result_extra", lang(), {
+        m: r.wop_distance_m.toFixed(0),
+        side: t(r.turn_side === "starboard" ? "calc.wheel_over.side_stbd" : "calc.wheel_over.side_port", lang()),
+        a: r.alteration.toFixed(1),
+      });
+      document.getElementById("wo-value-rot").textContent = `${r.rot_deg_min.toFixed(1)} ${u("°/мин")}`;
+      document.getElementById("wo-value-rot-extra").textContent = t("calc.wheel_over.rot_extra", lang(), {
+        tmin: r.turn_time_min.toFixed(1), r: (r.radius_m / 1852).toFixed(2), rm: r.radius_m.toFixed(0),
+      });
+      renderSteps(document.getElementById("wo-steps-list"), r.steps);
+    } catch (err) {
+      document.getElementById("wo-value").textContent = translateError(err);
+      document.getElementById("wo-value-extra").textContent = "";
+      document.getElementById("wo-value-rot").textContent = "—";
+      document.getElementById("wo-value-rot-extra").textContent = "";
+    } finally {
+      boxes.forEach((b) => b.classList.add("visible"));
+      setBtnBusy(btn, false);
+    }
+  });
+}
+
+/* ================================================================== */
+/* Проход под мостом — core.air_draft (с 1.7.0)                        */
+/* ================================================================== */
+
+function setupAirDraft() {
+  const btn = document.getElementById("ad-calc-btn");
+  if (!btn) return;
+  wireStepsToggle("ad-steps-toggle", "ad-steps-list");
+  btn.addEventListener("click", async () => {
+    const boxes = ["ad-result-box", "ad-result-box-max"].map((id) => document.getElementById(id));
+    setBtnBusy(btn, true);
+    try {
+      const r = await callCore("core.air_draft", "air_draft_clearance", [
+        parseNum("ad-mast-height"), parseNum("ad-draft"), parseNum("ad-clearance"),
+        parseNum("ad-datum") || 0, parseNum("ad-tide") || 0, parseNum("ad-margin") || 0]);
+      const v = document.getElementById("ad-value");
+      v.textContent = `${r.margin >= 0 ? "" : "−"}${Math.abs(r.margin).toFixed(2)} ${u("м")}`;
+      document.getElementById("ad-value-extra").textContent =
+        `${t(r.passed ? "calc.air_draft.ok" : "calc.air_draft.fail", lang())} · ` +
+        t("calc.air_draft.extra", lang(), { ad: r.air_draft.toFixed(2), c: r.clearance_actual.toFixed(2) });
+      document.getElementById("ad-value-extra").classList.toggle("warning", !r.passed);
+      document.getElementById("ad-value-max").textContent = `${r.max_tide.toFixed(2)} ${u("м")}`;
+      document.getElementById("ad-value-max-extra").textContent = t("calc.air_draft.max_tide_extra", lang());
+      renderSteps(document.getElementById("ad-steps-list"), r.steps);
+    } catch (err) {
+      document.getElementById("ad-value").textContent = translateError(err);
+      document.getElementById("ad-value-extra").textContent = "";
+      document.getElementById("ad-value-max").textContent = "—";
+      document.getElementById("ad-value-max-extra").textContent = "";
+    } finally {
+      boxes.forEach((b) => b.classList.add("visible"));
+      setBtnBusy(btn, false);
+    }
+  });
+}
+
+/* ================================================================== */
+/* Место по Солнцу — core.celestial (с 1.7.0)                          */
+/* ================================================================== */
+
+function fmtLatLon(v, pos, neg) {
+  const a = Math.abs(v);
+  let d = Math.floor(a), m = (a - d) * 60;
+  if (m >= 59.95) { d += 1; m = 0; }
+  return `${d}°${m.toFixed(1).padStart(4, "0")}′ ${v >= 0 ? pos : neg}`;
+}
+
+function setupAstro() {
+  const btn = document.getElementById("astro-calc-btn");
+  const sw = document.getElementById("astro-mode-switch");
+  if (!btn || !sw) return;
+  wireStepsToggle("astro-steps-toggle", "astro-steps-list");
+  const page = btn.closest(".calc-page");
+  const pad = (n) => String(n).padStart(2, "0");
+  const dateEl = document.getElementById("astro-date"), timeEl = document.getElementById("astro-time");
+  const n0 = new Date();
+  dateEl.value = `${n0.getUTCFullYear()}-${pad(n0.getUTCMonth() + 1)}-${pad(n0.getUTCDate())}`;
+  timeEl.value = `${pad(n0.getUTCHours())}:${pad(n0.getUTCMinutes())}:00`;
+
+  let mode = "noon";
+  function applyMode() {
+    sw.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.mode === mode));
+    page.querySelectorAll("[data-astro-only]").forEach((el) => { el.hidden = el.dataset.astroOnly !== mode; });
+    if (mode !== "noon") document.getElementById("astro-mp-out").hidden = true;
+  }
+  sw.addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-mode]");
+    if (!b) return;
+    mode = b.dataset.mode;
+    applyMode();
+  });
+  // режим восстанавливается из сохранённого снимка (класс active у кнопки) — подхватываем
+  new MutationObserver(() => {
+    const a = sw.querySelector("button.active");
+    if (a && a.dataset.mode !== mode) { mode = a.dataset.mode; applyMode(); }
+  }).observe(sw, { subtree: true, attributes: true, attributeFilter: ["class"] });
+  applyMode();
+
+  function coord(pre, neg) {
+    const d = parseNum(`${pre}-deg`), m = parseNum(`${pre}-min`) || 0;
+    if (!isFinite(d) || d < 0 || m < 0 || m >= 60) return NaN;
+    const v = d + m / 60;
+    return document.getElementById(`${pre}-hem`).value === neg ? -v : v;
+  }
+  function readPos() {
+    const lat = coord("astro-lat", "S"), lon = coord("astro-lon", "W");
+    if (!isFinite(lat)) throw new Error("ValueError: err.celestial.bad_latitude");
+    if (!isFinite(lon)) throw new Error("ValueError: err.celestial.bad_longitude");
+    return [lat, lon];
+  }
+  const fmtTime = (iso) => String(iso).slice(11, 19);
+  function shipTimeHint(iso) {
+    // судовое время по долготе: зона = round(λ/15)
+    const lon = coord("astro-lon", "W");
+    if (!isFinite(lon)) return "";
+    const zone = Math.round(lon / 15);
+    const d = new Date(String(iso).slice(0, 19) + "Z");
+    d.setUTCHours(d.getUTCHours() + zone);
+    return t("calc.astro.zone_time", lang(), { z: `${zone >= 0 ? "+" : "−"}${Math.abs(zone)}`, tm: `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}` });
+  }
+
+  document.getElementById("astro-mp-btn").addEventListener("click", async () => {
+    const out = document.getElementById("astro-mp-out");
+    try {
+      if (!dateEl.value) throw new Error("ValueError: err.celestial.bad_datetime");
+      const [, lon] = readPos();
+      const mp = await callCore("core.celestial", "meridian_passage_utc", [dateEl.value, lon]);
+      out.textContent = t("calc.astro.mp_result", lang(), { utc: fmtTime(mp) }) + " " + shipTimeHint(mp);
+    } catch (err) {
+      out.textContent = translateError(err);
+    }
+    out.hidden = false;
+  });
+
+  btn.addEventListener("click", async () => {
+    const boxes = ["astro-result-box-main", "astro-result-box-second"].map((id) => document.getElementById(id));
+    const warnEl = document.getElementById("astro-warnings");
+    const set = (id, txt) => { document.getElementById(id).textContent = txt; };
+    setBtnBusy(btn, true);
+    try {
+      if (!dateEl.value) throw new Error("ValueError: err.celestial.bad_datetime");
+      const [lat, lon] = readPos();
+      const hsD = parseNum("astro-hs-deg"), hsM = parseNum("astro-hs-min") || 0;
+      if (!isFinite(hsD) || hsM < 0 || hsM >= 60) throw new Error("ValueError: err.celestial.bad_altitude");
+      const hs = hsD + hsM / 60;
+      const ic = parseNum("astro-ic") || 0, eye = parseNum("astro-eye") || 0;
+      const limb = document.getElementById("astro-limb").value;
+      let r, warnings;
+      if (mode === "noon") {
+        r = await callCore("core.celestial", "noon_latitude", [dateEl.value, lon, lat, hs, ic, eye, limb]);
+        set("astro-main-label", t("calc.astro.lat_metric", lang()));
+        set("astro-value-main", fmtLatLon(r.latitude, "N", "S"));
+        set("astro-value-main-extra", t("calc.astro.lat_extra", lang(), {
+          diff: ((r.latitude - lat) * 60).toFixed(1), bears: r.sun_bears, utc: fmtTime(r.meridian_passage_utc),
+        }));
+        set("astro-second-label", t("calc.astro.ho_metric", lang()));
+        set("astro-value-second", fmtLatLon(r.observed_altitude, "", "−").trim());
+        set("astro-value-second-extra", t("calc.astro.dec_extra", lang(), { d: fmtLatLon(r.declination, "N", "S") }));
+      } else {
+        let time = timeEl.value || "00:00";
+        if (time.length === 5) time += ":00";
+        r = await callCore("core.celestial", "sun_line_of_position", [`${dateEl.value}T${time}`, lat, lon, hs, ic, eye, limb]);
+        const p = r.intercept_nm;
+        set("astro-main-label", t("calc.astro.intercept_metric", lang()));
+        set("astro-value-main", `${Math.abs(p).toFixed(1)} ${u("мили")}`);
+        set("astro-value-main-extra", t(p >= 0 ? "calc.astro.toward" : "calc.astro.away", lang()).toUpperCase() + " · " + t("calc.astro.lop_extra", lang(), {
+          zn: fmtCourse(r.azimuth), lop1: fmtCourse(r.lop_direction), lop2: fmtCourse(r.lop_direction + 180),
+        }));
+        set("astro-second-label", t("calc.astro.point_metric", lang()));
+        set("astro-value-second", `${fmtLatLon(r.point_latitude, "N", "S")}  ${fmtLatLon(r.point_longitude, "E", "W")}`);
+        set("astro-value-second-extra", t("calc.astro.hc_ho_extra", lang(), { hc: r.computed_altitude.toFixed(3), ho: r.observed_altitude.toFixed(3) }));
+      }
+      warnings = r.warnings || [];
+      warnEl.textContent = warnings.map((k) => t(k, lang())).join(" ");
+      warnEl.hidden = warnings.length === 0;
+      renderSteps(document.getElementById("astro-steps-list"), r.steps);
+    } catch (err) {
+      set("astro-value-main", translateError(err));
+      set("astro-value-main-extra", "");
+      set("astro-value-second", "—");
+      set("astro-value-second-extra", "");
+      warnEl.hidden = true;
+    } finally {
+      boxes.forEach((b) => b.classList.add("visible"));
+      setBtnBusy(btn, false);
+    }
+  });
+}
+
+/** Доступ к динамическим таблицам для «Моё судно» (js/ship-profile.js). */
+window.ShipHelperDyn = {
+  create: createDynTable,
+  read: readDynTable,
+  columns: {
+    "dws-table": DWS_TABLE_COLUMNS, "bs-table": BS_TANK_COLUMNS,
+    "bunker-table": BUNKER_TABLE_COLUMNS, "ullage-table": ULLAGE_TABLE_COLUMNS,
+  },
+  fill(containerId, rows) {
+    const el = document.getElementById(containerId);
+    const cols = this.columns[containerId];
+    if (!el || !cols) return false;
+    createDynTable(el, cols, rows);
+    el.dispatchEvent(new Event("dyntablechange"));
+    return true;
+  },
+};
+
+setupWheelOver();
+setupAirDraft();
+setupAstro();
 setupCalcPersistence();
 setupFieldTooltips();
 setupPaywall();

@@ -64,6 +64,9 @@ const PYTHON_MODULES = [
   "fwa.py",
   "suspended_load.py",
   "license.py",
+  "ship_profile.py",
+  "wheel_over.py",
+  "air_draft.py",
   // Добавлять сюда по мере переноса следующих калькуляторов.
 ];
 

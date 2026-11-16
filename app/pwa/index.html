@@ -18,7 +18,7 @@
        обычной перезагрузки страницы — см. CLAUDE.md, разделы про
        повторяющийся баг кэширования. При каждом бампе CACHE_NAME нужно
        поднять и это число у всех локальных <script>/<link> ниже. -->
-  <link rel="stylesheet" href="css/theme.css?v=48">
+  <link rel="stylesheet" href="css/theme.css?v=49">
 </head>
 <body>
 
@@ -63,8 +63,8 @@
     <div class="splash-progress" aria-hidden="true"><span></span></div>
     <div class="loading-text" id="loading-text">Загружаю…</div>
   </div>
-  <script src="js/durable-store.js?v=48"></script>
-  <script src="js/splash.js?v=48"></script>
+  <script src="js/durable-store.js?v=49"></script>
+  <script src="js/splash.js?v=49"></script>
 
   <div class="app-shell">
     <aside class="sidebar" id="sidebar">
@@ -93,6 +93,17 @@
               </svg>
             </span>
             <span data-i18n="app.groups.home">Главная</span>
+          </button>
+          <button data-group="ship">
+            <span class="nav-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M3.5 15.5 L20.5 15.5 L18.2 19.5 L5.8 19.5 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M7 15.5 V11.5 H15 V15.5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="M10 11.5 V8 H13.5 V11.5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                <line x1="11.7" y1="8" x2="11.7" y2="4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span data-i18n="app.groups.ship">Моё судно</span>
           </button>
           <button data-group="navigation">
             <span class="nav-icon">
@@ -377,6 +388,33 @@
              группы — js/app.js::setupCalcSwitcher() (работает на любом числе
              .calc-switcher/.calc-page на странице через querySelectorAll,
              без привязки к конкретной группе). ================================================================ -->
+        <!-- ===================== «Моё судно» (с 1.7.0) =====================
+             Данные своего судна один раз — калькуляторы подставляют их кнопкой
+             «Из «Моё судно»». Разметка полей строится в js/ship-profile.js. -->
+        <div class="group-content" data-group="ship" hidden>
+          <section class="ship-page" id="ship-page">
+            <div class="card">
+              <h2 class="card-title" data-i18n="ship.title">Моё судно</h2>
+              <p class="card-subtitle" data-i18n="ship.caption">Заполните данные своего судна один раз — калькуляторы подставят их сами (кнопка «Из «Моё судно»» в каждом расчёте). Всё хранится только на этом устройстве.</p>
+              <div class="ship-toolbar">
+                <select id="ship-select" aria-label="ship"></select>
+                <button type="button" class="btn-secondary" id="ship-new-btn" data-i18n="ship.new_btn">+ Новое судно</button>
+                <button type="button" class="btn-secondary" id="ship-export-btn" data-i18n="ship.export_btn">Сохранить в файл</button>
+                <button type="button" class="btn-secondary" id="ship-import-btn" data-i18n="ship.import_btn">Загрузить из файла</button>
+                <button type="button" class="btn-secondary ship-delete" id="ship-delete-btn" data-i18n="ship.delete_btn">Удалить</button>
+                <input type="file" id="ship-import-file" accept=".json,application/json" hidden>
+              </div>
+              <p class="section-caption ship-status" id="ship-status" data-i18n="ship.autosave">Изменения сохраняются автоматически</p>
+              <div id="ship-summary" class="ship-summary"></div>
+              <div id="ship-form"></div>
+              <div class="disclaimer">
+                <span class="dot"></span>
+                <span data-i18n="ship.disclaimer">Данные берите из документов своего судна (Trim &amp; Stability Booklet, калибровочные таблицы, Pilot card). Калькуляторы используют их как есть — проверяйте подставленные значения перед расчётом.</span>
+              </div>
+            </div>
+          </section>
+        </div>
+
         <div class="group-content" data-group="navigation" hidden>
 
         <nav class="calc-switcher" id="calc-switcher">
@@ -398,6 +436,7 @@
                навигационный расчёт, как компас/CPA/снос, логичнее среди
                них, а не рядом с конвертерами. -->
           <button data-calc="sextant" data-i18n="app.tabs.sextant">Поправки секстана</button>
+          <button data-calc="astro" data-i18n="app.tabs.astro">Место по Солнцу</button>
           <button data-calc="sun-compass" data-i18n="app.tabs.sun_compass">Поправка компаса по Солнцу</button>
         </nav>
 
@@ -1233,6 +1272,120 @@
         </div>
         </section>
 
+
+        <!-- ===================== Место по Солнцу (с 1.7.0) ===================== -->
+        <section class="calc-page" data-calc="astro" hidden>
+        <div class="card">
+          <h2 class="card-title" data-i18n="calc.astro.title">Место по Солнцу</h2>
+          <p class="card-subtitle" data-i18n="calc.astro.caption">Широта по полуденной высоте и линия положения по Солнцу — поправки высоты считаются автоматически, МАЕ не нужен</p>
+
+          <div class="segmented" id="astro-mode-switch">
+            <button class="active" data-mode="noon" data-i18n="calc.astro.mode_noon">Широта в полдень</button>
+            <button data-mode="lop" data-i18n="calc.astro.mode_lop">Линия положения</button>
+          </div>
+          <p class="section-caption" data-astro-only="noon" data-i18n="calc.astro.noon_hint">В полдень измерьте наибольшую высоту Солнца (Солнце на меридиане). Счислимая широта нужна только чтобы понять, к N или к S от вас Солнце.</p>
+          <p class="section-caption" data-astro-only="lop" data-i18n="calc.astro.lop_hint" hidden>Измерьте высоту Солнца и точно засеките время UTC. Результат — перенос и азимут для прокладки линии положения от счислимого места.</p>
+
+          <div class="section-header" data-i18n="calc.astro.section_time">Дата и время наблюдения (UTC)</div>
+          <div class="field-grid">
+            <div class="field">
+              <label data-i18n="calc.sun.date_label">Дата (UTC)</label>
+              <input type="date" id="astro-date">
+            </div>
+            <div class="field" data-astro-only="lop" hidden>
+              <label data-i18n="calc.sun.time_label">Время (UTC)</label>
+              <input type="time" id="astro-time" step="1">
+            </div>
+          </div>
+
+          <div class="section-header" data-i18n="calc.sun.section_position">Счислимое место</div>
+          <div class="field-grid">
+            <div class="field">
+              <label data-i18n="calc.sun.lat_deg_label">Широта, °</label>
+              <input type="number" id="astro-lat-deg" value="44" min="0" max="89" step="1">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.sun.lat_min_label">Широта, ′</label>
+              <input type="number" id="astro-lat-min" value="30.0" min="0" max="59.99" step="0.1">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.sun.lat_hem_label">N / S</label>
+              <select id="astro-lat-hem"><option value="N">N</option><option value="S">S</option></select>
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label data-i18n="calc.sun.lon_deg_label">Долгота, °</label>
+              <input type="number" id="astro-lon-deg" value="33" min="0" max="180" step="1">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.sun.lon_min_label">Долгота, ′</label>
+              <input type="number" id="astro-lon-min" value="30.0" min="0" max="59.99" step="0.1">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.sun.lon_hem_label">E / W</label>
+              <select id="astro-lon-hem"><option value="E">E</option><option value="W">W</option></select>
+            </div>
+          </div>
+
+          <button type="button" class="btn-secondary" id="astro-mp-btn" data-astro-only="noon" style="margin-bottom:10px" data-i18n="calc.astro.mp_btn">Когда полдень (кульминация Солнца)?</button>
+          <p class="section-caption" id="astro-mp-out" hidden></p>
+
+          <div class="section-header" data-i18n="calc.astro.section_sextant">Наблюдение секстаном</div>
+          <div class="field-grid">
+            <div class="field">
+              <label data-i18n="calc.astro.hs_deg_label">Высота Hs, °</label>
+              <input type="number" id="astro-hs-deg" value="30" min="0" max="89" step="1">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.astro.hs_min_label">Hs, ′</label>
+              <input type="number" id="astro-hs-min" value="0.0" min="0" max="59.99" step="0.1">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.astro.limb_label">Край Солнца</label>
+              <select id="astro-limb">
+                <option value="lower" data-i18n="calc.astro.limb_lower">Нижний край</option>
+                <option value="upper" data-i18n="calc.astro.limb_upper">Верхний край</option>
+              </select>
+            </div>
+            <div class="field">
+              <label data-i18n="calc.astro.ic_label">Поправка индекса IC, ′ (со знаком)</label>
+              <input type="number" id="astro-ic" value="0.0" step="0.1">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.astro.eye_label">Высота глаза над водой, м</label>
+              <input type="number" id="astro-eye" value="15" min="0" step="0.1">
+            </div>
+          </div>
+
+          <button class="btn-primary" id="astro-calc-btn" data-i18n="calc.astro.calc_btn">Рассчитать</button>
+
+          <div class="result-row">
+            <div class="result" id="astro-result-box-main">
+              <div class="result-label" id="astro-main-label" data-i18n="calc.astro.lat_metric">Широта</div>
+              <div class="result-value" id="astro-value-main">—</div>
+              <p class="field-hint" id="astro-value-main-extra"></p>
+            </div>
+            <div class="result" id="astro-result-box-second">
+              <div class="result-label" id="astro-second-label" data-i18n="calc.astro.ho_metric">Истинная высота Ho</div>
+              <div class="result-value" id="astro-value-second">—</div>
+              <p class="field-hint" id="astro-value-second-extra"></p>
+            </div>
+          </div>
+          <p class="field-hint warning" id="astro-warnings" style="margin-top:14px" hidden></p>
+          <button class="steps-toggle" id="astro-steps-toggle">
+            <span class="chevron">›</span>
+            <span class="toggle-label" data-i18n="calc.common.show_steps">Показать, как считалось</span>
+          </button>
+          <div class="steps-list" id="astro-steps-list"></div>
+
+          <div class="disclaimer">
+            <span class="dot"></span>
+            <span data-i18n="calc.astro.disclaimer">Координаты Солнца — по алгоритму Меуса, поправки высоты — по тем же формулам, что таблицы Nautical Almanac (расхождение около 0,1′). Вспомогательный расчёт: место по одной линии положения — не обсервация.</span>
+          </div>
+        </div>
+        </section>
+
         </div>
         <!-- ===================== /Группа "Судовождение" =================== -->
 
@@ -1467,6 +1620,8 @@
           <button data-calc="tides" data-i18n="app.tabs.tides">Прилив</button>
           <button data-calc="roll-gm" data-i18n="app.tabs.roll_gm">Период качки → GM</button>
           <button data-calc="blind-distance" data-i18n="app.tabs.blind_distance">Слепая зона по носу</button>
+          <button data-calc="wheel-over" data-i18n="app.tabs.wheel_over">Точка начала поворота</button>
+          <button data-calc="air-draft" data-i18n="app.tabs.air_draft">Проход под мостом</button>
         </nav>
 
         <!-- ===================== Under Keel Clearance ===================== -->
@@ -1754,6 +1909,130 @@
         </div>
         </section>
 
+
+        <!-- ===================== Точка начала поворота (с 1.7.0) ===================== -->
+        <section class="calc-page" data-calc="wheel-over" hidden>
+        <div class="card">
+          <h2 class="card-title" data-i18n="calc.wheel_over.title">Точка начала поворота (Wheel-over)</h2>
+          <p class="card-subtitle" data-i18n="calc.wheel_over.caption">За сколько до точки поворота на карте класть руль, чтобы выйти точно на новый курс</p>
+          <div class="field-grid">
+            <div class="field">
+              <label data-i18n="calc.wheel_over.old_course_label">Курс до поворота, °</label>
+              <input type="number" id="wo-old-course" value="45" min="0" max="360" step="0.1">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.wheel_over.new_course_label">Курс после поворота, °</label>
+              <input type="number" id="wo-new-course" value="110" min="0" max="360" step="0.1">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.wheel_over.speed_label">Скорость, уз</label>
+              <input type="number" id="wo-speed" value="10" min="0" step="0.1">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.wheel_over.mode_label">Как задан поворот</label>
+              <select id="wo-mode">
+                <option value="radius" data-i18n="calc.wheel_over.mode_radius">Радиус циркуляции</option>
+                <option value="rot" data-i18n="calc.wheel_over.mode_rot">Угловая скорость (ROT)</option>
+              </select>
+            </div>
+            <div class="field" data-wo-only="radius">
+              <label data-i18n="calc.wheel_over.radius_label">Радиус циркуляции, мили</label>
+              <input type="number" id="wo-radius" value="0.5" min="0" step="0.01">
+            </div>
+            <div class="field" data-wo-only="rot" hidden>
+              <label data-i18n="calc.wheel_over.rot_label">ROT, °/мин</label>
+              <input type="number" id="wo-rot" value="20" min="0" step="0.5">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.wheel_over.reaction_label">Время реакции судна на руль, с</label>
+              <input type="number" id="wo-reaction" value="20" min="0" step="1">
+            </div>
+          </div>
+          <button class="btn-primary" id="wo-calc-btn" data-i18n="calc.wheel_over.calc_btn">Рассчитать точку поворота</button>
+          <div class="result-row">
+            <div class="result" id="wo-result-box">
+              <div class="result-label" data-i18n="calc.wheel_over.result_label">Класть руль до точки поворота</div>
+              <div class="result-value" id="wo-value">—</div>
+              <p class="field-hint" id="wo-value-extra"></p>
+            </div>
+            <div class="result" id="wo-result-box-rot">
+              <div class="result-label" data-i18n="calc.wheel_over.rot_metric">Угловая скорость / время поворота</div>
+              <div class="result-value" id="wo-value-rot">—</div>
+              <p class="field-hint" id="wo-value-rot-extra"></p>
+            </div>
+          </div>
+            <button class="steps-toggle" id="wo-steps-toggle">
+              <span class="chevron">›</span>
+              <span class="toggle-label" data-i18n="calc.common.show_steps">Показать, как считалось</span>
+            </button>
+            <div class="steps-list" id="wo-steps-list"></div>
+          <div class="disclaimer">
+            <span class="dot"></span>
+            <span data-i18n="calc.wheel_over.disclaimer">Радиус циркуляции берите из манёвренных характеристик судна (Pilot card / Wheelhouse poster) для своей скорости и угла перекладки. Течение и ветер в расчёте не учитываются.</span>
+          </div>
+        </div>
+        </section>
+
+        <!-- ===================== Проход под мостом (с 1.7.0) ===================== -->
+        <section class="calc-page" data-calc="air-draft" hidden>
+        <div class="card">
+          <h2 class="card-title" data-i18n="calc.air_draft.title">Проход под мостом / ЛЭП</h2>
+          <p class="card-subtitle" data-i18n="calc.air_draft.caption">Надводный габарит судна, запас по высоте и предельная высота прилива для прохода</p>
+          <p class="section-header" data-i18n="calc.air_draft.section_ship">Судно</p>
+          <div class="field-grid">
+            <div class="field">
+              <label data-i18n="calc.air_draft.mast_label">Наивысшая точка судна над килем, м</label>
+              <input type="number" id="ad-mast-height" value="42" min="0" step="0.01">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.air_draft.draft_label">Осадка (в районе наивысшей точки), м</label>
+              <input type="number" id="ad-draft" value="8.5" min="0" step="0.01">
+            </div>
+          </div>
+          <p class="section-header" data-i18n="calc.air_draft.section_bridge">Мост и уровень воды</p>
+          <div class="field-grid">
+            <div class="field">
+              <label data-i18n="calc.air_draft.clearance_label">Габарит под пролётом по карте/лоции, м</label>
+              <input type="number" id="ad-clearance" value="38" min="0" step="0.01">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.air_draft.datum_label">Уровень отсчёта габарита над нулём глубин, м (HAT, MHWS; 0 — от нуля глубин)</label>
+              <input type="number" id="ad-datum" value="2.4" step="0.01">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.air_draft.tide_label">Высота прилива в момент прохода, м</label>
+              <input type="number" id="ad-tide" value="1.8" step="0.01">
+            </div>
+            <div class="field">
+              <label data-i18n="calc.air_draft.margin_label">Требуемый запас (политика компании/порта), м</label>
+              <input type="number" id="ad-margin" value="2" min="0" step="0.1">
+            </div>
+          </div>
+          <button class="btn-primary" id="ad-calc-btn" data-i18n="calc.air_draft.calc_btn">Рассчитать запас</button>
+          <div class="result-row">
+            <div class="result" id="ad-result-box">
+              <div class="result-label" data-i18n="calc.air_draft.result_label">Запас по высоте</div>
+              <div class="result-value" id="ad-value">—</div>
+              <p class="field-hint" id="ad-value-extra"></p>
+            </div>
+            <div class="result" id="ad-result-box-max">
+              <div class="result-label" data-i18n="calc.air_draft.max_tide_metric">Пройти можно при приливе не выше</div>
+              <div class="result-value" id="ad-value-max">—</div>
+              <p class="field-hint" id="ad-value-max-extra"></p>
+            </div>
+          </div>
+            <button class="steps-toggle" id="ad-steps-toggle">
+              <span class="chevron">›</span>
+              <span class="toggle-label" data-i18n="calc.common.show_steps">Показать, как считалось</span>
+            </button>
+            <div class="steps-list" id="ad-steps-list"></div>
+          <div class="disclaimer">
+            <span class="dot"></span>
+            <span data-i18n="calc.air_draft.disclaimer">Уточните по карте/лоции, от какого уровня дан габарит (на картах Адмиралтейства — от HAT). Проседание на ходу (squat) и волнение в расчёте не учтены — они должны покрываться запасом.</span>
+          </div>
+        </div>
+        </section>
+
         </div>
         <!-- ===================== /Группа "Манёвры и стоянка" =================== -->
 
@@ -1854,6 +2133,8 @@
 
             <p class="section-header" data-i18n="calc.draft.hydrostatic_header">Гидростатическая таблица — два ближайших значения к истинной осадке</p>
             <p class="section-caption" data-i18n="calc.draft.hydrostatic_caption">Сначала прикиньте осадку, посмотрите нижнюю/верхнюю границу в таблице судна, впишите водоизмещение для каждой</p>
+            <button type="button" class="btn-secondary ds-hydro-from-ship" style="margin-bottom:10px" data-i18n="ship.ds_hydro_btn">Заполнить гидростатику из таблицы «Моё судно»</button>
+            <p class="section-caption ds-hydro-msg" hidden></p>
             <div class="field-grid">
               <div class="field">
                 <label data-i18n="calc.draft.disp_low_label">Водоизмещение при меньшей осадке, т</label>
@@ -2713,20 +2994,21 @@
        грузит остальные свои файлы (.wasm/.zip) через fetch(), и sw.js
        кэширует их все одинаково (см. PYODIDE_URL_PREFIX в sw.js). -->
   <script src="vendor/pyodide/pyodide.js"></script>
-  <script src="js/i18n.js?v=48"></script>
-  <script src="js/pyodide-bridge.js?v=48"></script>
-  <script src="js/docx-writer.js?v=48"></script>
-  <script src="js/colregs-scenes.js?v=48"></script>
-  <script src="js/theory-scenes.js?v=48"></script>
-  <script src="js/colregs-trainer.js?v=48"></script>
-  <script src="js/home.js?v=48"></script>
-  <script src="js/scroll-ui.js?v=48"></script>
-  <script src="vendor/tweetnacl/nacl-fast.min.js?v=48"></script>
-  <script src="js/license.js?v=48"></script>
-  <script src="js/ios.js?v=48"></script>
-  <script src="js/legal.js?v=48"></script>
-  <script src="js/app.js?v=48"></script>
-  <script src="js/steps-en.js?v=48"></script>
-  <script src="js/calculators.js?v=48"></script>
+  <script src="js/i18n.js?v=49"></script>
+  <script src="js/pyodide-bridge.js?v=49"></script>
+  <script src="js/docx-writer.js?v=49"></script>
+  <script src="js/colregs-scenes.js?v=49"></script>
+  <script src="js/theory-scenes.js?v=49"></script>
+  <script src="js/colregs-trainer.js?v=49"></script>
+  <script src="js/home.js?v=49"></script>
+  <script src="js/scroll-ui.js?v=49"></script>
+  <script src="vendor/tweetnacl/nacl-fast.min.js?v=49"></script>
+  <script src="js/license.js?v=49"></script>
+  <script src="js/ios.js?v=49"></script>
+  <script src="js/legal.js?v=49"></script>
+  <script src="js/app.js?v=49"></script>
+  <script src="js/steps-en.js?v=49"></script>
+  <script src="js/calculators.js?v=49"></script>
+  <script src="js/ship-profile.js?v=49"></script>
 </body>
 </html>

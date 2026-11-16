@@ -11,7 +11,7 @@
 (function () {
   "use strict";
   const LAST_KEY = "shiphelper-last-calc";
-  const GROUPS = ["navigation", "tools", "maneuvering", "cargo", "theory"];
+  const GROUPS = ["ship", "navigation", "tools", "maneuvering", "cargo", "theory"];
   const QUICK = [
     ["navigation", "compass"], ["navigation", "cpa"], ["navigation", "std"], ["navigation", "sailing"],
     ["maneuvering", "ukc"], ["maneuvering", "squat"], ["cargo", "draft"], ["cargo", "stability"],
@@ -72,10 +72,14 @@
     if (!wrap) return;
     wrap.innerHTML = GROUPS.map((g) => {
       const icon = document.querySelector(`.sidebar-nav button[data-group="${g}"] .nav-icon`);
-      const n = g === "theory"
-        ? document.querySelectorAll("#theory-topic-select option").length || 9
-        : document.querySelectorAll(`.group-content[data-group="${g}"] .calc-switcher button`).length;
-      const count = T(g === "theory" ? "home.count_topics" : "home.count_calcs", { n });
+      let n, key;
+      if (g === "theory") { n = document.querySelectorAll("#theory-topic-select option").length || 9; key = "home.count_topics"; }
+      else if (g === "ship") {
+        n = 0;
+        try { n = ((JSON.parse(localStorage.getItem("shiphelper-ship-profiles") || "{}").ships) || []).length; } catch (e) { /* пусто */ }
+        key = n ? "home.count_ships" : "home.count_ships_none";
+      } else { n = document.querySelectorAll(`.group-content[data-group="${g}"] .calc-switcher button`).length; key = "home.count_calcs"; }
+      const count = T(key, { n });
       return `<button type="button" class="home-tile" data-home-open="${g}">
         <span class="home-tile-icon">${icon ? icon.innerHTML : ""}</span>
         <span class="home-tile-title">${esc(T(`app.groups.${g}`))}</span>

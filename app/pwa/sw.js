@@ -113,7 +113,7 @@
 // v43: реквизиты продавца в документах (1.5.1).
 // v44: исправлен адрес почты (1.5.2).
 // v45: 1.6.0 — убран расчёт якорной цепи, тренажёр МППСС 40 ситуаций, правка текстов.
-const CACHE_NAME = "shiphelper-v48";
+const CACHE_NAME = "shiphelper-v49";
 
 // Стабильное имя — НЕ зависит от CACHE_NAME и не чистится при его
 // бампе (см. activate ниже). Версия в имени — на случай, если сама
@@ -211,6 +211,7 @@ const APP_SHELL = [
   "./js/app.js",
   "./js/steps-en.js",
   "./js/calculators.js",
+  "./js/ship-profile.js",
   "./icons/icon.svg",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
@@ -258,6 +259,9 @@ const CORE_FILES = [
   "../core/drill_log.py",
   "../core/notices_log.py",
   "../core/celestial.py",
+  "../core/ship_profile.py",
+  "../core/wheel_over.py",
+  "../core/air_draft.py",
   "../core/deadweight_scale.py",
   "../core/fwa.py",
   "../core/suspended_load.py",
