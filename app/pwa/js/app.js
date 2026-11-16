@@ -819,7 +819,21 @@ function registerServiceWorker() {
   // В версии для Windows (WebView2) файлы тоже лежат рядом с программой
   if (window.AzimuthDesktop || (window.chrome && window.chrome.webview)) return;
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").catch((err) => {
+    // Новая версия на сайте: новый service worker ставится в фоне и сразу берёт
+    // управление (skipWaiting + clients.claim). Без перезагрузки страница так и
+    // оставалась бы старой до следующего открытия — перезагружаем один раз сами.
+    // Введённое не теряется: всё сохраняется автоматически.
+    const hadController = !!navigator.serviceWorker.controller;
+    let reloaded = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (!hadController || reloaded) return;
+      reloaded = true;
+      try { if (window.AzimuthStoreFlush) window.AzimuthStoreFlush(); } catch (e) { /* без файла */ }
+      window.location.reload();
+    });
+    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then((reg) => {
+      try { reg.update(); } catch (e) { /* без сети */ }
+    }).catch((err) => {
       // Не критично для работы приложения при первой загрузке — просто
       // не будет офлайн-кеша в этой сессии браузера.
       console.warn("Service worker не зарегистрирован:", err);
